@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
     <id>toofz.NecroDancer.EntityFramework</id>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
     <title>toofz.NecroDancer.EntityFramework</title>
     <authors>Leonard Thieu</authors>
     <owners>Leonard Thieu</owners>
@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/leonard-thieu/toofz-necrodancer-entityframework</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Provides a context for working with types from toofz.NecroDancer in a database.</description>
-    <releaseNotes>Initial release.</releaseNotes>
+    <releaseNotes>Now compatible with .NET Framework 4.5.</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>toofz necrodancer entityframework</tags>
   </metadata>
