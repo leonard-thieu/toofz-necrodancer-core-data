@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "toofz.NecroDancer.EntityFramework", "toofz.NecroDancer.EntityFramework\toofz.NecroDancer.EntityFramework.csproj", "{74A190F2-9A35-422D-86B9-CC97710F03D3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{47D973CB-4F14-4011-9042-EC71E3D1CE4D}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet.Config = NuGet.Config
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -79,6 +79,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="toofz.NecroDancer.EntityFramework.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201602062034518_InitialCreate.resx">
