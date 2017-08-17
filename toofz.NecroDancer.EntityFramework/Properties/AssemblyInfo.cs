@@ -1,13 +1,11 @@
-﻿using System;
-using System.Reflection;
-using System.Resources;
+﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyVersion("2.1.0.*")]
-[assembly: AssemblyTitle("toofz NecroDancer Entity Framework")]
-[assembly: AssemblyProduct("toofz NecroDancer")]
-[assembly: AssemblyCompany("toofz")]
-[assembly: AssemblyCopyright("Copyright © Leonard Thieu 2015")]
+[assembly: AssemblyVersion("2.2.0.0")]
+
+[assembly: AssemblyCopyright("Copyright © Leonard Thieu 2017")]
+[assembly: AssemblyProduct("toofz")]
+
+[assembly: AssemblyTitle("toofz NecroDancer Core (Entity Framework)")]
+
 [assembly: ComVisible(false)]
-[assembly: CLSCompliant(false)]
-[assembly: NeutralResourcesLanguage("en-US")]
