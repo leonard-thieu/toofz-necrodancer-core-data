@@ -1,3 +1,1 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/cowbksjnikl2928m/branch/master?svg=true)](https://ci.appveyor.com/project/leonard-thieu/toofz-necrodancer-entityframework/branch/master)
-
-# toofz-necrodancer-entityframework
+# toofz NecroDancer Core (Entity Framework) [![Build status](https://ci.appveyor.com/api/projects/status/cowbksjnikl2928m/branch/master?svg=true)](https://ci.appveyor.com/project/leonard-thieu/toofz-necrodancer-entityframework/branch/master) [![MyGet](https://img.shields.io/myget/toofz/v/toofz.NecroDancer.EntityFramework.svg)](https://www.myget.org/feed/toofz/package/nuget/toofz.NecroDancer.EntityFramework)
