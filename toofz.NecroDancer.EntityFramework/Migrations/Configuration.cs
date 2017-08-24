@@ -17,7 +17,7 @@ namespace toofz.NecroDancer.EntityFramework.Migrations
             try
             {
                 var path = Util.GetEnvVar("NecroDancerPath");
-                var data = NecroDancerDataSerializer.Read(path);
+                var data = NecroDancerDataSerializer.Load(path);
 
                 context.Set<Item>().AddOrUpdate(i => i.ElementName, data.Items.ToArray());
                 context.Set<Enemy>().AddOrUpdate(e => new { e.ElementName, e.Type }, data.Enemies.ToArray());
