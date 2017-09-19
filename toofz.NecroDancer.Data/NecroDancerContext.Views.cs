@@ -10,8 +10,8 @@
 using System.Data.Entity.Infrastructure.MappingViews;
 
 [assembly: DbMappingViewCacheTypeAttribute(
-    typeof(toofz.NecroDancer.EntityFramework.NecroDancerContext),
-    typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySetsff7acc3e438114c33ffb2d8d9854994c92e7b8365331ab35b6412b8efdede3d2))]
+    typeof(toofz.NecroDancer.NecroDancerContext),
+    typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets772023ac5d273774d708534c82b58d573c4d1780ed2aa5e9e0e7712df59fd29c))]
 
 namespace Edm_EntityMappingGeneratedViews
 {
@@ -23,14 +23,14 @@ namespace Edm_EntityMappingGeneratedViews
     /// Implements a mapping view cache.
     /// </summary>
     [GeneratedCode("Entity Framework 6 Power Tools", "0.9.2.0")]
-    internal sealed class ViewsForBaseEntitySetsff7acc3e438114c33ffb2d8d9854994c92e7b8365331ab35b6412b8efdede3d2 : DbMappingViewCache
+    internal sealed class ViewsForBaseEntitySets772023ac5d273774d708534c82b58d573c4d1780ed2aa5e9e0e7712df59fd29c : DbMappingViewCache
     {
         /// <summary>
         /// Gets a hash value computed over the mapping closure.
         /// </summary>
         public override string MappingHashValue
         {
-            get { return "ff7acc3e438114c33ffb2d8d9854994c92e7b8365331ab35b6412b8efdede3d2"; }
+            get { return "772023ac5d273774d708534c82b58d573c4d1780ed2aa5e9e0e7712df59fd29c"; }
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new DbMappingView(@"
     SELECT VALUE -- Constructing Items
-        [toofz.NecroDancer.EntityFramework.Item](T3.Item_ElementName, T3.Item_Bouncer, T3.Item_ChestChance, T3.Item_CoinCost, T3.Item_Consumable, T3.Item_Cooldown, T3.Item_Data, T3.Item_DiamondCost, T3.Item_DiamondDealable, T3.Item_Flyaway, T3.Item_FrameCount, T3.Item_FromTransmute, T3.Item_HideQuantity, T3.Item_Hint, T3.Item_ImageHeight, T3.Item_ImageWidth, T3.Item_IsArmor, T3.Item_IsAxe, T3.Item_IsBlood, T3.Item_IsBlunderbuss, T3.Item_IsBow, T3.Item_IsBroadsword, T3.Item_IsCat, T3.Item_IsCoin, T3.Item_IsCrossbow, T3.Item_IsCutlass, T3.Item_IsDagger, T3.Item_IsDiamond, T3.Item_IsFamiliar, T3.Item_IsFlail, T3.Item_IsFood, T3.Item_IsFrost, T3.Item_IsGlass, T3.Item_IsGold, T3.Item_IsHarp, T3.Item_IsLongsword, T3.Item_IsMagicFood, T3.Item_IsObsidian, T3.Item_IsPhasing, T3.Item_IsPiercing, T3.Item_IsRapier, T3.Item_IsRifle, T3.Item_IsScroll, T3.Item_IsShovel, T3.Item_IsSpear, T3.Item_IsSpell, T3.Item_IsStackable, T3.Item_IsStaff, T3.Item_IsTemp, T3.Item_IsTitanium, T3.Item_IsTorch, T3.Item_IsWarhammer, T3.Item_IsWeapon, T3.Item_IsWhip, T3.Item_LevelEditor, T3.Item_LockedChestChance, T3.Item_LockedShopChance, T3.Item_OffsetY, T3.Item_PlayerKnockback, T3.Item_Quantity, T3.Item_QuantityYOff, T3.Item_ScreenFlash, T3.Item_ScreenShake, T3.Item_Set, T3.Item_ShopChance, T3.Item_Slot, T3.Item_SlotPriority, T3.Item_Sound, T3.Item_Spell, T3.Item_TemporaryMapSight, T3.Item_Unlocked, T3.Item_UrnChance, T3.Item_UseGreater, T3.Item_ImagePath, T3.Item_Name)
+        [toofz.NecroDancer.Item](T3.Item_ElementName, T3.Item_Bouncer, T3.Item_ChestChance, T3.Item_CoinCost, T3.Item_Consumable, T3.Item_Cooldown, T3.Item_Data, T3.Item_DiamondCost, T3.Item_DiamondDealable, T3.Item_Flyaway, T3.Item_FrameCount, T3.Item_FromTransmute, T3.Item_HideQuantity, T3.Item_Hint, T3.Item_ImageHeight, T3.Item_ImageWidth, T3.Item_IsArmor, T3.Item_IsAxe, T3.Item_IsBlood, T3.Item_IsBlunderbuss, T3.Item_IsBow, T3.Item_IsBroadsword, T3.Item_IsCat, T3.Item_IsCoin, T3.Item_IsCrossbow, T3.Item_IsCutlass, T3.Item_IsDagger, T3.Item_IsDiamond, T3.Item_IsFamiliar, T3.Item_IsFlail, T3.Item_IsFood, T3.Item_IsFrost, T3.Item_IsGlass, T3.Item_IsGold, T3.Item_IsHarp, T3.Item_IsLongsword, T3.Item_IsMagicFood, T3.Item_IsObsidian, T3.Item_IsPhasing, T3.Item_IsPiercing, T3.Item_IsRapier, T3.Item_IsRifle, T3.Item_IsScroll, T3.Item_IsShovel, T3.Item_IsSpear, T3.Item_IsSpell, T3.Item_IsStackable, T3.Item_IsStaff, T3.Item_IsTemp, T3.Item_IsTitanium, T3.Item_IsTorch, T3.Item_IsWarhammer, T3.Item_IsWeapon, T3.Item_IsWhip, T3.Item_LevelEditor, T3.Item_LockedChestChance, T3.Item_LockedShopChance, T3.Item_OffsetY, T3.Item_PlayerKnockback, T3.Item_Quantity, T3.Item_QuantityYOff, T3.Item_ScreenFlash, T3.Item_ScreenShake, T3.Item_Set, T3.Item_ShopChance, T3.Item_Slot, T3.Item_SlotPriority, T3.Item_Sound, T3.Item_Spell, T3.Item_TemporaryMapSight, T3.Item_Unlocked, T3.Item_UrnChance, T3.Item_UseGreater, T3.Item_ImagePath, T3.Item_Name)
     FROM (
         SELECT -- Constructing Flyaway
             T2.Item_ElementName, 
@@ -183,7 +183,7 @@ namespace Edm_EntityMappingGeneratedViews
             T2.Item_Data, 
             T2.Item_DiamondCost, 
             T2.Item_DiamondDealable, 
-            [toofz.NecroDancer.EntityFramework.DisplayString](T2.Item_Flyaway_Id, T2.Item_Flyaway_Text) AS Item_Flyaway, 
+            [toofz.NecroDancer.DisplayString](T2.Item_Flyaway_Id, T2.Item_Flyaway_Text) AS Item_Flyaway, 
             T2.Item_FrameCount, 
             T2.Item_FromTransmute, 
             T2.Item_HideQuantity, 
@@ -265,7 +265,7 @@ namespace Edm_EntityMappingGeneratedViews
                 T1.Item_FrameCount, 
                 T1.Item_FromTransmute, 
                 T1.Item_HideQuantity, 
-                [toofz.NecroDancer.EntityFramework.DisplayString](T1.Item_Hint_Id, T1.Item_Hint_Text) AS Item_Hint, 
+                [toofz.NecroDancer.DisplayString](T1.Item_Hint_Id, T1.Item_Hint_Text) AS Item_Hint, 
                 T1.Item_ImageHeight, 
                 T1.Item_ImageWidth, 
                 T1.Item_IsArmor, 
@@ -421,7 +421,7 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new DbMappingView(@"
     SELECT VALUE -- Constructing Enemy
-        [CodeFirstDatabaseSchema.Enemy](T1.Enemy_ElementName, T1.Enemy_Type, T1.Enemy_Id, T1.Enemy_FriendlyName, T1.Enemy_LevelEditor, T1.[Enemy.Bouncer_Min], T1.[Enemy.Bouncer_Max], T1.[Enemy.Bouncer_Power], T1.[Enemy.Bouncer_Steps], T1.[Enemy.OptionalStats_Boss], T1.[Enemy.OptionalStats_BounceOnMovementFail], T1.[Enemy.OptionalStats_Floating], T1.[Enemy.OptionalStats_IgnoreLiquids], T1.[Enemy.OptionalStats_IgnoreWalls], T1.[Enemy.OptionalStats_IsMonkeyLike], T1.[Enemy.OptionalStats_Massive], T1.[Enemy.OptionalStats_Miniboss], T1.[Enemy.Particle_HitPath], T1.[Enemy.Shadow_Path], T1.[Enemy.Shadow_OffsetX], T1.[Enemy.Shadow_OffsetY], T1.[Enemy.SpriteSheet_Path], T1.[Enemy.SpriteSheet_FrameCount], T1.[Enemy.SpriteSheet_FrameWidth], T1.[Enemy.SpriteSheet_FrameHeight], T1.[Enemy.SpriteSheet_OffsetX], T1.[Enemy.SpriteSheet_OffsetY], T1.[Enemy.SpriteSheet_OffsetZ], T1.[Enemy.SpriteSheet_HeartOffsetX], T1.[Enemy.SpriteSheet_HeartOffsetY], T1.[Enemy.Stats_BeatsPerMove], T1.[Enemy.Stats_CoinsToDrop], T1.[Enemy.Stats_DamagePerHit], T1.[Enemy.Stats_Health], T1.[Enemy.Stats_Movement], T1.[Enemy.Stats_Priority], T1.[Enemy.Tweens_Move], T1.[Enemy.Tweens_MoveShadow], T1.[Enemy.Tweens_Hit], T1.[Enemy.Tweens_HitShadow], T1.Enemy_Name)
+        [CodeFirstDatabaseSchema.Enemy](T1.Enemy_ElementName, T1.Enemy_Type, T1.Enemy_Id, T1.Enemy_FriendlyName, T1.Enemy_LevelEditor, T1.[Enemy.Bouncer_Min], T1.[Enemy.Bouncer_Max], T1.[Enemy.Bouncer_Power], T1.[Enemy.Bouncer_Steps], T1.[Enemy.OptionalStats_Boss], T1.[Enemy.OptionalStats_BounceOnMovementFail], T1.[Enemy.OptionalStats_Floating], T1.[Enemy.OptionalStats_IgnoreLiquids], T1.[Enemy.OptionalStats_IgnoreWalls], T1.[Enemy.OptionalStats_IsMonkeyLike], T1.[Enemy.OptionalStats_Massive], T1.[Enemy.OptionalStats_Miniboss], T1.[Enemy.Particle_HitPath], T1.[Enemy.Shadow_Path], T1.[Enemy.Shadow_OffsetX], T1.[Enemy.Shadow_OffsetY], T1.[Enemy.SpriteSheet_Path], T1.[Enemy.SpriteSheet_FrameCount], T1.[Enemy.SpriteSheet_FrameWidth], T1.[Enemy.SpriteSheet_FrameHeight], T1.[Enemy.SpriteSheet_OffsetX], T1.[Enemy.SpriteSheet_OffsetY], T1.[Enemy.SpriteSheet_OffsetZ], T1.[Enemy.SpriteSheet_HeartOffsetX], T1.[Enemy.SpriteSheet_HeartOffsetY], T1.[Enemy.SpriteSheet_FlipXOff], T1.[Enemy.SpriteSheet_AutoFlip], T1.[Enemy.SpriteSheet_FlipX], T1.[Enemy.Stats_BeatsPerMove], T1.[Enemy.Stats_CoinsToDrop], T1.[Enemy.Stats_DamagePerHit], T1.[Enemy.Stats_Health], T1.[Enemy.Stats_Movement], T1.[Enemy.Stats_Priority], T1.[Enemy.Tweens_Move], T1.[Enemy.Tweens_MoveShadow], T1.[Enemy.Tweens_Hit], T1.[Enemy.Tweens_HitShadow], T1.Enemy_Name)
     FROM (
         SELECT 
             T.ElementName AS Enemy_ElementName, 
@@ -454,6 +454,9 @@ namespace Edm_EntityMappingGeneratedViews
             T.SpriteSheet.OffsetZ AS [Enemy.SpriteSheet_OffsetZ], 
             T.SpriteSheet.HeartOffsetX AS [Enemy.SpriteSheet_HeartOffsetX], 
             T.SpriteSheet.HeartOffsetY AS [Enemy.SpriteSheet_HeartOffsetY], 
+            T.SpriteSheet.FlipXOff AS [Enemy.SpriteSheet_FlipXOff], 
+            T.SpriteSheet.AutoFlip AS [Enemy.SpriteSheet_AutoFlip], 
+            T.SpriteSheet.FlipX AS [Enemy.SpriteSheet_FlipX], 
             T.Stats.BeatsPerMove AS [Enemy.Stats_BeatsPerMove], 
             T.Stats.CoinsToDrop AS [Enemy.Stats_CoinsToDrop], 
             T.Stats.DamagePerHit AS [Enemy.Stats_DamagePerHit], 
@@ -478,7 +481,7 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new DbMappingView(@"
     SELECT VALUE -- Constructing Enemies
-        [toofz.NecroDancer.EntityFramework.Enemy](T8.Enemy_ElementName, T8.Enemy_Type, T8.Enemy_Id, T8.Enemy_FriendlyName, T8.Enemy_LevelEditor, T8.Enemy_Bouncer, T8.Enemy_OptionalStats, T8.Enemy_Particle, T8.Enemy_Shadow, T8.Enemy_SpriteSheet, T8.Enemy_Stats, T8.Enemy_Tweens, T8.Enemy_Name)
+        [toofz.NecroDancer.Enemy](T8.Enemy_ElementName, T8.Enemy_Type, T8.Enemy_Id, T8.Enemy_FriendlyName, T8.Enemy_LevelEditor, T8.Enemy_Bouncer, T8.Enemy_OptionalStats, T8.Enemy_Particle, T8.Enemy_Shadow, T8.Enemy_SpriteSheet, T8.Enemy_Stats, T8.Enemy_Tweens, T8.Enemy_Name)
     FROM (
         SELECT -- Constructing Bouncer
             T7.Enemy_ElementName, 
@@ -486,7 +489,7 @@ namespace Edm_EntityMappingGeneratedViews
             T7.Enemy_Id, 
             T7.Enemy_FriendlyName, 
             T7.Enemy_LevelEditor, 
-            [toofz.NecroDancer.EntityFramework.Bouncer](T7.Enemy_Bouncer_Min, T7.Enemy_Bouncer_Max, T7.Enemy_Bouncer_Power, T7.Enemy_Bouncer_Steps) AS Enemy_Bouncer, 
+            [toofz.NecroDancer.Bouncer](T7.Enemy_Bouncer_Min, T7.Enemy_Bouncer_Max, T7.Enemy_Bouncer_Power, T7.Enemy_Bouncer_Steps) AS Enemy_Bouncer, 
             T7.Enemy_OptionalStats, 
             T7.Enemy_Particle, 
             T7.Enemy_Shadow, 
@@ -505,7 +508,7 @@ namespace Edm_EntityMappingGeneratedViews
                 T6.Enemy_Bouncer_Max, 
                 T6.Enemy_Bouncer_Power, 
                 T6.Enemy_Bouncer_Steps, 
-                [toofz.NecroDancer.EntityFramework.OptionalStats](T6.Enemy_OptionalStats_Boss, T6.Enemy_OptionalStats_BounceOnMovementFail, T6.Enemy_OptionalStats_Floating, T6.Enemy_OptionalStats_IgnoreLiquids, T6.Enemy_OptionalStats_IgnoreWalls, T6.Enemy_OptionalStats_IsMonkeyLike, T6.Enemy_OptionalStats_Massive, T6.Enemy_OptionalStats_Miniboss) AS Enemy_OptionalStats, 
+                [toofz.NecroDancer.OptionalStats](T6.Enemy_OptionalStats_Boss, T6.Enemy_OptionalStats_BounceOnMovementFail, T6.Enemy_OptionalStats_Floating, T6.Enemy_OptionalStats_IgnoreLiquids, T6.Enemy_OptionalStats_IgnoreWalls, T6.Enemy_OptionalStats_IsMonkeyLike, T6.Enemy_OptionalStats_Massive, T6.Enemy_OptionalStats_Miniboss) AS Enemy_OptionalStats, 
                 T6.Enemy_Particle, 
                 T6.Enemy_Shadow, 
                 T6.Enemy_SpriteSheet, 
@@ -531,7 +534,7 @@ namespace Edm_EntityMappingGeneratedViews
                     T5.Enemy_OptionalStats_IsMonkeyLike, 
                     T5.Enemy_OptionalStats_Massive, 
                     T5.Enemy_OptionalStats_Miniboss, 
-                    [toofz.NecroDancer.EntityFramework.Particle](T5.Enemy_Particle_HitPath) AS Enemy_Particle, 
+                    [toofz.NecroDancer.Particle](T5.Enemy_Particle_HitPath) AS Enemy_Particle, 
                     T5.Enemy_Shadow, 
                     T5.Enemy_SpriteSheet, 
                     T5.Enemy_Stats, 
@@ -557,7 +560,7 @@ namespace Edm_EntityMappingGeneratedViews
                         T4.Enemy_OptionalStats_Massive, 
                         T4.Enemy_OptionalStats_Miniboss, 
                         T4.Enemy_Particle_HitPath, 
-                        [toofz.NecroDancer.EntityFramework.Shadow](T4.Enemy_Shadow_Path, T4.Enemy_Shadow_OffsetX, T4.Enemy_Shadow_OffsetY) AS Enemy_Shadow, 
+                        [toofz.NecroDancer.Shadow](T4.Enemy_Shadow_Path, T4.Enemy_Shadow_OffsetX, T4.Enemy_Shadow_OffsetY) AS Enemy_Shadow, 
                         T4.Enemy_SpriteSheet, 
                         T4.Enemy_Stats, 
                         T4.Enemy_Tweens, 
@@ -585,7 +588,7 @@ namespace Edm_EntityMappingGeneratedViews
                             T3.Enemy_Shadow_Path, 
                             T3.Enemy_Shadow_OffsetX, 
                             T3.Enemy_Shadow_OffsetY, 
-                            [toofz.NecroDancer.EntityFramework.SpriteSheet](T3.Enemy_SpriteSheet_Path, T3.Enemy_SpriteSheet_FrameCount, T3.Enemy_SpriteSheet_FrameWidth, T3.Enemy_SpriteSheet_FrameHeight, T3.Enemy_SpriteSheet_OffsetX, T3.Enemy_SpriteSheet_OffsetY, T3.Enemy_SpriteSheet_OffsetZ, T3.Enemy_SpriteSheet_HeartOffsetX, T3.Enemy_SpriteSheet_HeartOffsetY) AS Enemy_SpriteSheet, 
+                            [toofz.NecroDancer.SpriteSheet](T3.Enemy_SpriteSheet_Path, T3.Enemy_SpriteSheet_FrameCount, T3.Enemy_SpriteSheet_FrameWidth, T3.Enemy_SpriteSheet_FrameHeight, T3.Enemy_SpriteSheet_OffsetX, T3.Enemy_SpriteSheet_OffsetY, T3.Enemy_SpriteSheet_OffsetZ, T3.Enemy_SpriteSheet_HeartOffsetX, T3.Enemy_SpriteSheet_HeartOffsetY, T3.Enemy_SpriteSheet_FlipXOff, T3.Enemy_SpriteSheet_AutoFlip, T3.Enemy_SpriteSheet_FlipX) AS Enemy_SpriteSheet, 
                             T3.Enemy_Stats, 
                             T3.Enemy_Tweens, 
                             T3.Enemy_Name
@@ -621,7 +624,10 @@ namespace Edm_EntityMappingGeneratedViews
                                 T2.Enemy_SpriteSheet_OffsetZ, 
                                 T2.Enemy_SpriteSheet_HeartOffsetX, 
                                 T2.Enemy_SpriteSheet_HeartOffsetY, 
-                                [toofz.NecroDancer.EntityFramework.Stats](T2.Enemy_Stats_BeatsPerMove, T2.Enemy_Stats_CoinsToDrop, T2.Enemy_Stats_DamagePerHit, T2.Enemy_Stats_Health, T2.Enemy_Stats_Movement, T2.Enemy_Stats_Priority) AS Enemy_Stats, 
+                                T2.Enemy_SpriteSheet_FlipXOff, 
+                                T2.Enemy_SpriteSheet_AutoFlip, 
+                                T2.Enemy_SpriteSheet_FlipX, 
+                                [toofz.NecroDancer.Stats](T2.Enemy_Stats_BeatsPerMove, T2.Enemy_Stats_CoinsToDrop, T2.Enemy_Stats_DamagePerHit, T2.Enemy_Stats_Health, T2.Enemy_Stats_Movement, T2.Enemy_Stats_Priority) AS Enemy_Stats, 
                                 T2.Enemy_Tweens, 
                                 T2.Enemy_Name
                             FROM (
@@ -656,13 +662,16 @@ namespace Edm_EntityMappingGeneratedViews
                                     T1.Enemy_SpriteSheet_OffsetZ, 
                                     T1.Enemy_SpriteSheet_HeartOffsetX, 
                                     T1.Enemy_SpriteSheet_HeartOffsetY, 
+                                    T1.Enemy_SpriteSheet_FlipXOff, 
+                                    T1.Enemy_SpriteSheet_AutoFlip, 
+                                    T1.Enemy_SpriteSheet_FlipX, 
                                     T1.Enemy_Stats_BeatsPerMove, 
                                     T1.Enemy_Stats_CoinsToDrop, 
                                     T1.Enemy_Stats_DamagePerHit, 
                                     T1.Enemy_Stats_Health, 
                                     T1.Enemy_Stats_Movement, 
                                     T1.Enemy_Stats_Priority, 
-                                    [toofz.NecroDancer.EntityFramework.Tweens](T1.Enemy_Tweens_Move, T1.Enemy_Tweens_MoveShadow, T1.Enemy_Tweens_Hit, T1.Enemy_Tweens_HitShadow) AS Enemy_Tweens, 
+                                    [toofz.NecroDancer.Tweens](T1.Enemy_Tweens_Move, T1.Enemy_Tweens_MoveShadow, T1.Enemy_Tweens_Hit, T1.Enemy_Tweens_HitShadow) AS Enemy_Tweens, 
                                     T1.Enemy_Name
                                 FROM (
                                     SELECT 
@@ -696,6 +705,9 @@ namespace Edm_EntityMappingGeneratedViews
                                         T.SpriteSheet_OffsetZ AS Enemy_SpriteSheet_OffsetZ, 
                                         T.SpriteSheet_HeartOffsetX AS Enemy_SpriteSheet_HeartOffsetX, 
                                         T.SpriteSheet_HeartOffsetY AS Enemy_SpriteSheet_HeartOffsetY, 
+                                        T.SpriteSheet_FlipXOff AS Enemy_SpriteSheet_FlipXOff, 
+                                        T.SpriteSheet_AutoFlip AS Enemy_SpriteSheet_AutoFlip, 
+                                        T.SpriteSheet_FlipX AS Enemy_SpriteSheet_FlipX, 
                                         T.Stats_BeatsPerMove AS Enemy_Stats_BeatsPerMove, 
                                         T.Stats_CoinsToDrop AS Enemy_Stats_CoinsToDrop, 
                                         T.Stats_DamagePerHit AS Enemy_Stats_DamagePerHit, 

@@ -3,13 +3,14 @@ using System.Data.Entity.Migrations;
 using System.Diagnostics;
 using toofz.NecroDancer.Data;
 
-namespace toofz.NecroDancer.EntityFramework.Migrations
+namespace toofz.NecroDancer.Migrations
 {
     sealed class Configuration : DbMigrationsConfiguration<NecroDancerContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "toofz.NecroDancer.EntityFramework.Migrations.Configuration";
         }
 
         protected override void Seed(NecroDancerContext context)

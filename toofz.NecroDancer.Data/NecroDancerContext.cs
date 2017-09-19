@@ -2,7 +2,7 @@
 using System.Data.Entity.Infrastructure;
 using toofz.NecroDancer.Data;
 
-namespace toofz.NecroDancer.EntityFramework
+namespace toofz.NecroDancer
 {
     public class NecroDancerContext : DbContext
     {

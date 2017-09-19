@@ -3,7 +3,7 @@ using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration;
 using toofz.NecroDancer.Data;
 
-namespace toofz.NecroDancer.EntityFramework
+namespace toofz.NecroDancer
 {
     sealed class EnemyConfiguration : EntityTypeConfiguration<Enemy>
     {

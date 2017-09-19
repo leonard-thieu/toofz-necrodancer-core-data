@@ -1,4 +1,4 @@
-namespace toofz.NecroDancer.EntityFramework.Migrations
+namespace toofz.NecroDancer.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
