@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "toofz.NecroDancer.Data", "toofz.NecroDancer.Data\toofz.NecroDancer.Data.csproj", "{74A190F2-9A35-422D-86B9-CC97710F03D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "toofz.NecroDancer.Data.Tests", "toofz.NecroDancer.Data.Tests\toofz.NecroDancer.Data.Tests.csproj", "{7F06244D-47BC-422F-9FFB-27DB67AFE20D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{74A190F2-9A35-422D-86B9-CC97710F03D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74A190F2-9A35-422D-86B9-CC97710F03D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74A190F2-9A35-422D-86B9-CC97710F03D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F06244D-47BC-422F-9FFB-27DB67AFE20D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F06244D-47BC-422F-9FFB-27DB67AFE20D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F06244D-47BC-422F-9FFB-27DB67AFE20D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F06244D-47BC-422F-9FFB-27DB67AFE20D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

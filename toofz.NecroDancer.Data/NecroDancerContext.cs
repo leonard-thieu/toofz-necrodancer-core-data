@@ -1,16 +1,10 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using toofz.NecroDancer.Data;
 
 namespace toofz.NecroDancer
 {
     public class NecroDancerContext : DbContext
     {
-        static NecroDancerContext()
-        {
-            Database.SetInitializer<NecroDancerContext>(null);
-        }
-
         public NecroDancerContext()
         {
             Initialize();
@@ -28,8 +22,8 @@ namespace toofz.NecroDancer
             Configuration.ProxyCreationEnabled = false;
         }
 
-        public virtual DbQuery<Item> Items => Set<Item>().AsNoTracking();
-        public virtual DbQuery<Enemy> Enemies => Set<Enemy>().AsNoTracking();
+        public virtual DbSet<Item> Items { get; set; }
+        public virtual DbSet<Enemy> Enemies { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
