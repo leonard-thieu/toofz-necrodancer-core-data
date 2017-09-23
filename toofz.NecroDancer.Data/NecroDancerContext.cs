@@ -3,7 +3,7 @@ using toofz.NecroDancer.Data;
 
 namespace toofz.NecroDancer
 {
-    public class NecroDancerContext : DbContext
+    public class NecroDancerContext : DbContext, INecroDancerContext
     {
         public NecroDancerContext()
         {
