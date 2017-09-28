@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.Infrastructure.Annotations;
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity.ModelConfiguration;
 using toofz.NecroDancer.Data;
 
 namespace toofz.NecroDancer
@@ -9,11 +7,26 @@ namespace toofz.NecroDancer
     {
         public ItemConfiguration()
         {
-            HasKey(i => i.ElementName);
+            this.HasKey(i => i.Name);
 
-            Property(i => i.Name)
-                .HasMaxLength(450)
-                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute()));
+            this.Ignore(i => i.ChestChance);
+            this.Ignore(i => i.Flyaway);
+            this.Ignore(i => i.FrameCount);
+            this.Ignore(i => i.HideQuantity);
+            this.Ignore(i => i.Hint);
+            this.Ignore(i => i.LevelEditor);
+            this.Ignore(i => i.LockedChestChance);
+            this.Ignore(i => i.LockedShopChance);
+            this.Ignore(i => i.OffsetY);
+            this.Ignore(i => i.QuantityOffsetY);
+            this.Ignore(i => i.ScreenFlash);
+            this.Ignore(i => i.ScreenShake);
+            this.Ignore(i => i.ShopChance);
+            this.Ignore(i => i.SlotPriority);
+            this.Ignore(i => i.Sound);
+            this.Ignore(i => i.Spell);
+            this.Ignore(i => i.Unlocked);
+            this.Ignore(i => i.UrnChance);
         }
     }
 }

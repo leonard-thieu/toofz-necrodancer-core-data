@@ -30,16 +30,7 @@ namespace toofz.NecroDancer
             var configs = modelBuilder.Configurations;
             configs.Add(new ItemConfiguration());
             configs.Add(new EnemyConfiguration());
-
-            modelBuilder.ComplexType<DisplayString>();
-            modelBuilder.ComplexType<Bouncer>();
-            modelBuilder.ComplexType<Frame>();
-            modelBuilder.ComplexType<OptionalStats>();
-            modelBuilder.ComplexType<Particle>();
-            modelBuilder.ComplexType<Shadow>();
-            modelBuilder.ComplexType<SpriteSheet>();
-            modelBuilder.ComplexType<Stats>();
-            modelBuilder.ComplexType<Tweens>();
+            configs.Add(new StatsConfiguration());
         }
     }
 }
