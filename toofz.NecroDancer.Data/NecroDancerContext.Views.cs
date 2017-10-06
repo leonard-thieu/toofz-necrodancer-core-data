@@ -11,7 +11,7 @@ using System.Data.Entity.Infrastructure.MappingViews;
 
 [assembly: DbMappingViewCacheTypeAttribute(
     typeof(toofz.NecroDancer.NecroDancerContext),
-    typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySetscec59bd808076fc0f5133dfb75a0ef304e58cf28ac7e921a5fd5511a5a876f8a))]
+    typeof(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets006f80c5c86e71889ac850458e54c777e652f81716f4bf0195c7774573bd65fd))]
 
 namespace Edm_EntityMappingGeneratedViews
 {
@@ -23,14 +23,14 @@ namespace Edm_EntityMappingGeneratedViews
     /// Implements a mapping view cache.
     /// </summary>
     [GeneratedCode("Entity Framework 6 Power Tools", "0.9.2.0")]
-    internal sealed class ViewsForBaseEntitySetscec59bd808076fc0f5133dfb75a0ef304e58cf28ac7e921a5fd5511a5a876f8a : DbMappingViewCache
+    internal sealed class ViewsForBaseEntitySets006f80c5c86e71889ac850458e54c777e652f81716f4bf0195c7774573bd65fd : DbMappingViewCache
     {
         /// <summary>
         /// Gets a hash value computed over the mapping closure.
         /// </summary>
         public override string MappingHashValue
         {
-            get { return "cec59bd808076fc0f5133dfb75a0ef304e58cf28ac7e921a5fd5511a5a876f8a"; }
+            get { return "006f80c5c86e71889ac850458e54c777e652f81716f4bf0195c7774573bd65fd"; }
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new DbMappingView(@"
     SELECT VALUE -- Constructing Enemy
-        [CodeFirstDatabaseSchema.Enemy](T1.Enemy_Name, T1.Enemy_Type, T1.Enemy_Id, T1.Enemy_FriendlyName, T1.[Enemy.Stats_BeatsPerMove], T1.[Enemy.Stats_CoinsToDrop], T1.[Enemy.Stats_DamagePerHit], T1.[Enemy.Stats_Health], T1.[Enemy.Stats_Movement], T1.[Enemy.OptionalStats_Boss], T1.[Enemy.OptionalStats_BounceOnMovementFail], T1.[Enemy.OptionalStats_Floating], T1.[Enemy.OptionalStats_IgnoreLiquids], T1.[Enemy.OptionalStats_IgnoreWalls], T1.[Enemy.OptionalStats_IsMonkeyLike], T1.[Enemy.OptionalStats_Massive], T1.[Enemy.OptionalStats_Miniboss])
+        [CodeFirstDatabaseSchema.Enemy](T1.Enemy_Name, T1.Enemy_Type, T1.Enemy_Id, T1.Enemy_FriendlyName, T1.[Enemy.Stats_BeatsPerMove], T1.[Enemy.Stats_CoinsToDrop], T1.[Enemy.Stats_DamagePerHit], T1.[Enemy.Stats_Health], T1.[Enemy.Stats_Movement], T1.[Enemy.OptionalStats_Boss], T1.[Enemy.OptionalStats_BounceOnMovementFail], T1.[Enemy.OptionalStats_Floating], T1.[Enemy.OptionalStats_IgnoreLiquids], T1.[Enemy.OptionalStats_IgnoreWalls], T1.[Enemy.OptionalStats_IsMonkeyLike], T1.[Enemy.OptionalStats_Massive], T1.[Enemy.OptionalStats_Miniboss], T1.Enemy_DisplayName)
     FROM (
         SELECT 
             T.Name AS Enemy_Name, 
@@ -98,6 +98,7 @@ namespace Edm_EntityMappingGeneratedViews
             T.OptionalStats.IsMonkeyLike AS [Enemy.OptionalStats_IsMonkeyLike], 
             T.OptionalStats.Massive AS [Enemy.OptionalStats_Massive], 
             T.OptionalStats.Miniboss AS [Enemy.OptionalStats_Miniboss], 
+            T.DisplayName AS Enemy_DisplayName, 
             True AS _from0
         FROM NecroDancerContext.Enemies AS T
     ) AS T1");
@@ -111,7 +112,7 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new DbMappingView(@"
     SELECT VALUE -- Constructing Enemies
-        [toofz.NecroDancer.Enemy](T3.Enemy_Name, T3.Enemy_Type, T3.Enemy_Id, T3.Enemy_FriendlyName, T3.Enemy_Stats, T3.Enemy_OptionalStats)
+        [toofz.NecroDancer.Enemy](T3.Enemy_Name, T3.Enemy_Type, T3.Enemy_Id, T3.Enemy_FriendlyName, T3.Enemy_Stats, T3.Enemy_OptionalStats, T3.Enemy_DisplayName)
     FROM (
         SELECT -- Constructing Stats
             T2.Enemy_Name, 
@@ -119,7 +120,8 @@ namespace Edm_EntityMappingGeneratedViews
             T2.Enemy_Id, 
             T2.Enemy_FriendlyName, 
             [toofz.NecroDancer.Stats](T2.Enemy_Stats_BeatsPerMove, T2.Enemy_Stats_CoinsToDrop, T2.Enemy_Stats_DamagePerHit, T2.Enemy_Stats_Health, T2.Enemy_Stats_Movement) AS Enemy_Stats, 
-            T2.Enemy_OptionalStats
+            T2.Enemy_OptionalStats, 
+            T2.Enemy_DisplayName
         FROM (
             SELECT -- Constructing OptionalStats
                 T1.Enemy_Name, 
@@ -131,7 +133,8 @@ namespace Edm_EntityMappingGeneratedViews
                 T1.Enemy_Stats_DamagePerHit, 
                 T1.Enemy_Stats_Health, 
                 T1.Enemy_Stats_Movement, 
-                [toofz.NecroDancer.OptionalStats](T1.Enemy_OptionalStats_Boss, T1.Enemy_OptionalStats_BounceOnMovementFail, T1.Enemy_OptionalStats_Floating, T1.Enemy_OptionalStats_IgnoreLiquids, T1.Enemy_OptionalStats_IgnoreWalls, T1.Enemy_OptionalStats_IsMonkeyLike, T1.Enemy_OptionalStats_Massive, T1.Enemy_OptionalStats_Miniboss) AS Enemy_OptionalStats
+                [toofz.NecroDancer.OptionalStats](T1.Enemy_OptionalStats_Boss, T1.Enemy_OptionalStats_BounceOnMovementFail, T1.Enemy_OptionalStats_Floating, T1.Enemy_OptionalStats_IgnoreLiquids, T1.Enemy_OptionalStats_IgnoreWalls, T1.Enemy_OptionalStats_IsMonkeyLike, T1.Enemy_OptionalStats_Massive, T1.Enemy_OptionalStats_Miniboss) AS Enemy_OptionalStats, 
+                T1.Enemy_DisplayName
             FROM (
                 SELECT 
                     T.Name AS Enemy_Name, 
@@ -151,6 +154,7 @@ namespace Edm_EntityMappingGeneratedViews
                     T.OptionalStats_IsMonkeyLike AS Enemy_OptionalStats_IsMonkeyLike, 
                     T.OptionalStats_Massive AS Enemy_OptionalStats_Massive, 
                     T.OptionalStats_Miniboss AS Enemy_OptionalStats_Miniboss, 
+                    T.DisplayName AS Enemy_DisplayName, 
                     True AS _from0
                 FROM CodeFirstDatabase.Enemy AS T
             ) AS T1
@@ -166,7 +170,7 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new DbMappingView(@"
     SELECT VALUE -- Constructing Item
-        [CodeFirstDatabaseSchema.Item](T1.Item_Name, T1.Item_ImagePath, T1.Item_Bouncer, T1.Item_CoinCost, T1.Item_Consumable, T1.Item_Cooldown, T1.Item_Data, T1.Item_DiamondCost, T1.Item_DiamondDealable, T1.Item_FromTransmute, T1.Item_ImageHeight, T1.Item_ImageWidth, T1.Item_IsArmor, T1.Item_IsAxe, T1.Item_IsBlood, T1.Item_IsBlunderbuss, T1.Item_IsBow, T1.Item_IsBroadsword, T1.Item_IsCat, T1.Item_IsCoin, T1.Item_IsCrossbow, T1.Item_IsCutlass, T1.Item_IsDagger, T1.Item_IsDiamond, T1.Item_IsFamiliar, T1.Item_IsFlail, T1.Item_IsFood, T1.Item_IsFrost, T1.Item_IsGlass, T1.Item_IsGold, T1.Item_IsHarp, T1.Item_IsLongsword, T1.Item_IsMagicFood, T1.Item_IsObsidian, T1.Item_IsPhasing, T1.Item_IsPiercing, T1.Item_IsRapier, T1.Item_IsRifle, T1.Item_IsScroll, T1.Item_IsShovel, T1.Item_IsSpear, T1.Item_IsSpell, T1.Item_IsStackable, T1.Item_IsStaff, T1.Item_IsTemp, T1.Item_IsTitanium, T1.Item_IsTorch, T1.Item_IsWarhammer, T1.Item_IsWeapon, T1.Item_IsWhip, T1.Item_PlayerKnockback, T1.Item_Quantity, T1.Item_Set, T1.Item_Slot, T1.Item_TemporaryMapSight, T1.Item_UseGreater)
+        [CodeFirstDatabaseSchema.Item](T1.Item_Name, T1.Item_ImagePath, T1.Item_Bouncer, T1.Item_CoinCost, T1.Item_Consumable, T1.Item_Cooldown, T1.Item_Data, T1.Item_DiamondCost, T1.Item_DiamondDealable, T1.Item_FromTransmute, T1.Item_ImageHeight, T1.Item_ImageWidth, T1.Item_IsArmor, T1.Item_IsAxe, T1.Item_IsBlood, T1.Item_IsBlunderbuss, T1.Item_IsBow, T1.Item_IsBroadsword, T1.Item_IsCat, T1.Item_IsCoin, T1.Item_IsCrossbow, T1.Item_IsCutlass, T1.Item_IsDagger, T1.Item_IsDiamond, T1.Item_IsFamiliar, T1.Item_IsFlail, T1.Item_IsFood, T1.Item_IsFrost, T1.Item_IsGlass, T1.Item_IsGold, T1.Item_IsHarp, T1.Item_IsLongsword, T1.Item_IsMagicFood, T1.Item_IsObsidian, T1.Item_IsPhasing, T1.Item_IsPiercing, T1.Item_IsRapier, T1.Item_IsRifle, T1.Item_IsScroll, T1.Item_IsShovel, T1.Item_IsSpear, T1.Item_IsSpell, T1.Item_IsStackable, T1.Item_IsStaff, T1.Item_IsTemp, T1.Item_IsTitanium, T1.Item_IsTorch, T1.Item_IsWarhammer, T1.Item_IsWeapon, T1.Item_IsWhip, T1.Item_PlayerKnockback, T1.Item_Quantity, T1.Item_Set, T1.Item_Slot, T1.Item_TemporaryMapSight, T1.Item_UseGreater, T1.Item_DisplayName)
     FROM (
         SELECT 
             T.Name AS Item_Name, 
@@ -225,6 +229,7 @@ namespace Edm_EntityMappingGeneratedViews
             T.Slot AS Item_Slot, 
             T.TemporaryMapSight AS Item_TemporaryMapSight, 
             T.UseGreater AS Item_UseGreater, 
+            T.DisplayName AS Item_DisplayName, 
             True AS _from0
         FROM NecroDancerContext.Items AS T
     ) AS T1");
@@ -238,7 +243,7 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new DbMappingView(@"
     SELECT VALUE -- Constructing Items
-        [toofz.NecroDancer.Item](T1.Item_Name, T1.Item_ImagePath, T1.Item_Bouncer, T1.Item_CoinCost, T1.Item_Consumable, T1.Item_Cooldown, T1.Item_Data, T1.Item_DiamondCost, T1.Item_DiamondDealable, T1.Item_FromTransmute, T1.Item_ImageHeight, T1.Item_ImageWidth, T1.Item_IsArmor, T1.Item_IsAxe, T1.Item_IsBlood, T1.Item_IsBlunderbuss, T1.Item_IsBow, T1.Item_IsBroadsword, T1.Item_IsCat, T1.Item_IsCoin, T1.Item_IsCrossbow, T1.Item_IsCutlass, T1.Item_IsDagger, T1.Item_IsDiamond, T1.Item_IsFamiliar, T1.Item_IsFlail, T1.Item_IsFood, T1.Item_IsFrost, T1.Item_IsGlass, T1.Item_IsGold, T1.Item_IsHarp, T1.Item_IsLongsword, T1.Item_IsMagicFood, T1.Item_IsObsidian, T1.Item_IsPhasing, T1.Item_IsPiercing, T1.Item_IsRapier, T1.Item_IsRifle, T1.Item_IsScroll, T1.Item_IsShovel, T1.Item_IsSpear, T1.Item_IsSpell, T1.Item_IsStackable, T1.Item_IsStaff, T1.Item_IsTemp, T1.Item_IsTitanium, T1.Item_IsTorch, T1.Item_IsWarhammer, T1.Item_IsWeapon, T1.Item_IsWhip, T1.Item_PlayerKnockback, T1.Item_Quantity, T1.Item_Set, T1.Item_Slot, T1.Item_TemporaryMapSight, T1.Item_UseGreater)
+        [toofz.NecroDancer.Item](T1.Item_Name, T1.Item_ImagePath, T1.Item_Bouncer, T1.Item_CoinCost, T1.Item_Consumable, T1.Item_Cooldown, T1.Item_Data, T1.Item_DiamondCost, T1.Item_DiamondDealable, T1.Item_FromTransmute, T1.Item_ImageHeight, T1.Item_ImageWidth, T1.Item_IsArmor, T1.Item_IsAxe, T1.Item_IsBlood, T1.Item_IsBlunderbuss, T1.Item_IsBow, T1.Item_IsBroadsword, T1.Item_IsCat, T1.Item_IsCoin, T1.Item_IsCrossbow, T1.Item_IsCutlass, T1.Item_IsDagger, T1.Item_IsDiamond, T1.Item_IsFamiliar, T1.Item_IsFlail, T1.Item_IsFood, T1.Item_IsFrost, T1.Item_IsGlass, T1.Item_IsGold, T1.Item_IsHarp, T1.Item_IsLongsword, T1.Item_IsMagicFood, T1.Item_IsObsidian, T1.Item_IsPhasing, T1.Item_IsPiercing, T1.Item_IsRapier, T1.Item_IsRifle, T1.Item_IsScroll, T1.Item_IsShovel, T1.Item_IsSpear, T1.Item_IsSpell, T1.Item_IsStackable, T1.Item_IsStaff, T1.Item_IsTemp, T1.Item_IsTitanium, T1.Item_IsTorch, T1.Item_IsWarhammer, T1.Item_IsWeapon, T1.Item_IsWhip, T1.Item_PlayerKnockback, T1.Item_Quantity, T1.Item_Set, T1.Item_Slot, T1.Item_TemporaryMapSight, T1.Item_UseGreater, T1.Item_DisplayName)
     FROM (
         SELECT 
             T.Name AS Item_Name, 
@@ -297,6 +302,7 @@ namespace Edm_EntityMappingGeneratedViews
             T.Slot AS Item_Slot, 
             T.TemporaryMapSight AS Item_TemporaryMapSight, 
             T.UseGreater AS Item_UseGreater, 
+            T.DisplayName AS Item_DisplayName, 
             True AS _from0
         FROM CodeFirstDatabase.Item AS T
     ) AS T1");
