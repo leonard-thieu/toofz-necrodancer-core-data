@@ -13,6 +13,9 @@ namespace toofz.NecroDancer
             this.Property(e => e.Type)
                 .HasColumnOrder(1);
 
+            this.Property(e => e.DisplayName)
+                .IsRequired();
+
             this.Ignore(e => e.LevelEditor);
             this.Ignore(e => e.SpriteSheet);
             this.Ignore(e => e.Frames);

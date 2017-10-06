@@ -9,6 +9,9 @@ namespace toofz.NecroDancer
         {
             this.HasKey(i => i.Name);
 
+            this.Property(i => i.DisplayName)
+                .IsRequired();
+
             this.Ignore(i => i.ChestChance);
             this.Ignore(i => i.Flyaway);
             this.Ignore(i => i.FrameCount);

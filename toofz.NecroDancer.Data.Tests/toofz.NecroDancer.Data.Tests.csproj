@@ -62,8 +62,8 @@
     <Reference Include="toofz, Version=7.2.0.182, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\toofz.7.2.0\lib\net45\toofz.dll</HintPath>
     </Reference>
-    <Reference Include="toofz.NecroDancer, Version=4.0.0.87, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\toofz.NecroDancer.4.0.0\lib\net45\toofz.NecroDancer.dll</HintPath>
+    <Reference Include="toofz.NecroDancer, Version=4.1.0.91, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\toofz.NecroDancer.4.1.0\lib\net45\toofz.NecroDancer.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

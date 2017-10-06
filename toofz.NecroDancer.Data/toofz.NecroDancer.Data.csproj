@@ -52,15 +52,11 @@
     <Reference Include="toofz, Version=7.2.0.182, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\toofz.7.2.0\lib\net45\toofz.dll</HintPath>
     </Reference>
-    <Reference Include="toofz.NecroDancer, Version=4.0.0.87, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\toofz.NecroDancer.4.0.0\lib\net45\toofz.NecroDancer.dll</HintPath>
+    <Reference Include="toofz.NecroDancer, Version=4.1.0.91, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\toofz.NecroDancer.4.1.0\lib\net45\toofz.NecroDancer.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201710061702502_GreenNickelLabrador.cs" />
-    <Compile Include="Migrations\201710061702502_GreenNickelLabrador.Designer.cs">
-      <DependentUpon>201710061702502_GreenNickelLabrador.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="App.config">
       <SubType>Designer</SubType>
@@ -71,6 +67,7 @@
     <None Include="toofz.NecroDancer.Data.nuspec" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\201602062034518_InitialCreate.cs" />
     <Compile Include="Migrations\201602062034518_InitialCreate.Designer.cs">
       <DependentUpon>201602062034518_InitialCreate.cs</DependentUpon>
@@ -99,9 +96,19 @@
     <EmbeddedResource Include="Migrations\201709281309397_LimePlatinumSchnauzer.resx">
       <DependentUpon>201709281309397_LimePlatinumSchnauzer.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\201710061702502_GreenNickelLabrador.cs" />
+    <Compile Include="Migrations\201710061702502_GreenNickelLabrador.Designer.cs">
+      <DependentUpon>201710061702502_GreenNickelLabrador.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Migrations\201710061702502_GreenNickelLabrador.resx">
       <DependentUpon>201710061702502_GreenNickelLabrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Migrations\201710061826259_OliveAluminiumGermanShepherd.cs" />
+    <Compile Include="Migrations\201710061826259_OliveAluminiumGermanShepherd.Designer.cs">
+      <DependentUpon>201710061826259_OliveAluminiumGermanShepherd.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Migrations\201710061826259_OliveAluminiumGermanShepherd.resx">
+      <DependentUpon>201710061826259_OliveAluminiumGermanShepherd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
