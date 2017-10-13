@@ -64,7 +64,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="toofz.NecroDancer.Data.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Migrations\201710132016052_InitialCreate.cs" />
