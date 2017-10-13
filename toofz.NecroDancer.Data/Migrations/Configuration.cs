@@ -7,7 +7,7 @@ namespace toofz.NecroDancer.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "toofz.NecroDancer.EntityFramework.Migrations.Configuration";
+            ContextKey = "toofz.NecroDancer.Migrations.Configuration";
         }
     }
 }
