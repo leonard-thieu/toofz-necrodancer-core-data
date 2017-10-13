@@ -6,7 +6,7 @@ namespace toofz.NecroDancer
 {
     public interface INecroDancerContext : IDisposable
     {
-        DbSet<Enemy> Enemies { get; set; }
-        DbSet<Item> Items { get; set; }
+        DbSet<Item> Items { get; }
+        DbSet<Enemy> Enemies { get; }
     }
 }

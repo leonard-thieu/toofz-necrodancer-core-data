@@ -22,8 +22,8 @@ namespace toofz.NecroDancer
             Configuration.ProxyCreationEnabled = false;
         }
 
-        public virtual DbSet<Item> Items { get; set; }
-        public virtual DbSet<Enemy> Enemies { get; set; }
+        public DbSet<Item> Items { get => Set<Item>(); }
+        public DbSet<Enemy> Enemies { get => Set<Enemy>(); }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
