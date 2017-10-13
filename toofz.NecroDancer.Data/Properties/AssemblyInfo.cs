@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyVersion("6.0.1.0")]
@@ -9,3 +10,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("toofz NecroDancer Core (Data)")]
 
 [assembly: ComVisible(false)]
+
+[assembly: InternalsVisibleTo("toofz.NecroDancer.Data.Tests")]

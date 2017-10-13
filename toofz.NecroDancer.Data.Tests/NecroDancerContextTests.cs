@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace toofz.NecroDancer.Data.Tests
@@ -67,6 +68,24 @@ namespace toofz.NecroDancer.Data.Tests
 
                 // Assert
                 Assert.IsInstanceOfType(enemies, typeof(DbSet<Enemy>));
+            }
+        }
+
+        [TestClass]
+        [TestCategory("Uses SQL Server")]
+        public class IntegrationTests
+        {
+            [TestMethod]
+            public async Task PreGeneratedMappingViewsIsUpToDate()
+            {
+                var connectionString = DatabaseHelper.GetConnectionString();
+                using (var context = new NecroDancerContext(connectionString))
+                {
+                    await context.Items.FirstOrDefaultAsync();
+                    await context.Enemies.FirstOrDefaultAsync();
+
+                    context.Database.Delete();
+                }
             }
         }
     }

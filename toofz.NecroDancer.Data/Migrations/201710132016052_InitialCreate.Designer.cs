@@ -7,13 +7,13 @@ namespace toofz.NecroDancer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class OliveAluminiumGermanShepherd : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(OliveAluminiumGermanShepherd));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710061826259_OliveAluminiumGermanShepherd"; }
+            get { return "201710132016052_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
