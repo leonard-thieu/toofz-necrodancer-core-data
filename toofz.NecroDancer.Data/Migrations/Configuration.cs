@@ -2,7 +2,7 @@ using System.Data.Entity.Migrations;
 
 namespace toofz.NecroDancer.Migrations
 {
-    sealed class Configuration : DbMigrationsConfiguration<NecroDancerContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<NecroDancerContext>
     {
         public Configuration()
         {

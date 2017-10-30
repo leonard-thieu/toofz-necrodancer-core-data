@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace toofz.NecroDancer.Data.Tests
 {
-    class NecroDancerContextTests
+    internal class NecroDancerContextTests
     {
         [TestClass]
         public class Constructor

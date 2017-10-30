@@ -15,7 +15,7 @@ namespace toofz.NecroDancer
             Initialize();
         }
 
-        void Initialize()
+        private void Initialize()
         {
             Configuration.AutoDetectChangesEnabled = false;
             Configuration.LazyLoadingEnabled = false;

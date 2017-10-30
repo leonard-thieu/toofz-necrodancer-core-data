@@ -3,7 +3,7 @@ using toofz.NecroDancer.Data;
 
 namespace toofz.NecroDancer
 {
-    sealed class StatsConfiguration : ComplexTypeConfiguration<Stats>
+    internal sealed class StatsConfiguration : ComplexTypeConfiguration<Stats>
     {
         public StatsConfiguration()
         {
