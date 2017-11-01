@@ -74,12 +74,14 @@ namespace toofz.NecroDancer.Data.Tests
             public async Task PreGeneratedMappingViewsIsUpToDate()
             {
                 var connectionString = DatabaseHelper.GetConnectionString();
-                using (var context = new NecroDancerContext(connectionString))
+                using (var db = new NecroDancerContext(connectionString))
                 {
-                    await context.Items.FirstOrDefaultAsync();
-                    await context.Enemies.FirstOrDefaultAsync();
+                    db.Database.Create();
 
-                    context.Database.Delete();
+                    await db.Items.FirstOrDefaultAsync();
+                    await db.Enemies.FirstOrDefaultAsync();
+
+                    db.Database.Delete();
                 }
             }
         }
