@@ -1,29 +1,27 @@
 ﻿using System.Data.Entity;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace toofz.NecroDancer.Data.Tests
 {
-    internal class NecroDancerContextTests
+    public class NecroDancerContextTests
     {
-        [TestClass]
         public class Constructor
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsInstance()
             {
                 // Arrange -> Act
                 var db = new NecroDancerContext();
 
                 // Assert
-                Assert.IsInstanceOfType(db, typeof(NecroDancerContext));
+                Assert.IsAssignableFrom<NecroDancerContext>(db);
             }
         }
 
-        [TestClass]
         public class Constructor_String
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsInstance()
             {
                 // Arrange
@@ -33,14 +31,13 @@ namespace toofz.NecroDancer.Data.Tests
                 var db = new NecroDancerContext(connectionString);
 
                 // Assert
-                Assert.IsInstanceOfType(db, typeof(NecroDancerContext));
+                Assert.IsAssignableFrom<NecroDancerContext>(db);
             }
         }
 
-        [TestClass]
         public class ItemsProperty
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsDbSet()
             {
                 // Arrange
@@ -50,14 +47,13 @@ namespace toofz.NecroDancer.Data.Tests
                 var items = db.Items;
 
                 // Assert
-                Assert.IsInstanceOfType(items, typeof(DbSet<Item>));
+                Assert.IsAssignableFrom<DbSet<Item>>(items);
             }
         }
 
-        [TestClass]
         public class EnemiesProperty
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsDbSet()
             {
                 // Arrange
@@ -67,15 +63,14 @@ namespace toofz.NecroDancer.Data.Tests
                 var enemies = db.Enemies;
 
                 // Assert
-                Assert.IsInstanceOfType(enemies, typeof(DbSet<Enemy>));
+                Assert.IsAssignableFrom<DbSet<Enemy>>(enemies);
             }
         }
 
-        [TestClass]
-        [TestCategory("Uses SQL Server")]
+        [Trait("Category", "Uses SQL Server")]
         public class IntegrationTests
         {
-            [TestMethod]
+            [Fact]
             public async Task PreGeneratedMappingViewsIsUpToDate()
             {
                 var connectionString = DatabaseHelper.GetConnectionString();
