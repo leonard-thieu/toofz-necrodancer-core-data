@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +47,9 @@
       <Project>{74a190f2-9a35-422d-86b9-cc97710f03d3}</Project>
       <Name>toofz.NecroDancer.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseHelper.cs" />
