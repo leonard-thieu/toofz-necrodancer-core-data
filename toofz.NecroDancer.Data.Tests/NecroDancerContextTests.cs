@@ -1,8 +1,9 @@
 ﻿using System.Data.Entity;
-using System.Threading.Tasks;
+using System.Linq;
+using toofz.NecroDancer.Data;
 using Xunit;
 
-namespace toofz.NecroDancer.Data.Tests
+namespace toofz.NecroDancer.Tests
 {
     public class NecroDancerContextTests
     {
@@ -68,19 +69,23 @@ namespace toofz.NecroDancer.Data.Tests
         }
 
         [Trait("Category", "Uses SQL Server")]
+        [Collection(DatabaseCollection.Name)]
         public class IntegrationTests
         {
-            [Fact(Skip = "How did this test work before?")]
-            public async Task PreGeneratedMappingViewsIsUpToDate()
+            public IntegrationTests(DatabaseFixture fixture)
             {
-                var connectionString = DatabaseHelper.GetConnectionString();
-                using (var db = new NecroDancerContext(connectionString))
-                {
-                    await db.Items.FirstOrDefaultAsync();
-                    await db.Enemies.FirstOrDefaultAsync();
+                this.fixture = fixture;
+            }
 
-                    db.Database.Delete();
-                }
+            private readonly DatabaseFixture fixture;
+
+            [Fact]
+            public void PreGeneratedMappingViewsIsUpToDate()
+            {
+                var db = fixture.Db;
+
+                db.Items.FirstOrDefault();
+                db.Enemies.FirstOrDefault();
             }
         }
     }

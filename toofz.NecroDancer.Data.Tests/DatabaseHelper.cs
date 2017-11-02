@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace toofz.NecroDancer.Data.Tests
+namespace toofz.NecroDancer.Tests
 {
     internal static class DatabaseHelper
     {

@@ -7,7 +7,7 @@
     <ProjectGuid>{B93A1E16-4287-4C08-BE7F-82E949711FD8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>toofz.NecroDancer.Data.Tests</RootNamespace>
+    <RootNamespace>toofz.NecroDancer.Tests</RootNamespace>
     <AssemblyName>toofz.NecroDancer.Data.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -52,6 +52,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseCollection.cs" />
+    <Compile Include="DatabaseFixture.cs" />
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="MigrationsTests.cs" />
     <Compile Include="NecroDancerContextTests.cs" />

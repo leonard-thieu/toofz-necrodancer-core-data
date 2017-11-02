@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Migrations.Infrastructure;
@@ -8,21 +7,25 @@ using System.Linq;
 using toofz.NecroDancer.Migrations;
 using Xunit;
 
-namespace toofz.NecroDancer.Data.Tests
+namespace toofz.NecroDancer.Tests
 {
-    [Trait("Category", "Uses SQL Server")]
+    [Collection(DatabaseCollection.Name)]
     public class MigrationsTests
     {
+        public MigrationsTests(DatabaseFixture fixture)
+        {
+            this.fixture = fixture;
+        }
+
+        private readonly DatabaseFixture fixture;
+
         #region From https://stackoverflow.com/a/42643788/414137
 
         [Fact]
+        [Trait("Category", "Uses SQL Server")]
         public void MigrationsUpDownTest()
         {
-            // Drop and recreate database
-            Database.SetInitializer(new DropCreateDatabaseAlways<NecroDancerContext>());
-            var db = new NecroDancerContext(DatabaseHelper.GetConnectionString());
-            db.Database.Delete();  // Make sure it really dropped - needed for dirty database
-            db.Database.Initialize(force: true);
+            var db = fixture.Db;
 
             var configuration = new Configuration();
             var migrator = new DbMigrator(configuration);
@@ -48,9 +51,6 @@ namespace toofz.NecroDancer.Data.Tests
             {
                 Assert.True(false, "Should not have any errors when running migrations up and down: " + ex.Errors[0].Message.ToString());
             }
-
-            // Optional: delete database
-            db.Database.Delete();
         }
 
         [Fact]
