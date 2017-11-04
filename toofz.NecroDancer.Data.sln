@@ -8,7 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		appveyor.yml = appveyor.yml
 		NuGet.Config = NuGet.Config
 		README.md = README.md
-		toofz.NecroDancer.Data\toofz.NecroDancer.Data.nuspec = toofz.NecroDancer.Data\toofz.NecroDancer.Data.nuspec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "toofz.NecroDancer.Data", "toofz.NecroDancer.Data\toofz.NecroDancer.Data.csproj", "{74A190F2-9A35-422D-86B9-CC97710F03D3}"
