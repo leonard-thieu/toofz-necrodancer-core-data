@@ -11,9 +11,8 @@
     <AssemblyName>toofz.NecroDancer.Data</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+</PropertyGroup>
+<PropertyGroup>
     <PackageVersion>8.0.2</PackageVersion>
     <Authors>Leonard Thieu</Authors>
     <Title>toofz NecroDancer Core (Data)</Title>
@@ -42,7 +41,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\toofz.NecroDancer.Data.xml</DocumentationFile>
-    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
