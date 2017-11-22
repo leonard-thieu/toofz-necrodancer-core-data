@@ -6,18 +6,29 @@
 
 ## Overview
 
-**toofz NecroDancer Core (Data)** provides an interface for querying and storing types from [toofz NecroDancer Core](https://github.com/leonard-thieu/toofz-necrodancer-core) in a database. 
-**toofz NecroDancer Core (Data)** uses **Entity Framework** with a **Code First** model.
+**toofz NecroDancer Core (Data)** serves as the data access layer (DAL) for **toofz NecroDancer Core**. Retrieving and modifying data is done through an Entity Framework Code First model.
 
-**toofz NecroDancer Core (Data)** is a component of [toofz](http://crypt.toofz.com/).
+---
+
+**toofz NecroDancer Core (Data)** is a component of **toofz**. 
+Information about other projects that support **toofz** can be found in the [meta-repository](https://github.com/leonard-thieu/toofz-necrodancer).
 
 ### Dependents
 
 * [toofz API](https://github.com/leonard-thieu/api.toofz.com)
 
+### Dependencies
+
+* [toofz NecroDancer Core](https://github.com/leonard-thieu/toofz-necrodancer-core)
+
 ## Requirements
 
 * .NET Framework 4.6.1
+* MS SQL Server
+
+## Building and testing
+
+Visual Studio 2017 (version 15.3 or later) can be used to build and run tests. Integration tests require MS SQL Server.
 
 ## License
 
