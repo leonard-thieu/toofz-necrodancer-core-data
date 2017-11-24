@@ -1,22 +1,26 @@
 ﻿using System;
+using Xunit;
 
 namespace toofz.NecroDancer.Tests
 {
+    [Collection("Uses SQL Server")]
     public abstract class DatabaseTestsBase : IDisposable
     {
-        public DatabaseTestsBase(DatabaseFixture fixture)
+        public DatabaseTestsBase()
         {
-            Db = fixture.Db;
+            connectionString = DatabaseHelper.GetConnectionString();
+            db = new NecroDancerContext(connectionString);
 
-            Db.Database.Delete();  // Make sure it really dropped - needed for dirty database
-            Db.Database.Initialize(force: true);
+            db.Database.Delete();  // Make sure it really dropped - needed for dirty database
+            db.Database.Initialize(force: true);
         }
 
-        public NecroDancerContext Db { get; }
+        protected readonly string connectionString;
+        protected readonly NecroDancerContext db;
 
         public void Dispose()
         {
-            Db.Database.Delete();
+            db.Database.Delete();
         }
     }
 }

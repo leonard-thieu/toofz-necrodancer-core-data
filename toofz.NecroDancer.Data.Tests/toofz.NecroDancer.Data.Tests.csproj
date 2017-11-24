@@ -58,8 +58,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseCollection.cs" />
-    <Compile Include="DatabaseFixture.cs" />
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="DatabaseTestsBase.cs" />
     <Compile Include="MigrationsTests.cs" />
