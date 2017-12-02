@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using toofz.NecroDancer.Migrations;
 using Xunit;
+using Xunit.Sdk;
 
 namespace toofz.NecroDancer.Tests
 {
@@ -13,8 +14,7 @@ namespace toofz.NecroDancer.Tests
     {
         #region From https://stackoverflow.com/a/42643788/414137
 
-        [Trait("Category", "Uses SQL Server")]
-        public class IntegrationTests : DatabaseTestsBase
+        public class IntegrationTests : IntegrationTestsBase
         {
             [Fact]
             public void MigrationsUpDownTest()
@@ -41,7 +41,7 @@ namespace toofz.NecroDancer.Tests
                 }
                 catch (SqlException ex)
                 {
-                    Assert.True(false, "Should not have any errors when running migrations up and down: " + ex.Errors[0].Message.ToString());
+                    throw new XunitException("Should not have any errors when running migrations up and down: " + ex.Errors[0].Message.ToString());
                 }
             }
 
@@ -49,7 +49,9 @@ namespace toofz.NecroDancer.Tests
             public void PendingModelChangesTest()
             {
                 // NOTE: Using MigratorScriptingDecorator so changes won't be made to the database
-                var targetDatabase = new DbConnectionInfo(nameof(NecroDancerContext));
+                var connectionString = StorageHelper.GetDatabaseConnectionString(nameof(NecroDancerContext));
+                var providerName = "System.Data.SqlClient";
+                var targetDatabase = new DbConnectionInfo(connectionString, providerName);
                 var migrationsConfiguration = new Configuration { TargetDatabase = targetDatabase };
                 var migrator = new DbMigrator(migrationsConfiguration);
                 var scriptingMigrator = new MigratorScriptingDecorator(migrator);
@@ -61,7 +63,7 @@ namespace toofz.NecroDancer.Tests
                 }
                 catch (AutomaticMigrationsDisabledException)
                 {
-                    Assert.True(false, "Should be no pending model changes/migrations should cover all model changes.");
+                    throw new XunitException("Should be no pending model changes/migrations should cover all model changes.");
                 }
             }
         }

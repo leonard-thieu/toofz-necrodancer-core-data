@@ -7,6 +7,8 @@ namespace toofz.NecroDancer.Tests
 {
     public class NecroDancerContextTests
     {
+        private readonly NecroDancerContext db = new NecroDancerContext();
+
         public class Constructor
         {
             [Fact]
@@ -26,7 +28,7 @@ namespace toofz.NecroDancer.Tests
             public void ReturnsInstance()
             {
                 // Arrange
-                var connectionString = "Data Source=localhost;Integrated Security=SSPI";
+                var connectionString = StorageHelper.GetDatabaseConnectionString(nameof(NecroDancerContext));
 
                 // Act
                 var db = new NecroDancerContext(connectionString);
@@ -36,15 +38,12 @@ namespace toofz.NecroDancer.Tests
             }
         }
 
-        public class ItemsProperty
+        public class ItemsProperty : NecroDancerContextTests
         {
             [Fact]
             public void ReturnsDbSet()
             {
-                // Arrange
-                var db = new NecroDancerContext();
-
-                // Act
+                // Arrange -> Act
                 var items = db.Items;
 
                 // Assert
@@ -52,15 +51,12 @@ namespace toofz.NecroDancer.Tests
             }
         }
 
-        public class EnemiesProperty
+        public class EnemiesProperty : NecroDancerContextTests
         {
             [Fact]
             public void ReturnsDbSet()
             {
-                // Arrange
-                var db = new NecroDancerContext();
-
-                // Act
+                // Arrange -> Act
                 var enemies = db.Enemies;
 
                 // Assert
@@ -68,8 +64,7 @@ namespace toofz.NecroDancer.Tests
             }
         }
 
-        [Trait("Category", "Uses SQL Server")]
-        public class IntegrationTests : DatabaseTestsBase
+        public class IntegrationTests : IntegrationTestsBase
         {
             [Fact]
             public void PreGeneratedMappingViewsIsUpToDate()

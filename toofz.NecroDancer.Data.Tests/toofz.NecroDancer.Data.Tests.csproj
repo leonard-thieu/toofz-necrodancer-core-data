@@ -58,10 +58,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseHelper.cs" />
-    <Compile Include="DatabaseTestsBase.cs" />
+    <Compile Include="IntegrationTestsBase.cs" />
     <Compile Include="MigrationsTests.cs" />
     <Compile Include="NecroDancerContextTests.cs" />
+    <Compile Include="StorageHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
