@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B93A1E16-4287-4C08-BE7F-82E949711FD8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>toofz.Data.Tests</RootNamespace>
+    <AssemblyName>toofz.Data.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="xunit.assert">
+      <Version>2.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="xunit.core">
+      <Version>2.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="xunit.runner.visualstudio">
+      <Version>2.3.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\toofz.Data\toofz.Data.csproj">
+      <Project>{74a190f2-9a35-422d-86b9-cc97710f03d3}</Project>
+      <Name>toofz.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CharacterTests.cs" />
+    <Compile Include="DailyEntryTests.cs" />
+    <Compile Include="DailyLeaderboardTests.cs" />
+    <Compile Include="EntityFrameworkExtensionsTests.cs" />
+    <Compile Include="EntryTests.cs" />
+    <Compile Include="ILeaderboardsStoreClientExtensionsTests.cs" />
+    <Compile Include="LeaderboardsContextInitializerTests.cs" />
+    <Compile Include="LeaderboardsContextTests.cs" />
+    <Compile Include="LeaderboardsIntegrationTestsBase.cs" />
+    <Compile Include="LeaderboardsStoreClientTests.cs" />
+    <Compile Include="LeaderboardTests.cs" />
+    <Compile Include="ModeTests.cs" />
+    <Compile Include="NecroDancerContextTests.cs" />
+    <Compile Include="NecroDancerIntegrationTestsBase.cs" />
+    <Compile Include="PlayerTests.cs" />
+    <Compile Include="ProductTests.cs" />
+    <Compile Include="ReplayTests.cs" />
+    <Compile Include="RunTests.cs" />
+    <Compile Include="SqlClientUtilTests.cs" />
+    <Compile Include="SqlCommandAdapterTests.cs" />
+    <Compile Include="SqlCommandExceptionTests.cs" />
+    <Compile Include="SqlConnectionExtensionsTests.cs" />
+    <Compile Include="StorageHelper.cs" />
+    <Compile Include="TypedDataReaderTests.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

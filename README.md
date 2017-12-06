@@ -1,21 +1,25 @@
-# toofz NecroDancer Core (Data)
+# toofz Data
 
 [![Build status](https://ci.appveyor.com/api/projects/status/cowbksjnikl2928m/branch/master?svg=true)](https://ci.appveyor.com/project/leonard-thieu/toofz-necrodancer-entityframework/branch/master)
-[![codecov](https://codecov.io/gh/leonard-thieu/toofz-necrodancer-core-data/branch/master/graph/badge.svg)](https://codecov.io/gh/leonard-thieu/toofz-necrodancer-core-data)
-[![MyGet](https://img.shields.io/myget/toofz/v/toofz.NecroDancer.Data.svg)](https://www.myget.org/feed/toofz/package/nuget/toofz.NecroDancer.Data)
+[![codecov](https://codecov.io/gh/leonard-thieu/toofz-data/branch/master/graph/badge.svg)](https://codecov.io/gh/leonard-thieu/toofz-data)
+[![MyGet](https://img.shields.io/myget/toofz/v/toofz.Data.svg)](https://www.myget.org/feed/toofz/package/nuget/toofz.Data)
 
 ## Overview
 
-**toofz NecroDancer Core (Data)** serves as the data access layer (DAL) for **toofz NecroDancer Core**. Retrieving and modifying data is done through an Entity Framework Code First model.
+**toofz Data** serves as the data access layer (DAL) for **toofz**. Retrieving data is done through an Entity Framework Code First model. 
+Modifying data uses a combination of `SqlBulkCopy` and raw SQL for performant bulk inserting and upserting.
 
 ---
 
-**toofz NecroDancer Core (Data)** is a component of **toofz**. 
+**toofz Data** is a component of **toofz**. 
 Information about other projects that support **toofz** can be found in the [meta-repository](https://github.com/leonard-thieu/toofz-necrodancer).
 
 ### Dependents
 
 * [toofz API](https://github.com/leonard-thieu/api.toofz.com)
+* [toofz Leaderboards Service](https://github.com/leonard-thieu/leaderboards-service)
+* [toofz Players Service](https://github.com/leonard-thieu/players-service)
+* [toofz Replays Service](https://github.com/leonard-thieu/replays-service)
 
 ### Dependencies
 
@@ -32,4 +36,4 @@ Visual Studio 2017 (version 15.3 or later) can be used to build and run tests. I
 
 ## License
 
-**toofz NecroDancer Core** is released under the [MIT License](LICENSE).
+**toofz Data** is released under the [MIT License](LICENSE).
