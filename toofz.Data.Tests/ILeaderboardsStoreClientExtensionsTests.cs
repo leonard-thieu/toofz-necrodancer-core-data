@@ -11,7 +11,7 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class BulkUpsertAsyncMethod
         {
-            [Fact]
+            [DisplayFact("StoreClient", nameof(ArgumentNullException))]
             public async Task StoreClientIsNull_ThrowsArgumentNullException()
             {
                 // Arrange
@@ -26,7 +26,7 @@ namespace toofz.Data.Tests.Leaderboards
                 });
             }
 
-            [Fact]
+            [DisplayFact(nameof(LeaderboardsStoreClient.BulkUpsertAsync))]
             public async Task CallsBulkUpsertAsyncWithNullOptions()
             {
                 // Arrange

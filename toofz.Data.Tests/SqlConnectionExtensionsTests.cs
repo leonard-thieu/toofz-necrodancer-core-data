@@ -7,7 +7,7 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class GetSwitchTableCommandMethod
         {
-            [Fact]
+            [DisplayFact]
             public void ReturnsSwitchTableCommand()
             {
                 // Arrange
@@ -40,7 +40,7 @@ FROM [myTableName];", command.CommandText, ignoreLineEndingDifferences: true);
 
         public class GetTruncateTableCommand
         {
-            [Fact]
+            [DisplayFact]
             public void ReturnsTruncateTableCommand()
             {
                 // Arrange
@@ -57,7 +57,7 @@ FROM [myTableName];", command.CommandText, ignoreLineEndingDifferences: true);
 
         public class GetSelectIntoTemporaryTableCommandMethod
         {
-            [Fact]
+            [DisplayFact]
             public void ReturnsSelectIntoTemporaryTableCommand()
             {
                 // Arrange
@@ -77,7 +77,7 @@ FROM [myTableName];", comnand.CommandText, ignoreLineEndingDifferences: true);
 
         public class GetMergeCommandMethod
         {
-            [Fact]
+            [DisplayFact("UpdateWhenMatched")]
             public void UpdateWhenMatchedIsTrue_ReturnsMergeCommandWithUpdateWhenMatched()
             {
                 // Arrange
@@ -125,7 +125,7 @@ WHEN NOT MATCHED
 ", command.CommandText, ignoreLineEndingDifferences: true);
             }
 
-            [Fact]
+            [DisplayFact("UpdateWhenMatched")]
             public void UpdateWhenMatchedIsFalse_ReturnsMergeCommand()
             {
                 // Arrange
@@ -167,7 +167,7 @@ WHEN NOT MATCHED
 
         public class GetAlterNonclusteredIndexesCommandMethod
         {
-            [Fact]
+            [DisplayFact]
             public void ReturnsAlterNonclusteredIndexesCommand()
             {
                 // Arrange

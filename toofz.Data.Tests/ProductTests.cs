@@ -7,7 +7,7 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class Constructor
         {
-            [Fact]
+            [DisplayFact("Name", nameof(ArgumentNullException))]
             public void NameIsNull_ThrowsArgumentNullException()
             {
                 // Arrange
@@ -22,7 +22,7 @@ namespace toofz.Data.Tests.Leaderboards
                 });
             }
 
-            [Fact]
+            [DisplayFact("DisplayName", nameof(ArgumentNullException))]
             public void DisplayNameIsNull_ThrowsArgumentNullException()
             {
                 // Arrange
@@ -37,8 +37,8 @@ namespace toofz.Data.Tests.Leaderboards
                 });
             }
 
-            [Fact]
-            public void ReturnsInstance()
+            [DisplayFact(nameof(Product))]
+            public void ReturnsProduct()
             {
                 // Arrange
                 var productId = 1;
@@ -52,7 +52,7 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.IsAssignableFrom<Product>(product);
             }
 
-            [Fact]
+            [DisplayFact(nameof(Product.ProductId))]
             public void SetsProductId()
             {
                 // Arrange
@@ -68,7 +68,7 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.Equal(productId, productId2);
             }
 
-            [Fact]
+            [DisplayFact(nameof(Product.Name))]
             public void SetsName()
             {
                 // Arrange
@@ -84,7 +84,7 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.Equal(name, name2);
             }
 
-            [Fact]
+            [DisplayFact(nameof(Product.DisplayName))]
             public void SetsDisplayName()
             {
                 // Arrange

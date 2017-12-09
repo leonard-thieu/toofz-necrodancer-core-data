@@ -17,8 +17,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class Constructor
         {
-            [Fact]
-            public void ReturnsInstance()
+            [DisplayFact(nameof(LeaderboardsContext))]
+            public void ReturnsLeaderboardsContext()
             {
                 // Arrange -> Act
                 var db = new LeaderboardsContext();
@@ -30,8 +30,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class Constructor_String
         {
-            [Fact]
-            public void ReturnsInstance()
+            [DisplayFact(nameof(LeaderboardsContext))]
+            public void ReturnsLeaderboardsContext()
             {
                 // Arrange
                 var connectionString = StorageHelper.GetDatabaseConnectionString(nameof(LeaderboardsContext));
@@ -46,7 +46,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class LeaderboardsProperty : LeaderboardsContextTests
         {
-            [Fact]
+            [DisplayFact(nameof(DbSet))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -59,7 +59,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class EntriesProperty : LeaderboardsContextTests
         {
-            [Fact]
+            [DisplayFact(nameof(DbSet))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -72,7 +72,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class DailyLeaderboardsProperty : LeaderboardsContextTests
         {
-            [Fact]
+            [DisplayFact(nameof(DbSet))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -85,7 +85,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class DailyEntriesProperty : LeaderboardsContextTests
         {
-            [Fact]
+            [DisplayFact(nameof(DbSet))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -98,7 +98,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class PlayersProperty : LeaderboardsContextTests
         {
-            [Fact]
+            [DisplayFact(nameof(DbSet))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -111,7 +111,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ReplaysProperty : LeaderboardsContextTests
         {
-            [Fact]
+            [DisplayFact(nameof(DbSet))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -124,7 +124,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ProductsProperty : LeaderboardsContextTests
         {
-            [Fact]
+            [DisplayFact(nameof(DbSet))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -137,7 +137,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ModesProperty : LeaderboardsContextTests
         {
-            [Fact]
+            [DisplayFact(nameof(DbSet))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -150,7 +150,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class RunsProperty : LeaderboardsContextTests
         {
-            [Fact]
+            [DisplayFact(nameof(DbSet))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -163,7 +163,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class CharactersProperty : LeaderboardsContextTests
         {
-            [Fact]
+            [DisplayFact(nameof(DbSet))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -176,8 +176,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class IntegrationTests : LeaderboardsIntegrationTestsBase
         {
-            [Fact]
-            public void PreGeneratedMappingViewsIsUpToDate()
+            [DisplayFact]
+            public void PreGeneratedMappingViewsAreUpToDate()
             {
                 db.Leaderboards.FirstOrDefault();
                 db.Entries.FirstOrDefault();
@@ -193,8 +193,8 @@ namespace toofz.Data.Tests.Leaderboards
 
             #region From https://stackoverflow.com/a/42643788/414137
 
-            [Fact]
-            public void MigrationsUpDownTest()
+            [DisplayFact]
+            public void CanMigrateUpAndDown()
             {
                 var configuration = new Configuration();
                 var migrator = new DbMigrator(configuration);
@@ -222,8 +222,8 @@ namespace toofz.Data.Tests.Leaderboards
                 }
             }
 
-            [Fact]
-            public void PendingModelChangesTest()
+            [DisplayFact]
+            public void ModelChangesAreNotPending()
             {
                 // NOTE: Using MigratorScriptingDecorator so changes won't be made to the database
                 var targetDatabase = new DbConnectionInfo(connectionString, "System.Data.SqlClient");

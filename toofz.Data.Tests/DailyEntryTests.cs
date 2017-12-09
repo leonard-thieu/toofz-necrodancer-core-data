@@ -6,8 +6,8 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class LeaderboardIdProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyEntry.LeaderboardId))]
+            public void GetsAndSetsLeaderboardId()
             {
                 // Arrange -> Act
                 var dailyEntry = new DailyEntry { LeaderboardId = 234 };
@@ -19,8 +19,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class LeaderboardProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyEntry.Leaderboard))]
+            public void GetsAndSetsLeaderboard()
             {
                 // Arrange -> Act
                 var leaderboard = new DailyLeaderboard();
@@ -33,8 +33,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class RankProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyEntry.Rank))]
+            public void GetsAndSetsRank()
             {
                 // Arrange -> Act
                 var dailyEntry = new DailyEntry { Rank = 345 };
@@ -46,8 +46,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class SteamIdProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyEntry.SteamId))]
+            public void GetsAndSetsSteamId()
             {
                 // Arrange -> Act
                 var dailyEntry = new DailyEntry { SteamId = 765 };
@@ -60,8 +60,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class PlayerProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyEntry.Player))]
+            public void GetsAndSetsPlayer()
             {
                 // Arrange -> Act
                 var player = new Player();
@@ -74,8 +74,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ReplayIdProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyEntry.ReplayId))]
+            public void GetsAndSetsReplayId()
             {
                 // Arrange -> Act
                 var dailyEntry = new DailyEntry { ReplayId = 9082374 };
@@ -87,8 +87,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ReplayProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyEntry.Replay))]
+            public void GetsAndSetsReplay()
             {
                 // Arrange
                 var replay = new Replay();
@@ -105,8 +105,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ScoreProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyEntry.Score))]
+            public void GetsAndSetsScore()
             {
                 // Arrange -> Act
                 var dailyEntry = new DailyEntry { Score = 10 };
@@ -118,8 +118,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ZoneProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyEntry.Zone))]
+            public void GetsAndSetsZone()
             {
                 // Arrange -> Act
                 var dailyEntry = new DailyEntry { Zone = 1 };
@@ -131,8 +131,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class LevelProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyEntry.Level))]
+            public void GetsAndSetsLevel()
             {
                 // Arrange -> Act
                 var dailyEntry = new DailyEntry { Level = 2 };

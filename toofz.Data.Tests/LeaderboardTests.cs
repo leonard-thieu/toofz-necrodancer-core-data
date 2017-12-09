@@ -8,8 +8,8 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class LeaderboardIdProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Leaderboard.LeaderboardId))]
+            public void GetsAndSetsLeaderboardId()
             {
                 // Arrange -> Act
                 var leaderboard = new Leaderboard { LeaderboardId = 43895 };
@@ -21,8 +21,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class EntriesProperty
         {
-            [Fact]
-            public void GetBehavior()
+            [DisplayFact(nameof(Leaderboard.Entries))]
+            public void GetsEntries()
             {
                 // Arrange
                 var leaderboard = new Leaderboard();
@@ -34,8 +34,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class LastUpdateProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Leaderboard.LastUpdate))]
+            public void GetsAndSetsLastUpdate()
             {
                 // Arrange -> Act
                 var leaderboard = new Leaderboard { LastUpdate = new DateTime(2017, 8, 28, 16, 27, 58) };
@@ -47,8 +47,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class NameProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Leaderboard.Name))]
+            public void GetsAndSetsName()
             {
                 // Arrange
                 var name = "myName";
@@ -65,8 +65,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class DisplayNameProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Leaderboard.DisplayName))]
+            public void GetsAndSetsDisplayName()
             {
                 // Arrange
                 var displayName = "MyDisplayName";
@@ -83,8 +83,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class IsProductionProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Leaderboard.IsProduction))]
+            public void GetsAndSetsIsProduction()
             {
                 // Arrange -> Act
                 var leaderboard = new Leaderboard { IsProduction = true };
@@ -96,8 +96,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ProductProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Leaderboard.Product))]
+            public void GetsAndSetsProduct()
             {
                 // Arrange
                 var product = new Product(1, "myProduct", "MyProduct");
@@ -113,8 +113,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ProductIdProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Leaderboard.ProductId))]
+            public void GetsAndSetsProductId()
             {
                 // Arrange -> Act
                 var leaderboard = new Leaderboard { ProductId = 1 };
@@ -126,8 +126,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ModeProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Leaderboard.Mode))]
+            public void GetsAndSetsMode()
             {
                 // Arrange
                 var mode = new Mode(1, "myMode", "MyMode");
@@ -143,8 +143,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ModeIdProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Leaderboard.ModeId))]
+            public void GetsAndSetsModeId()
             {
                 // Arrange
                 var modeId = 1;
@@ -161,8 +161,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class RunProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Leaderboard.Run))]
+            public void GetsAndSetsRun()
             {
                 // Arrange
                 var run = new Run(1, "myRun", "MyRun");
@@ -179,8 +179,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class RunIdProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Leaderboard.RunId))]
+            public void GetsAndSetsRunId()
             {
                 // Arrange -> Act
                 var leaderboard = new Leaderboard { RunId = 2 };
@@ -192,8 +192,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class CharacterProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Leaderboard.Character))]
+            public void GetsAndSetsCharacter()
             {
                 // Arrange
                 var character = new Character(1, "myCharacter", "MyCharacter");
@@ -210,8 +210,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class CharacterIdProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Leaderboard.CharacterId))]
+            public void GetsAndSetsCharacterId()
             {
                 // Arrange -> Act
                 var leaderboard = new Leaderboard { CharacterId = 9 };
@@ -223,8 +223,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class IsCoOpProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Leaderboard.IsCoOp))]
+            public void GetsAndSetsIsCoOp()
             {
                 // Arrange -> Act
                 var leaderboard = new Leaderboard { IsCoOp = true };
@@ -236,8 +236,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class IsCustomMusicProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Leaderboard.IsCustomMusic))]
+            public void GetsAndSetsIsCustomMusic()
             {
                 // Arrange -> Act
                 var leaderboard = new Leaderboard { IsCustomMusic = true };

@@ -7,8 +7,8 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class CommandTextProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(SqlCommandAdapter.CommandText))]
+            public void GetsAndSetsCommandText()
             {
                 // Arrange
                 var command = new SqlCommand();
@@ -22,8 +22,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ParametersProperty
         {
-            [Fact]
-            public void ReturnsInstance()
+            [DisplayFact(nameof(SqlParameterCollection))]
+            public void ReturnsSqlParameterCollection()
             {
                 // Arrange
                 var command = new SqlCommand();

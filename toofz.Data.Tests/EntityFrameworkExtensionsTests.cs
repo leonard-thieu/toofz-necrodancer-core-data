@@ -8,7 +8,7 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class GetMappingFragmentMethod : LeaderboardsIntegrationTestsBase
         {
-            [Fact]
+            [DisplayFact(nameof(MappingFragment))]
             public void ReturnsMappingFragment()
             {
                 // Arrange -> Act
@@ -21,7 +21,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class GetTableNameMethod : LeaderboardsIntegrationTestsBase
         {
-            [Fact]
+            [DisplayFact]
             public void ReturnsTableName()
             {
                 // Arrange
@@ -37,7 +37,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class GetScalarPropertyMappingsMethod : LeaderboardsIntegrationTestsBase
         {
-            [Fact]
+            [DisplayFact]
             public void ReturnsScalarPropertyMappings()
             {
                 // Arrange
@@ -53,7 +53,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class GetColumnNamesMethod : LeaderboardsIntegrationTestsBase
         {
-            [Fact]
+            [DisplayFact]
             public void ReturnsColumnNames()
             {
                 // Arrange
@@ -79,7 +79,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class GetPrimaryKeyColumnNamesMethod : LeaderboardsIntegrationTestsBase
         {
-            [Fact]
+            [DisplayFact]
             public void ReturnsPrimaryKeyColumnNames()
             {
                 // Arrange

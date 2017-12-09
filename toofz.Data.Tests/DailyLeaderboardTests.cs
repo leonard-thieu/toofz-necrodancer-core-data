@@ -8,8 +8,8 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class LeaderboardIdProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyLeaderboard.LeaderboardId))]
+            public void GetsAndSetsLeaderboardId()
             {
                 // Arrange -> Act
                 var dailyLeaderboard = new DailyLeaderboard { LeaderboardId = 43895 };
@@ -21,8 +21,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class EntriesProperty
         {
-            [Fact]
-            public void GetBehavior()
+            [DisplayFact(nameof(DailyLeaderboard.Entries))]
+            public void GetsEntries()
             {
                 // Arrange
                 var dailyLeaderboard = new DailyLeaderboard();
@@ -34,8 +34,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class LastUpdateProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyLeaderboard.LastUpdate))]
+            public void GetsAndSetsLastUpdate()
             {
                 // Arrange -> Act
                 var dailyLeaderboard = new DailyLeaderboard { LastUpdate = new DateTime(2017, 8, 28, 16, 27, 58) };
@@ -47,8 +47,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class NameProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyLeaderboard.Name))]
+            public void GetsAndSetsName()
             {
                 // Arrange
                 var name = "myName";
@@ -65,8 +65,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class DisplayNameProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyLeaderboard.DisplayName))]
+            public void GetsAndSetsDisplayName()
             {
                 // Arrange
                 var displayName = "MyDisplayName";
@@ -83,8 +83,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class IsProductionProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyLeaderboard.IsProduction))]
+            public void GetsAndSetsIsProduction()
             {
                 // Arrange -> Act
                 var dailyLeaderboard = new DailyLeaderboard { IsProduction = true };
@@ -96,8 +96,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ProductProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyLeaderboard.Product))]
+            public void GetsAndSetsProduct()
             {
                 // Arrange
                 var product = new Product(1, "myProduct", "MyProduct");
@@ -113,8 +113,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ProductIdProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyLeaderboard.ProductId))]
+            public void GetsAndSetsProductId()
             {
                 // Arrange -> Act
                 var dailyLeaderboard = new DailyLeaderboard { ProductId = 1 };
@@ -126,8 +126,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class DateProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(DailyLeaderboard.Date))]
+            public void GetsAndSetsDate()
             {
                 // Arrange -> Act
                 var dailyLeaderboard = new DailyLeaderboard { Date = new DateTime(2017, 8, 28) };

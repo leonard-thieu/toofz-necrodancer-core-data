@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
 using Xunit;
 
 namespace toofz.Data.Tests.Leaderboards
@@ -7,8 +8,8 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class Constructor
         {
-            [Fact]
-            public void ReturnsInstance()
+            [DisplayFact(nameof(SqlCommandException))]
+            public void ReturnsSqlCommandException()
             {
                 // Arrange
                 string message = null;
@@ -22,7 +23,7 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.IsAssignableFrom<SqlCommandException>(ex);
             }
 
-            [Fact]
+            [DisplayFact(nameof(SqlCommandException.CommandText))]
             public void SetsCommandText()
             {
                 // Arrange
@@ -40,7 +41,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class InnerExceptionProperty
         {
-            [Fact]
+            [DisplayFact(nameof(SqlException))]
             public void ReturnsSqlException()
             {
                 // Arrange
@@ -59,7 +60,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ToStringMethod
         {
-            [Fact]
+            [DisplayFact("CommandText", nameof(SqlCommandException), nameof(String))]
             public void CommandTextIsNull_ReturnsSqlCommandExceptionAsString()
             {
                 // Arrange
@@ -74,7 +75,7 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.Equal("toofz.Data.SqlCommandException: Exception of type 'toofz.Data.SqlCommandException' was thrown.", ex.ToString());
             }
 
-            [Fact]
+            [DisplayFact(nameof(SqlCommandException), nameof(String))]
             public void ReturnsSqlCommandExceptionAsString()
             {
                 // Arrange

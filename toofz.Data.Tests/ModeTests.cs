@@ -7,7 +7,7 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class Constructor
         {
-            [Fact]
+            [DisplayFact("Name", nameof(ArgumentNullException))]
             public void NameIsNull_ThrowsArgumentNullException()
             {
                 // Arrange
@@ -22,7 +22,7 @@ namespace toofz.Data.Tests.Leaderboards
                 });
             }
 
-            [Fact]
+            [DisplayFact("DisplayName", nameof(ArgumentNullException))]
             public void DisplayNameIsNull_ThrowsArgumentNullException()
             {
                 // Arrange
@@ -37,8 +37,8 @@ namespace toofz.Data.Tests.Leaderboards
                 });
             }
 
-            [Fact]
-            public void ReturnsInstance()
+            [DisplayFact(nameof(Mode))]
+            public void ReturnsMode()
             {
                 // Arrange
                 var modeId = 1;
@@ -52,7 +52,7 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.IsAssignableFrom<Mode>(mode);
             }
 
-            [Fact]
+            [DisplayFact(nameof(Mode.ModeId))]
             public void SetsModeId()
             {
                 // Arrange
@@ -68,7 +68,7 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.Equal(modeId, modeId2);
             }
 
-            [Fact]
+            [DisplayFact(nameof(Mode.Name))]
             public void SetsName()
             {
                 // Arrange
@@ -84,7 +84,7 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.Equal(name, name2);
             }
 
-            [Fact]
+            [DisplayFact(nameof(Mode.DisplayName))]
             public void SetsDisplayName()
             {
                 // Arrange

@@ -18,8 +18,8 @@ namespace toofz.Data.Tests
 
         public class Constructor
         {
-            [Fact]
-            public void ReturnsInstance()
+            [DisplayFact(nameof(NecroDancerContext))]
+            public void ReturnsNecroDancerContext()
             {
                 // Arrange -> Act
                 var db = new NecroDancerContext();
@@ -31,8 +31,8 @@ namespace toofz.Data.Tests
 
         public class Constructor_String
         {
-            [Fact]
-            public void ReturnsInstance()
+            [DisplayFact(nameof(NecroDancerContext))]
+            public void ReturnsNecroDancerContext()
             {
                 // Arrange
                 var connectionString = StorageHelper.GetDatabaseConnectionString(nameof(NecroDancerContext));
@@ -47,7 +47,7 @@ namespace toofz.Data.Tests
 
         public class ItemsProperty : NecroDancerContextTests
         {
-            [Fact]
+            [DisplayFact(nameof(DbSet))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -60,7 +60,7 @@ namespace toofz.Data.Tests
 
         public class EnemiesProperty : NecroDancerContextTests
         {
-            [Fact]
+            [DisplayFact(nameof(DbSet))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -73,8 +73,8 @@ namespace toofz.Data.Tests
 
         public class IntegrationTests : NecroDancerIntegrationTestsBase
         {
-            [Fact]
-            public void PreGeneratedMappingViewsIsUpToDate()
+            [DisplayFact]
+            public void PreGeneratedMappingViewsAreUpToDate()
             {
                 db.Items.FirstOrDefault();
                 db.Enemies.FirstOrDefault();
@@ -82,8 +82,8 @@ namespace toofz.Data.Tests
 
             #region From https://stackoverflow.com/a/42643788/414137
 
-            [Fact]
-            public void MigrationsUpDownTest()
+            [DisplayFact]
+            public void CanMigrateUpAndDown()
             {
                 var configuration = new Configuration();
                 var migrator = new DbMigrator(configuration);
@@ -111,8 +111,8 @@ namespace toofz.Data.Tests
                 }
             }
 
-            [Fact]
-            public void PendingModelChangesTest()
+            [DisplayFact]
+            public void ModelChangesAreNotPending()
             {
                 // NOTE: Using MigratorScriptingDecorator so changes won't be made to the database
                 var targetDatabase = new DbConnectionInfo(connectionString, "System.Data.SqlClient");

@@ -10,8 +10,8 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class Constructor
         {
-            [Fact]
-            public void ReturnsInstance()
+            [DisplayFact(nameof(TypedDataReader<TestDto>))]
+            public void ReturnsTypedDataReader()
             {
                 // Arrange
                 var items = new List<TestDto>();
@@ -26,7 +26,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class GetValueMethod
         {
-            [Fact]
+            [DisplayFact]
             public void ReturnsValue()
             {
                 // Arrange
@@ -54,7 +54,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class GetOrdinalMethod
         {
-            [Fact]
+            [DisplayFact]
             public void ReturnsOrdinal()
             {
                 // Arrange
@@ -81,7 +81,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class FieldCountProperty
         {
-            [Fact]
+            [DisplayFact]
             public void ReturnsFieldCount()
             {
                 // Arrange
@@ -108,7 +108,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ReadMethod
         {
-            [Fact]
+            [DisplayFact]
             public void ReadIsSuccessful_ReturnsTrue()
             {
                 // Arrange
@@ -132,7 +132,7 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.True(isSuccessful);
             }
 
-            [Fact]
+            [DisplayFact]
             public void ReadIsNotSuccessful_ReturnsFalse()
             {
                 // Arrange

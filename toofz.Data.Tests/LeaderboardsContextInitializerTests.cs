@@ -9,7 +9,7 @@ namespace toofz.Data.Tests.Leaderboards
         {
             public IntegrationTests() : base(initialize: false) { }
 
-            [Fact]
+            [DisplayFact]
             public void SeedsData()
             {
                 // Arrange

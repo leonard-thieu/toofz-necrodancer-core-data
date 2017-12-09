@@ -6,8 +6,8 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class LeaderboardIdProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Entry.LeaderboardId))]
+            public void GetsAndSetsLeaderboardId()
             {
                 // Arrange -> Act
                 var entry = new Entry { LeaderboardId = 123 };
@@ -19,8 +19,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class LeaderboardProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Entry.Leaderboard))]
+            public void GetsAndSetsLeaderboard()
             {
                 // Arrange -> Act
                 var leaderboard = new Leaderboard();
@@ -33,8 +33,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class RankProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Entry.Rank))]
+            public void GetsAndSetsRank()
             {
                 // Arrange -> Act
                 var entry = new Entry { Rank = 321 };
@@ -46,8 +46,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class SteamIdProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Entry.SteamId))]
+            public void GetsAndSetsSteamId()
             {
                 // Arrange -> Act
                 var entry = new Entry { SteamId = 459687893 };
@@ -59,8 +59,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class PlayerProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Entry.Player))]
+            public void GetsAndSetsPlayer()
             {
                 // Arrange -> Act
                 var player = new Player();
@@ -73,8 +73,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ReplayIdProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Entry.ReplayId))]
+            public void GetsAndSetsReplayId()
             {
                 // Arrange -> Act
                 var entry = new Entry { ReplayId = 239847589234 };
@@ -86,8 +86,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ReplayProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Entry.Replay))]
+            public void GetsAndSetsReplay()
             {
                 // Arrange
                 var replay = new Replay();
@@ -104,8 +104,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ScoreProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Entry.Score))]
+            public void GetsAndSetsScore()
             {
                 // Arrange -> Act
                 var entry = new Entry { Score = 10 };
@@ -117,8 +117,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ZoneProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Entry.Zone))]
+            public void GetsAndSetsZone()
             {
                 // Arrange -> Act
                 var entry = new Entry { Zone = 1 };
@@ -130,8 +130,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class LevelProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Entry.Level))]
+            public void GetsAndSetsLevel()
             {
                 // Arrange -> Act
                 var entry = new Entry { Level = 2 };

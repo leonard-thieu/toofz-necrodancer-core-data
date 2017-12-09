@@ -7,7 +7,7 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class Constructor
         {
-            [Fact]
+            [DisplayFact("Name", nameof(ArgumentNullException))]
             public void NameIsNull_ThrowsArgumentNullException()
             {
                 // Arrange
@@ -22,7 +22,7 @@ namespace toofz.Data.Tests.Leaderboards
                 });
             }
 
-            [Fact]
+            [DisplayFact("DisplayName", nameof(ArgumentNullException))]
             public void DisplayNameIsNull_ThrowsArgumentNullException()
             {
                 // Arrange
@@ -37,8 +37,8 @@ namespace toofz.Data.Tests.Leaderboards
                 });
             }
 
-            [Fact]
-            public void ReturnsInstance()
+            [DisplayFact(nameof(Run))]
+            public void ReturnsRun()
             {
                 // Arrange
                 var runId = 1;
@@ -52,7 +52,7 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.IsAssignableFrom<Run>(run);
             }
 
-            [Fact]
+            [DisplayFact(nameof(Run.RunId))]
             public void SetsRunId()
             {
                 // Arrange
@@ -68,7 +68,7 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.Equal(runId, runId2);
             }
 
-            [Fact]
+            [DisplayFact(nameof(Run.Name))]
             public void SetsName()
             {
                 // Arrange
@@ -84,7 +84,7 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.Equal(name, name2);
             }
 
-            [Fact]
+            [DisplayFact(nameof(Run.DisplayName))]
             public void SetsDisplayName()
             {
                 // Arrange

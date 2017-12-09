@@ -6,8 +6,8 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class ReplayIdProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Replay.ReplayId))]
+            public void GetsAndSetsReplayId()
             {
                 // Arrange -> Act
                 var replay = new Replay { ReplayId = 32874823748 };
@@ -20,8 +20,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ErrorCodeProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Replay.ErrorCode))]
+            public void GetsAndSetsErrorCode()
             {
                 // Arrange -> Act
                 var replay = new Replay { ErrorCode = 23847 };
@@ -34,8 +34,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class SeedProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Replay.Seed))]
+            public void GetsAndSetsSeed()
             {
                 // Arrange -> Act
                 var replay = new Replay { Seed = 234235 };
@@ -48,8 +48,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class VersionProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Replay.Version))]
+            public void GetsAndSetsVersion()
             {
                 // Arrange -> Act
                 var replay = new Replay { Version = 12 };
@@ -62,8 +62,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class KilledByProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Replay.KilledBy))]
+            public void GetsAndSetsKilledBy()
             {
                 // Arrange -> Act
                 var replay = new Replay { KilledBy = "A scary enemy" };
@@ -76,8 +76,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class UriProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Replay.Uri))]
+            public void GetsAndSetsUri()
             {
                 // Arrange -> Act
                 var replay = new Replay { Uri = "http://example.org/" };

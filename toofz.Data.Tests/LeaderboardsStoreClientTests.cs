@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -22,7 +23,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class IsTransientMethod
         {
-            [Fact]
+            [DisplayFact(nameof(SqlCommandException), nameof(SqlError), nameof(SqlError.Number))]
             public void ExIsSqlCommandExceptionAndContainsSqlErrorWithNumberIs2_ReturnsTrue()
             {
                 // Arrange
@@ -37,7 +38,7 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.True(isTransient);
             }
 
-            [Fact]
+            [DisplayFact(nameof(SqlCommandException), nameof(SqlError), nameof(SqlError.Number))]
             public void ExIsSqlCommandExceptionAndDoesNotContainSqlErrorWithNumberIs2_ReturnsFalse()
             {
                 // Arrange
@@ -52,7 +53,7 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.False(isTransient);
             }
 
-            [Fact]
+            [DisplayFact(nameof(SqlCommandException))]
             public void ExIsNotSqlCommandException_ReturnsFalse()
             {
                 // Arrange
@@ -68,8 +69,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class Constructor
         {
-            [Fact]
-            public void ReturnsInstance()
+            [DisplayFact(nameof(LeaderboardsStoreClient))]
+            public void ReturnsLeaderboardsStoreClient()
             {
                 // Arrange
                 var connectionString = StorageHelper.GetDatabaseConnectionString(nameof(LeaderboardsContext));
@@ -84,7 +85,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class InsertAsyncMethod : LeaderboardsStoreClientTests
         {
-            [Fact]
+            [DisplayFact("Items", nameof(ArgumentNullException))]
             public async Task ItemsIsNull_ThrowsArgumentNullException()
             {
                 // Arrange
@@ -99,7 +100,7 @@ namespace toofz.Data.Tests.Leaderboards
 
             public class IntegrationTests : LeaderboardsIntegrationTestsBase
             {
-                [Fact]
+                [DisplayFact]
                 public async Task BulkInsertsItems()
                 {
                     // Arrange
@@ -122,7 +123,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class UpsertAsyncMethod : LeaderboardsStoreClientTests
         {
-            [Fact]
+            [DisplayFact("Items", nameof(ArgumentNullException))]
             public async Task ItemsIsNull_ThrowsArgumentNullException()
             {
                 // Arrange
@@ -135,7 +136,7 @@ namespace toofz.Data.Tests.Leaderboards
                 });
             }
 
-            [Fact]
+            [DisplayFact("Items")]
             public async Task ItemsIsEmpty_ShortCircuits()
             {
                 // Arrange
@@ -150,7 +151,7 @@ namespace toofz.Data.Tests.Leaderboards
 
             public class IntegrationTests : LeaderboardsIntegrationTestsBase
             {
-                [Fact]
+                [DisplayFact]
                 public async Task UpsertsItems()
                 {
                     // Arrange

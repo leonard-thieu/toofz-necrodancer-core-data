@@ -8,8 +8,8 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class SteamIdProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Player.SteamId))]
+            public void GetsAndSetsSteamId()
             {
                 // Arrange -> Act
                 var player = new Player { SteamId = 34897238 };
@@ -22,8 +22,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ExistsProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Player.Exists))]
+            public void GetsAndSetsExists()
             {
                 // Arrange -> Act
                 var player = new Player { Exists = true };
@@ -36,8 +36,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class NameProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Player.Name))]
+            public void GetsAndSetsName()
             {
                 // Arrange -> Act
                 var player = new Player { Name = "MYnAME" };
@@ -50,8 +50,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class AvatarProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Player.Avatar))]
+            public void GetsAndSetsAvatar()
             {
                 // Arrange -> Act
                 var player = new Player { Avatar = "http://my.avatar.url/" };
@@ -64,8 +64,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class LastUpdateProperty
         {
-            [Fact]
-            public void GetSetBehavior()
+            [DisplayFact(nameof(Player.LastUpdate))]
+            public void GetsAndSetsLastUpdate()
             {
                 // Arrange -> Act
                 var player = new Player { LastUpdate = new DateTime(2017, 8, 30, 18, 53, 49) };
@@ -78,8 +78,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class EntriesProperty
         {
-            [Fact]
-            public void GetBehavior()
+            [DisplayFact(nameof(Player.Entries))]
+            public void GetsEntries()
             {
                 // Arrange
                 var player = new Player();

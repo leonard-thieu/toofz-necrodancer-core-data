@@ -9,8 +9,8 @@ namespace toofz.Data.Tests.Leaderboards
     {
         public class CreateSqlErrorMethod_Int32
         {
-            [Fact]
-            public void ReturnsInstance()
+            [DisplayFact(nameof(SqlError))]
+            public void ReturnsSqlError()
             {
                 // Arrange
                 int infoNumber = 0;
@@ -25,8 +25,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class CreateSqlErrorMethod
         {
-            [Fact]
-            public void ReturnsInstance()
+            [DisplayFact(nameof(SqlError))]
+            public void ReturnsSqlError()
             {
                 // Arrange
                 int infoNumber = 0;
@@ -48,8 +48,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class CreateSqlErrorCollectionMethod
         {
-            [Fact]
-            public void NoParams_ReturnsInstance()
+            [DisplayFact(nameof(SqlErrorCollection))]
+            public void HasNoParams_ReturnsSqlErrorCollection()
             {
                 // Arrange -> Act
                 var errorCollection = SqlClientUtil.CreateSqlErrorCollection();
@@ -58,8 +58,8 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.IsAssignableFrom<SqlErrorCollection>(errorCollection);
             }
 
-            [Fact]
-            public void HasParams_ReturnsInstanceWithErrors()
+            [DisplayFact(nameof(SqlErrorCollection))]
+            public void HasParams_ReturnsSqlErrorCollectionWithErrors()
             {
                 // Arrange
                 var sqlError = SqlClientUtil.CreateSqlError(0);
@@ -74,7 +74,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class AddMethod
         {
-            [Fact]
+            [DisplayFact]
             public void AddsError()
             {
                 // Arrange
@@ -99,8 +99,8 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class CreateSqlExceptionMethod_Params_Array_SqlError
         {
-            [Fact]
-            public void NoParams_ReturnsInstance()
+            [DisplayFact(nameof(SqlException))]
+            public void HasNoParams_ReturnsSqlException()
             {
                 // Arrange -> Act
                 var ex = SqlClientUtil.CreateSqlException();
@@ -109,8 +109,8 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.IsAssignableFrom<SqlException>(ex);
             }
 
-            [Fact]
-            public void HasParams_ReturnsInstanceWithErrors()
+            [DisplayFact(nameof(SqlException))]
+            public void HasParams_ReturnsSqlExceptionWithErrors()
             {
                 // Arrange
                 var sqlError = SqlClientUtil.CreateSqlError(0);
@@ -129,8 +129,8 @@ namespace toofz.Data.Tests.Leaderboards
             private readonly Exception innerException = new Exception();
             private readonly Guid conId = new Guid();
 
-            [Fact]
-            public void NoParams_ReturnsInstance()
+            [DisplayFact(nameof(SqlException))]
+            public void HasNoParams_ReturnsSqlException()
             {
                 // Arrange -> Act
                 var ex = SqlClientUtil.CreateSqlException(message, innerException, conId);
@@ -139,8 +139,8 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.IsAssignableFrom<SqlException>(ex);
             }
 
-            [Fact]
-            public void HasParams_ReturnsInstanceWithErrors()
+            [DisplayFact(nameof(SqlException))]
+            public void HasParams_ReturnsSqlExceptionWithErrors()
             {
                 // Arrange
                 var sqlError = SqlClientUtil.CreateSqlError(0);
@@ -160,8 +160,8 @@ namespace toofz.Data.Tests.Leaderboards
             private readonly Exception innerException = new Exception();
             private readonly Guid conId = new Guid();
 
-            [Fact]
-            public void ReturnsInstance()
+            [DisplayFact(nameof(SqlException))]
+            public void ReturnsSqlException()
             {
                 // Arrange -> Act
                 var sqlException = SqlClientUtil.CreateSqlException(message, errorCollection, innerException, conId);
