@@ -19,7 +19,7 @@
       .pdb;
       .xml
     </AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <PackageVersion>9.0.0</PackageVersion>
+    <PackageVersion>9.0.1</PackageVersion>
     <Authors>Leonard Thieu</Authors>
     <Title>toofz Data</Title>
     <Description>Data access layer for toofz.</Description>
