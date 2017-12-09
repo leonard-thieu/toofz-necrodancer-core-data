@@ -14,7 +14,11 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>
+      $(AllowedOutputExtensionsInPackageBuildOutputFolder);
+      .pdb;
+      .xml
+    </AllowedOutputExtensionsInPackageBuildOutputFolder>
     <PackageVersion>9.0.0</PackageVersion>
     <Authors>Leonard Thieu</Authors>
     <Title>toofz Data</Title>
