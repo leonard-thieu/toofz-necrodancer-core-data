@@ -16,8 +16,7 @@
   <PropertyGroup>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>
       $(AllowedOutputExtensionsInPackageBuildOutputFolder);
-      .pdb;
-      .xml
+      .pdb
     </AllowedOutputExtensionsInPackageBuildOutputFolder>
     <PackageVersion>9.0.1</PackageVersion>
     <Authors>Leonard Thieu</Authors>
