@@ -15,7 +15,7 @@
       $(AllowedOutputExtensionsInPackageBuildOutputFolder);
       .pdb
     </AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <PackageVersion>10.0.0-alpha.1</PackageVersion>
+    <PackageVersion>10.0.0-alpha.2</PackageVersion>
     <Authors>Leonard Thieu</Authors>
     <Title>toofz Data</Title>
     <Description>Data access layer for toofz.</Description>
