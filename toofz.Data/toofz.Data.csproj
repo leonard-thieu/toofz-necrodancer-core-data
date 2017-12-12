@@ -1,18 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{74A190F2-9A35-422D-86B9-CC97710F03D3}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>toofz.Data</RootNamespace>
-    <AssemblyName>toofz.Data</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <LangVersion>latest</LangVersion>
+    <TargetFramework>net461</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <!-- https://github.com/dotnet/cli/issues/3959 -->
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeP2PAssets</TargetsForTfmSpecificBuildOutput>
   </PropertyGroup>
+
   <PropertyGroup>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>
       $(AllowedOutputExtensionsInPackageBuildOutputFolder);
@@ -29,201 +23,24 @@
     <RepositoryUrl>https://github.com/leonard-thieu/toofz-data.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\toofz.Data.xml</DocumentationFile>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="EntityFramework">
-      <Version>6.2.0</Version>
-    </PackageReference>
-    <PackageReference Include="GitInfo">
-      <Version>2.0.8</Version>
+    <ProjectReference Include="..\toofz.Data.Leaderboards\toofz.Data.Leaderboards.csproj">
       <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>10.0.3</Version>
-    </PackageReference>
-    <PackageReference Include="NuGet.Build.Tasks.Pack">
-      <Version>4.4.0</Version>
+    </ProjectReference>
+    <ProjectReference Include="..\toofz.Data.NecroDancer\toofz.Data.NecroDancer.csproj">
       <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="toofz.NecroDancer">
-      <Version>5.0.2</Version>
-    </PackageReference>
+    </ProjectReference>
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <Compile Include="..\GlobalAssemblyInfo.cs" Link="Properties\GlobalAssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="Resources\Characters.json" />
-    <None Include="Resources\DailyLeaderboards.json" />
-    <None Include="Resources\Leaderboards.json" />
-    <None Include="Resources\Modes.json" />
-    <None Include="Resources\Products.json" />
-    <None Include="Resources\Runs.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Leaderboards\Migrations\201710131410491_InitialCreate.cs" />
-    <Compile Include="Leaderboards\Migrations\201710131410491_InitialCreate.Designer.cs">
-      <DependentUpon>201710131410491_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Leaderboards\Migrations\201710131410491_InitialCreate.resx">
-      <DependentUpon>201710131410491_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="Leaderboards\Migrations\201710171713545_BlackNickelBorderCollie.cs" />
-    <Compile Include="Leaderboards\Migrations\201710171713545_BlackNickelBorderCollie.Designer.cs">
-      <DependentUpon>201710171713545_BlackNickelBorderCollie.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Leaderboards\Migrations\201710171713545_BlackNickelBorderCollie.resx">
-      <DependentUpon>201710171713545_BlackNickelBorderCollie.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="Leaderboards\Migrations\201710211500252_TealBrassLabrador.cs" />
-    <Compile Include="Leaderboards\Migrations\201710211500252_TealBrassLabrador.Designer.cs">
-      <DependentUpon>201710211500252_TealBrassLabrador.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Leaderboards\Migrations\201710211500252_TealBrassLabrador.resx">
-      <DependentUpon>201710211500252_TealBrassLabrador.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="Leaderboards\Migrations\201710221313149_WhiteBrassPointer.cs" />
-    <Compile Include="Leaderboards\Migrations\201710221313149_WhiteBrassPointer.Designer.cs">
-      <DependentUpon>201710221313149_WhiteBrassPointer.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Leaderboards\Migrations\201710221313149_WhiteBrassPointer.resx">
-      <DependentUpon>201710221313149_WhiteBrassPointer.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="Leaderboards\Migrations\201710271604233_RedAluminiumPitBullTerrier.cs" />
-    <Compile Include="Leaderboards\Migrations\201710271604233_RedAluminiumPitBullTerrier.Designer.cs">
-      <DependentUpon>201710271604233_RedAluminiumPitBullTerrier.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Leaderboards\Migrations\201710271604233_RedAluminiumPitBullTerrier.resx">
-      <DependentUpon>201710271604233_RedAluminiumPitBullTerrier.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="Leaderboards\Migrations\201710282008052_OliveSteelSpitz.cs" />
-    <Compile Include="Leaderboards\Migrations\201710282008052_OliveSteelSpitz.Designer.cs">
-      <DependentUpon>201710282008052_OliveSteelSpitz.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Leaderboards\Migrations\201710282008052_OliveSteelSpitz.resx">
-      <DependentUpon>201710282008052_OliveSteelSpitz.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="Leaderboards\Migrations\Configuration.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="NecroDancer\Migrations\201710132016052_InitialCreate.cs" />
-    <Compile Include="NecroDancer\Migrations\201710132016052_InitialCreate.Designer.cs">
-      <DependentUpon>201710132016052_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="NecroDancer\Migrations\201710132016052_InitialCreate.resx">
-      <DependentUpon>201710132016052_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="NecroDancer\Migrations\Configuration.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="BulkUpsertOptions.cs" />
-    <Compile Include="Character.cs" />
-    <Compile Include="CharacterConfiguration.cs">
-      <DependentUpon>Character.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DailyEntry.cs" />
-    <Compile Include="DailyEntryConfiguration.cs">
-      <DependentUpon>DailyEntry.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DailyLeaderboard.cs" />
-    <Compile Include="DailyLeaderboardConfiguration.cs">
-      <DependentUpon>DailyLeaderboard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EnemyConfiguration.cs" />
-    <Compile Include="EntityFrameworkExtensions.cs" />
-    <Compile Include="Entry.cs" />
-    <Compile Include="EntryConfiguration.cs">
-      <DependentUpon>Entry.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ILeaderboardsContext.cs" />
-    <Compile Include="LeaderboardsContext.cs">
-      <DependentUpon>ILeaderboardsContext.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LeaderboardsContext.Views.cs">
-      <DependentUpon>LeaderboardsContext.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ILeaderboardsStoreClient.cs" />
-    <Compile Include="LeaderboardsStoreClient.cs">
-      <DependentUpon>ILeaderboardsStoreClient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ILeaderboardsStoreClientExtensions.cs" />
-    <Compile Include="INecroDancerContext.cs" />
-    <Compile Include="NecroDancerContext.cs">
-      <DependentUpon>INecroDancerContext.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NecroDancerContext.Views.cs">
-      <DependentUpon>NecroDancerContext.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ItemConfiguration.cs" />
-    <Compile Include="Leaderboard.cs" />
-    <Compile Include="LeaderboardConfiguration.cs">
-      <DependentUpon>Leaderboard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LeaderboardsContextInitializer.cs" />
-    <Compile Include="Mode.cs" />
-    <Compile Include="ModeConfiguration.cs">
-      <DependentUpon>Mode.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Player.cs" />
-    <Compile Include="PlayerConfiguration.cs">
-      <DependentUpon>Player.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Product.cs" />
-    <Compile Include="ProductConfiguration.cs">
-      <DependentUpon>Product.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Replay.cs" />
-    <Compile Include="ReplayConfiguration.cs">
-      <DependentUpon>Replay.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Run.cs" />
-    <Compile Include="RunConfiguration.cs">
-      <DependentUpon>Run.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SqlClientUtil.cs" />
-    <Compile Include="SqlCommandAdapter.cs" />
-    <Compile Include="SqlCommandException.cs" />
-    <Compile Include="SqlConnectionExtensions.cs" />
-    <Compile Include="StatsConfiguration.cs" />
-    <Compile Include="TypedDataReader.cs" />
-    <Compile Include="Util.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="IndexSource" AfterTargets="CopyFilesToOutputDirectory" Condition=" '$(APPVEYOR_REPO_NAME)' != '' ">
-    <Exec Command="nuget install SourceLink -ExcludeVersion -SolutionDirectory $(ProjectDir) -Verbosity quiet" />
-    <Exec Command="$(ProjectDir)packages\SourceLink\tools\SourceLink.exe index --proj $(ProjectPath) --proj-prop Configuration $(Configuration) --proj-prop Platform $(Platform) --url %22https://raw.githubusercontent.com/$(APPVEYOR_REPO_NAME)/{0}/%25%25var2%25%25%22 --repo $(GitRoot)" />
+
+  <Target Name="IncludeP2PAssets">
+    <ItemGroup>
+      <BuildOutputInPackage Include="$(OutputPath)toofz.Data.Leaderboards.*" />
+      <BuildOutputInPackage Include="$(OutputPath)toofz.Data.NecroDancer.*" />
+    </ItemGroup>
   </Target>
 </Project>
