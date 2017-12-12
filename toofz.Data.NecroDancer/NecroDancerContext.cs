@@ -10,12 +10,14 @@ namespace toofz.Data
             return $@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog={initialCatalog};Integrated Security=True;MultipleActiveResultSets=True";
         }
 
-        public NecroDancerContext() : this(null) { }
+        public NecroDancerContext() : this((string)null) { }
 
         public NecroDancerContext(string connectionString)
         {
             this.connectionString = connectionString ?? GetLocalDbConnectionString(nameof(NecroDancerContext));
         }
+
+        public NecroDancerContext(DbContextOptions<NecroDancerContext> options) : base(options) { }
 
         private readonly string connectionString;
 
@@ -24,7 +26,10 @@ namespace toofz.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(connectionString);
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(connectionString);
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
