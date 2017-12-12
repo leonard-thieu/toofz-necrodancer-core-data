@@ -4,7 +4,10 @@
     <TargetFramework>net461</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <!-- https://github.com/dotnet/cli/issues/3959 -->
-    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeP2PAssets</TargetsForTfmSpecificBuildOutput>
+    <TargetsForTfmSpecificBuildOutput>
+      $(TargetsForTfmSpecificBuildOutput);
+      IncludeP2PAssets
+    </TargetsForTfmSpecificBuildOutput>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -12,7 +15,7 @@
       $(AllowedOutputExtensionsInPackageBuildOutputFolder);
       .pdb
     </AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <PackageVersion>9.0.1</PackageVersion>
+    <PackageVersion>0.0.0-dev</PackageVersion>
     <Authors>Leonard Thieu</Authors>
     <Title>toofz Data</Title>
     <Description>Data access layer for toofz.</Description>
