@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Xunit;
 
 namespace toofz.Data.Tests
@@ -9,8 +10,10 @@ namespace toofz.Data.Tests
     {
         public NecroDancerIntegrationTestsBase(bool createDatabase = true)
         {
-            connectionString = StorageHelper.GetDatabaseConnectionString(nameof(NecroDancerContext));
-            db = new NecroDancerContext(connectionString);
+            var options = new DbContextOptionsBuilder<NecroDancerContext>()
+                .UseSqlServer(StorageHelper.GetDatabaseConnectionString(nameof(NecroDancerContext)))
+                .Options;
+            db = new NecroDancerContext(options);
 
             db.Database.EnsureDeleted();
             if (createDatabase)
@@ -19,7 +22,6 @@ namespace toofz.Data.Tests
             }
         }
 
-        protected readonly string connectionString;
         protected readonly NecroDancerContext db;
 
         #region IDisposable Implementation

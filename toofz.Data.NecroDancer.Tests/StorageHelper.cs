@@ -6,9 +6,14 @@ namespace toofz.Data.Tests
     {
         private const string ProjectName = "DataNecroDancer";
 
+        public static string GetStorageBaseName(string name)
+        {
+            return $"Test{ProjectName}{name}";
+        }
+
         public static string GetDatabaseConnectionString(string name)
         {
-            var baseName = $"Test{ProjectName}{name}";
+            var baseName = GetStorageBaseName(name);
             var connectionString = GetConnectionString(baseName);
             if (connectionString != null) { return connectionString; }
 
