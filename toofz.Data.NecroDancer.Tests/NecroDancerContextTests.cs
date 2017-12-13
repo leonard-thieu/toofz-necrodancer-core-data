@@ -10,8 +10,10 @@ namespace toofz.Data.Tests
     {
         public NecroDancerContextTests()
         {
-            var connectionString = StorageHelper.GetDatabaseConnectionString(nameof(NecroDancerContext));
-            db = new NecroDancerContext(connectionString);
+            var options = new DbContextOptionsBuilder<NecroDancerContext>()
+                .UseInMemoryDatabase(StorageHelper.GetStorageBaseName(nameof(NecroDancerContext)))
+                .Options;
+            db = new NecroDancerContext(options);
         }
 
         private readonly NecroDancerContext db;
@@ -22,10 +24,12 @@ namespace toofz.Data.Tests
             public void ReturnsNecroDancerContext()
             {
                 // Arrange
-                var connectionString = StorageHelper.GetDatabaseConnectionString(nameof(NecroDancerContext));
+                var options = new DbContextOptionsBuilder<NecroDancerContext>()
+                    .UseInMemoryDatabase(StorageHelper.GetStorageBaseName(nameof(NecroDancerContext)))
+                    .Options;
 
                 // Act
-                var db = new NecroDancerContext(connectionString);
+                var db = new NecroDancerContext(options);
 
                 // Assert
                 Assert.IsAssignableFrom<NecroDancerContext>(db);
