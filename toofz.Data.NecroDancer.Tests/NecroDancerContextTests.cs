@@ -1,5 +1,14 @@
-﻿using System.Data.SqlClient;
+﻿using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design.Internal;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations.Design;
+using Microsoft.Extensions.DependencyInjection;
+using Moq;
 using toofz.NecroDancer.Data;
 using Xunit;
 using Xunit.Sdk;
@@ -66,15 +75,28 @@ namespace toofz.Data.Tests
         {
             public IntegrationTests() : base(createDatabase: false) { }
 
-            #region From https://stackoverflow.com/a/42643788/414137
-
-            // TODO: Needs to test migrating down.
+            // Ported to EF Core from https://stackoverflow.com/a/42643788/414137
             [DisplayFact]
             public void CanMigrateUpAndDown()
             {
+                var migrator = db.Database.GetService<IMigrator>();
+
+                // Retrieve migrations
+                var migrations = new List<string> { "0" };  // Not sure if "0" is more zero than the first item in list of local migrations
+                migrations.AddRange(db.Database.GetMigrations());
+
                 try
                 {
-                    db.Database.Migrate();
+                    migrator.Migrate(migrations.First());
+
+                    for (int index = 0; index < migrations.Count; index++)
+                    {
+                        migrator.Migrate(migrations[index]);
+                        if (index > 0)
+                            migrator.Migrate(migrations[index - 1]);
+                    }
+
+                    migrator.Migrate(migrations.Last());
                 }
                 catch (SqlException ex)
                 {
@@ -82,27 +104,23 @@ namespace toofz.Data.Tests
                 }
             }
 
-            [DisplayFact(Skip = "Needs to be updated for EF Core")]
+            [DisplayFact]
             public void ModelChangesAreNotPending()
             {
-                //// NOTE: Using MigratorScriptingDecorator so changes won't be made to the database
-                //var targetDatabase = new DbConnectionInfo(connectionString, "System.Data.SqlClient");
-                //var migrationsConfiguration = new Configuration { TargetDatabase = targetDatabase };
-                //var migrator = new DbMigrator(migrationsConfiguration);
-                //var scriptingMigrator = new MigratorScriptingDecorator(migrator);
+                var servicesBuilder = new DesignTimeServicesBuilder(Assembly.GetEntryAssembly(), Mock.Of<IOperationReporter>());
+                var services = servicesBuilder.Build(db);
+                var dependencies = services.GetService<MigrationsScaffolderDependencies>();
 
-                //try
-                //{
-                //    // NOTE: Using InitialDatabase so history won't be read from the database
-                //    scriptingMigrator.ScriptUpdate(DbMigrator.InitialDatabase, null);
-                //}
-                //catch (AutomaticMigrationsDisabledException)
-                //{
-                //    throw new XunitException("Should be no pending model changes/migrations should cover all model changes.");
-                //}
+                var modelSnapshot = dependencies.MigrationsAssembly.ModelSnapshot;
+                Assert.NotNull(modelSnapshot);
+                var lastModel = dependencies.SnapshotModelProcessor.Process(modelSnapshot.Model);
+                var upOperations = dependencies.MigrationsModelDiffer.GetDifferences(lastModel, dependencies.Model);
+
+                if (upOperations.Any())
+                {
+                    throw new XunitException("There are pending model changes.");
+                }
             }
-
-            #endregion
         }
     }
 }
