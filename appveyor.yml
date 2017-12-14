@@ -29,13 +29,11 @@ build:
   verbosity: minimal
 
 test_script:
-  - ps: .\Scripts\Test-Project.ps1 -Project 'toofz.Data.Leaderboards'
+  - ps: .\Scripts\Test-Project.ps1 -Project 'toofz.Data.Core'
   - ps: .\Scripts\Test-Project.ps1 -Project 'toofz.Data.Leaderboards.LeaderboardsStoreClient'
-  - ps: .\Scripts\Test-Project.ps1 -Project 'toofz.Data.NecroDancer'
 after_test:
-  - ps: .\Scripts\Submit-CodeCoverageResults.ps1 -Project 'toofz.Data.Leaderboards'
+  - ps: .\Scripts\Submit-CodeCoverageResults.ps1 -Project 'toofz.Data.Core'
   - ps: .\Scripts\Submit-CodeCoverageResults.ps1 -Project 'toofz.Data.Leaderboards.LeaderboardsStoreClient'
-  - ps: .\Scripts\Submit-CodeCoverageResults.ps1 -Project 'toofz.Data.NecroDancer'
 
 deploy_script:
   - ps: .\Scripts\Deploy-NuGetPackage.ps1

@@ -5,21 +5,24 @@ using Xunit;
 namespace toofz.Data.Tests
 {
     [Trait("Category", "Uses SQL Server")]
-    [Collection("Uses SQL Server")]
-    public abstract class IntegrationTestsBase : IDisposable
+    [Collection("Uses SQL Server (" + StorageHelper.ProjectName + nameof(NecroDancerContext) + ")")]
+    public abstract class NecroDancerIntegrationTestsBase : IDisposable
     {
-        public IntegrationTestsBase()
+        public NecroDancerIntegrationTestsBase(bool createDatabase = true)
         {
-            var connectionString = StorageHelper.GetDatabaseConnectionString(nameof(LeaderboardsContext));
-            var options = new DbContextOptionsBuilder<LeaderboardsContext>()
-                .UseSqlServer(connectionString)
+            var options = new DbContextOptionsBuilder<NecroDancerContext>()
+                .UseSqlServer(StorageHelper.GetDatabaseConnectionString(nameof(NecroDancerContext)))
                 .Options;
-            db = new LeaderboardsContext(options);
+            db = new NecroDancerContext(options);
 
             db.Database.EnsureDeleted();
+            if (createDatabase)
+            {
+                db.Database.EnsureCreated();
+            }
         }
 
-        protected readonly LeaderboardsContext db;
+        protected readonly NecroDancerContext db;
 
         #region IDisposable Implementation
 
@@ -37,7 +40,6 @@ namespace toofz.Data.Tests
             if (disposing)
             {
                 db.Database.EnsureDeleted();
-                db.Dispose();
             }
 
             disposed = true;

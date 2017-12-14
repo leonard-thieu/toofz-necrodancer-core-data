@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace toofz.Data.Migrations
+namespace toofz.Data.NecroDancer.Migrations
 {
     public partial class InitialCreate : Migration
     {

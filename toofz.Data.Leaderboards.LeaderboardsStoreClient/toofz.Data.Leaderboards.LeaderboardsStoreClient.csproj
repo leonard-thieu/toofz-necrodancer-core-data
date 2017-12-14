@@ -43,9 +43,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\toofz.Data.Leaderboards\toofz.Data.Leaderboards.csproj">
-      <Project>{0074dbd8-59a7-458c-88e3-6b5f35e28099}</Project>
-      <Name>toofz.Data.Leaderboards</Name>
+    <ProjectReference Include="..\toofz.Data.Core\toofz.Data.Core.csproj">
+      <Project>{1f5b079d-d458-4b4e-a3ab-f4965f78d1e5}</Project>
+      <Name>toofz.Data.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

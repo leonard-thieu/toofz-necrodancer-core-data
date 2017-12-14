@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 using toofz.Data;
 
-namespace toofz.Data.Migrations
+namespace toofz.Data.Leaderboards.Migrations
 {
     [DbContext(typeof(LeaderboardsContext))]
     [Migration("20171214142943_InitialCreate")]
