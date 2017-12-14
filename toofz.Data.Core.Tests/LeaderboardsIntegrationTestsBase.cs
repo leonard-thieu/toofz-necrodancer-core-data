@@ -5,7 +5,7 @@ using Xunit;
 namespace toofz.Data.Tests
 {
     [Trait("Category", "Uses SQL Server")]
-    [Collection("Uses SQL Server")]
+    [Collection("Uses SQL Server (" + StorageHelper.ProjectName + nameof(LeaderboardsContext) + ")")]
     public abstract class LeaderboardsIntegrationTestsBase : IDisposable
     {
         public LeaderboardsIntegrationTestsBase()

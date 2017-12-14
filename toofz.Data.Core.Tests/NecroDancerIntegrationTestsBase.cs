@@ -5,7 +5,7 @@ using Xunit;
 namespace toofz.Data.Tests
 {
     [Trait("Category", "Uses SQL Server")]
-    [Collection("Uses SQL Server")]
+    [Collection("Uses SQL Server (" + StorageHelper.ProjectName + nameof(NecroDancerContext) + ")")]
     public abstract class NecroDancerIntegrationTestsBase : IDisposable
     {
         public NecroDancerIntegrationTestsBase(bool createDatabase = true)
