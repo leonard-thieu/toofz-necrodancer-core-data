@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 using toofz.Data;
 
-namespace toofz.Data.Migrations
+namespace toofz.Data.NecroDancer.Migrations
 {
     [DbContext(typeof(NecroDancerContext))]
     [Migration("20171211171623_InitialCreate")]

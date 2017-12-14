@@ -4,7 +4,7 @@ namespace toofz.Data.Tests
 {
     internal static class StorageHelper
     {
-        private const string ProjectName = "DataLeaderboards";
+        public const string ProjectName = "Data";
 
         public static string GetStorageBaseName(string name)
         {

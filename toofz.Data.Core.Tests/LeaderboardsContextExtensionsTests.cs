@@ -6,7 +6,7 @@ namespace toofz.Data.Tests
 {
     public class LeaderboardsContextExtensionsTests
     {
-        public class IntegrationTests : IntegrationTestsBase
+        public class IntegrationTests : LeaderboardsIntegrationTestsBase
         {
             [DisplayFact]
             public void SeedsData()

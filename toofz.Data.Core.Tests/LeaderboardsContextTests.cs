@@ -187,7 +187,7 @@ namespace toofz.Data.Tests
             }
         }
 
-        public class IntegrationTests : IntegrationTestsBase
+        public class IntegrationTests : LeaderboardsIntegrationTestsBase
         {
             // Ported to EF Core from https://stackoverflow.com/a/42643788/414137
             [DisplayFact]
