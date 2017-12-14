@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using Xunit;
 
-namespace toofz.Data.Tests.Leaderboards
+namespace toofz.Data.Tests
 {
     public class SqlCommandExceptionTests
     {

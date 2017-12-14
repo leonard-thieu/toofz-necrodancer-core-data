@@ -1,31 +1,26 @@
-﻿using System.Data.Common;
-using System.Data.Entity;
+﻿using System.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace toofz.Data
 {
     public class LeaderboardsContext : DbContext, ILeaderboardsContext
     {
-        public LeaderboardsContext()
+        internal static string GetLocalDbConnectionString(string initialCatalog)
         {
-            Initialize();
+            var builder = new SqlConnectionStringBuilder
+            {
+                DataSource = @"(LocalDB)\MSSQLLocalDB",
+                InitialCatalog = initialCatalog,
+                IntegratedSecurity = true,
+                MultipleActiveResultSets = true,
+            };
+
+            return builder.ToString();
         }
 
-        public LeaderboardsContext(string nameOrConnectionString) : base(nameOrConnectionString)
-        {
-            Initialize();
-        }
+        public LeaderboardsContext() { }
 
-        public LeaderboardsContext(DbConnection existingConnection) : base(existingConnection, contextOwnsConnection: false)
-        {
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            Configuration.AutoDetectChangesEnabled = false;
-            Configuration.LazyLoadingEnabled = false;
-            Configuration.ProxyCreationEnabled = false;
-        }
+        public LeaderboardsContext(DbContextOptions<LeaderboardsContext> options) : base(options) { }
 
         public DbSet<Leaderboard> Leaderboards => Set<Leaderboard>();
         public DbSet<Entry> Entries => Set<Entry>();
@@ -38,20 +33,26 @@ namespace toofz.Data
         public DbSet<Run> Runs => Set<Run>();
         public DbSet<Character> Characters => Set<Character>();
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var configs = modelBuilder.Configurations;
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(GetLocalDbConnectionString("NecroDancer"));
+            }
+        }
 
-            configs.Add(new LeaderboardConfiguration());
-            configs.Add(new EntryConfiguration());
-            configs.Add(new DailyLeaderboardConfiguration());
-            configs.Add(new DailyEntryConfiguration());
-            configs.Add(new PlayerConfiguration());
-            configs.Add(new ReplayConfiguration());
-            configs.Add(new ProductConfiguration());
-            configs.Add(new ModeConfiguration());
-            configs.Add(new RunConfiguration());
-            configs.Add(new CharacterConfiguration());
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new LeaderboardConfiguration());
+            modelBuilder.ApplyConfiguration(new EntryConfiguration());
+            modelBuilder.ApplyConfiguration(new DailyLeaderboardConfiguration());
+            modelBuilder.ApplyConfiguration(new DailyEntryConfiguration());
+            modelBuilder.ApplyConfiguration(new PlayerConfiguration());
+            modelBuilder.ApplyConfiguration(new ReplayConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new ModeConfiguration());
+            modelBuilder.ApplyConfiguration(new RunConfiguration());
+            modelBuilder.ApplyConfiguration(new CharacterConfiguration());
         }
     }
 }

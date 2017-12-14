@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace toofz.Data.Tests.Leaderboards
+namespace toofz.Data.Tests
 {
     public class ILeaderboardsStoreClientExtensionsTests
     {

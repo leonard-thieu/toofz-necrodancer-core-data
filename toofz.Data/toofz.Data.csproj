@@ -31,6 +31,9 @@
     <ProjectReference Include="..\toofz.Data.Leaderboards\toofz.Data.Leaderboards.csproj">
       <PrivateAssets>all</PrivateAssets>
     </ProjectReference>
+    <ProjectReference Include="..\toofz.Data.Leaderboards.LeaderboardsStoreClient\toofz.Data.Leaderboards.LeaderboardsStoreClient.csproj">
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
     <ProjectReference Include="..\toofz.Data.NecroDancer\toofz.Data.NecroDancer.csproj">
       <PrivateAssets>all</PrivateAssets>
     </ProjectReference>
@@ -41,7 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="toofz.NecroDancer" Version="5.0.5" />
@@ -50,6 +53,7 @@
   <Target Name="IncludeP2PAssets">
     <ItemGroup>
       <BuildOutputInPackage Include="$(OutputPath)toofz.Data.Leaderboards.*" />
+      <BuildOutputInPackage Include="$(OutputPath)toofz.Data.Leaderboards.LeaderboardsStoreClient.*" />
       <BuildOutputInPackage Include="$(OutputPath)toofz.Data.NecroDancer.*" />
     </ItemGroup>
   </Target>

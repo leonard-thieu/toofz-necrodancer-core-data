@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity.Core.Mapping;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -27,15 +26,15 @@ namespace toofz.Data
             return Expression.Lambda<Func<object, object>>(getterExpression, entityParameter).Compile();
         }
 
-        public TypedDataReader(IEnumerable<ScalarPropertyMapping> scalarPropertyMappings, IEnumerable<T> items)
+        public TypedDataReader(IDictionary<string, string> columnMappings, IEnumerable<T> items)
         {
             var type = typeof(T);
-            foreach (var scalarPropertyMapping in scalarPropertyMappings)
+            foreach (var columnMapping in columnMappings)
             {
-                var getter = CreatePropertyGetter(type, scalarPropertyMapping.Property.Name);
+                var getter = CreatePropertyGetter(type, columnMapping.Key);
                 getters.Add(getter);
-                ordinals.Add(scalarPropertyMapping.Column.Name, fieldCount);
-                fieldCount++;
+                ordinals.Add(columnMapping.Value, FieldCount);
+                FieldCount++;
             }
             this.items = items.GetEnumerator();
         }
@@ -44,8 +43,7 @@ namespace toofz.Data
         private readonly Dictionary<string, int> ordinals = new Dictionary<string, int>();
         private readonly IEnumerator<T> items;
 
-        public int FieldCount => fieldCount;
-        private readonly int fieldCount;
+        public int FieldCount { get; }
 
         public int GetOrdinal(string name) => ordinals[name];
         public object GetValue(int i) => getters[i](items.Current);

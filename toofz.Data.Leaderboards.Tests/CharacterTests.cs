@@ -1,13 +1,13 @@
 ﻿using System;
 using Xunit;
 
-namespace toofz.Data.Tests.Leaderboards
+namespace toofz.Data.Tests
 {
     public class CharacterTests
     {
         public class Constructor
         {
-            [DisplayFact("Name", nameof(ArgumentNullException))]
+            [DisplayFact(nameof(ArgumentNullException))]
             public void NameIsNull_ThrowsArgumentNullException()
             {
                 // Arrange
