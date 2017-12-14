@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\toofz.Data.Leaderboards\toofz.Data.Leaderboards.csproj" />
+    <ProjectReference Include="..\toofz.Data.Core\toofz.Data.Core.csproj" />
   </ItemGroup>
 
 </Project>

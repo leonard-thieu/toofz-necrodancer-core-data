@@ -2,7 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+
     <IsPackable>false</IsPackable>
+
     <RootNamespace>toofz.Data.Tests</RootNamespace>
   </PropertyGroup>
 
@@ -15,10 +17,11 @@
     <PackageReference Include="xunit.assert" Version="2.3.1" />
     <PackageReference Include="xunit.core" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\toofz.Data.NecroDancer\toofz.Data.NecroDancer.csproj" />
+    <ProjectReference Include="..\toofz.Data.Core\toofz.Data.Core.csproj" />
   </ItemGroup>
 
 </Project>

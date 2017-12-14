@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace toofz.Data.Migrations
+namespace toofz.Data.Leaderboards.Migrations
 {
     public partial class InitialCreate : Migration
     {

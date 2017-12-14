@@ -6,9 +6,9 @@ namespace toofz.Data.Tests
 {
     [Trait("Category", "Uses SQL Server")]
     [Collection("Uses SQL Server")]
-    public abstract class IntegrationTestsBase : IDisposable
+    public abstract class LeaderboardsIntegrationTestsBase : IDisposable
     {
-        public IntegrationTestsBase()
+        public LeaderboardsIntegrationTestsBase()
         {
             var connectionString = StorageHelper.GetDatabaseConnectionString(nameof(LeaderboardsContext));
             var options = new DbContextOptionsBuilder<LeaderboardsContext>()
