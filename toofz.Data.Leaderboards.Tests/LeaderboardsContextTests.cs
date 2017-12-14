@@ -1,19 +1,30 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Data.Entity.Migrations;
-using System.Data.Entity.Migrations.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
-using toofz.Data.Migrations;
+using System.Reflection;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design.Internal;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations.Design;
+using Microsoft.Extensions.DependencyInjection;
+using Moq;
 using Xunit;
 using Xunit.Sdk;
 
-namespace toofz.Data.Tests.Leaderboards
+namespace toofz.Data.Tests
 {
     public class LeaderboardsContextTests
     {
-        private readonly LeaderboardsContext db = new LeaderboardsContext();
+        public LeaderboardsContextTests()
+        {
+            var options = new DbContextOptionsBuilder<LeaderboardsContext>()
+                .UseInMemoryDatabase(StorageHelper.GetStorageBaseName(nameof(LeaderboardsContext)))
+                .Options;
+            db = new LeaderboardsContext(options);
+        }
+
+        private readonly LeaderboardsContext db;
 
         public class Constructor
         {
@@ -28,16 +39,18 @@ namespace toofz.Data.Tests.Leaderboards
             }
         }
 
-        public class Constructor_String
+        public class Constructor_DbContextOptionsBuilder
         {
             [DisplayFact(nameof(LeaderboardsContext))]
             public void ReturnsLeaderboardsContext()
             {
                 // Arrange
-                var connectionString = StorageHelper.GetDatabaseConnectionString(nameof(LeaderboardsContext));
+                var options = new DbContextOptionsBuilder<LeaderboardsContext>()
+                    .UseInMemoryDatabase(StorageHelper.GetStorageBaseName(nameof(LeaderboardsContext)))
+                    .Options;
 
                 // Act
-                var db = new LeaderboardsContext(connectionString);
+                var db = new LeaderboardsContext(options);
 
                 // Assert
                 Assert.IsAssignableFrom<LeaderboardsContext>(db);
@@ -46,7 +59,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class LeaderboardsProperty : LeaderboardsContextTests
         {
-            [DisplayFact(nameof(DbSet))]
+            [DisplayFact(nameof(DbSet<Leaderboard>))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -59,7 +72,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class EntriesProperty : LeaderboardsContextTests
         {
-            [DisplayFact(nameof(DbSet))]
+            [DisplayFact(nameof(DbSet<Entry>))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -72,7 +85,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class DailyLeaderboardsProperty : LeaderboardsContextTests
         {
-            [DisplayFact(nameof(DbSet))]
+            [DisplayFact(nameof(DbSet<DailyLeaderboard>))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -85,7 +98,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class DailyEntriesProperty : LeaderboardsContextTests
         {
-            [DisplayFact(nameof(DbSet))]
+            [DisplayFact(nameof(DbSet<DailyEntry>))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -98,7 +111,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class PlayersProperty : LeaderboardsContextTests
         {
-            [DisplayFact(nameof(DbSet))]
+            [DisplayFact(nameof(DbSet<Player>))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -111,7 +124,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ReplaysProperty : LeaderboardsContextTests
         {
-            [DisplayFact(nameof(DbSet))]
+            [DisplayFact(nameof(DbSet<Replay>))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -124,7 +137,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ProductsProperty : LeaderboardsContextTests
         {
-            [DisplayFact(nameof(DbSet))]
+            [DisplayFact(nameof(DbSet<Product>))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -137,7 +150,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class ModesProperty : LeaderboardsContextTests
         {
-            [DisplayFact(nameof(DbSet))]
+            [DisplayFact(nameof(DbSet<Mode>))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -150,7 +163,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class RunsProperty : LeaderboardsContextTests
         {
-            [DisplayFact(nameof(DbSet))]
+            [DisplayFact(nameof(DbSet<Run>))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -163,7 +176,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class CharactersProperty : LeaderboardsContextTests
         {
-            [DisplayFact(nameof(DbSet))]
+            [DisplayFact(nameof(DbSet<Character>))]
             public void ReturnsDbSet()
             {
                 // Arrange -> Act
@@ -174,75 +187,54 @@ namespace toofz.Data.Tests.Leaderboards
             }
         }
 
-        public class IntegrationTests : LeaderboardsIntegrationTestsBase
+        public class IntegrationTests : IntegrationTestsBase
         {
-            [DisplayFact]
-            public void PreGeneratedMappingViewsAreUpToDate()
-            {
-                db.Leaderboards.FirstOrDefault();
-                db.Entries.FirstOrDefault();
-                db.DailyLeaderboards.FirstOrDefault();
-                db.DailyEntries.FirstOrDefault();
-                db.Players.FirstOrDefault();
-                db.Replays.FirstOrDefault();
-                db.Products.FirstOrDefault();
-                db.Modes.FirstOrDefault();
-                db.Runs.FirstOrDefault();
-                db.Characters.FirstOrDefault();
-            }
-
-            #region From https://stackoverflow.com/a/42643788/414137
-
+            // Ported to EF Core from https://stackoverflow.com/a/42643788/414137
             [DisplayFact]
             public void CanMigrateUpAndDown()
             {
-                var configuration = new Configuration();
-                var migrator = new DbMigrator(configuration);
+                var migrator = db.Database.GetService<IMigrator>();
 
                 // Retrieve migrations
-                var migrations = new List<string> { "0" };  // Not sure if "0" is more zero than the first item in list of local migrations
-                migrations.AddRange(migrator.GetLocalMigrations());
+                var migrations = new List<string> { "0" }; // Not sure if "0" is more zero than the first item in list of local migrations
+                migrations.AddRange(db.Database.GetMigrations());
 
                 try
                 {
-                    migrator.Update(migrations.First());
+                    migrator.Migrate(migrations.First());
 
                     for (int index = 0; index < migrations.Count; index++)
                     {
-                        migrator.Update(migrations[index]);
+                        migrator.Migrate(migrations[index]);
                         if (index > 0)
-                            migrator.Update(migrations[index - 1]);
+                            migrator.Migrate(migrations[index - 1]);
                     }
 
-                    migrator.Update(migrations.Last());
+                    migrator.Migrate(migrations.Last());
                 }
                 catch (SqlException ex)
                 {
-                    throw new XunitException("Should not have any errors when running migrations up and down: " + ex.Errors[0].Message.ToString());
+                    throw new XunitException($"Error when migrating. {ex.Errors[0].Message}");
                 }
             }
 
             [DisplayFact]
             public void ModelChangesAreNotPending()
             {
-                // NOTE: Using MigratorScriptingDecorator so changes won't be made to the database
-                var targetDatabase = new DbConnectionInfo(connectionString, "System.Data.SqlClient");
-                var migrationsConfiguration = new Configuration { TargetDatabase = targetDatabase };
-                var migrator = new DbMigrator(migrationsConfiguration);
-                var scriptingMigrator = new MigratorScriptingDecorator(migrator);
+                var servicesBuilder = new DesignTimeServicesBuilder(Assembly.GetEntryAssembly(), Mock.Of<IOperationReporter>());
+                var services = servicesBuilder.Build(db);
+                var dependencies = services.GetService<MigrationsScaffolderDependencies>();
 
-                try
+                var modelSnapshot = dependencies.MigrationsAssembly.ModelSnapshot;
+                Assert.NotNull(modelSnapshot);
+                var lastModel = dependencies.SnapshotModelProcessor.Process(modelSnapshot.Model);
+                var upOperations = dependencies.MigrationsModelDiffer.GetDifferences(lastModel, dependencies.Model);
+
+                if (upOperations.Any())
                 {
-                    // NOTE: Using InitialDatabase so history won't be read from the database
-                    scriptingMigrator.ScriptUpdate(DbMigrator.InitialDatabase, null);
-                }
-                catch (AutomaticMigrationsDisabledException)
-                {
-                    throw new XunitException("Should be no pending model changes/migrations should cover all model changes.");
+                    throw new XunitException("There are pending model changes.");
                 }
             }
-
-            #endregion
         }
     }
 }

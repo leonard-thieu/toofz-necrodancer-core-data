@@ -1,22 +1,21 @@
 ﻿using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Xunit;
 
-namespace toofz.Data.Tests.Leaderboards
+namespace toofz.Data.Tests
 {
-    public class LeaderboardsContextInitializerTests
+    public class LeaderboardsContextExtensionsTests
     {
-        public class IntegrationTests : LeaderboardsIntegrationTestsBase
+        public class IntegrationTests : IntegrationTestsBase
         {
-            public IntegrationTests() : base(initialize: false) { }
-
             [DisplayFact]
             public void SeedsData()
             {
                 // Arrange
-                var initializer = new LeaderboardsContextInitializer();
+                db.Database.Migrate();
 
                 // Act
-                initializer.InitializeDatabase(db);
+                db.EnsureSeedData();
 
                 // Assert
                 Assert.Equal(2, db.Products.Count());

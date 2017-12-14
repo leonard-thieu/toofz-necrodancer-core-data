@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xunit;
 
-namespace toofz.Data.Tests.Leaderboards
+namespace toofz.Data.Tests
 {
     public class LeaderboardTests
     {
