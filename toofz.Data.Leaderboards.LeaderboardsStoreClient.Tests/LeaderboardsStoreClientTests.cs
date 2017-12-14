@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace toofz.Data.Tests.Leaderboards
+namespace toofz.Data.Tests
 {
     public class LeaderboardsStoreClientTests : IDisposable
     {
@@ -85,7 +86,7 @@ namespace toofz.Data.Tests.Leaderboards
 
         public class InsertAsyncMethod : LeaderboardsStoreClientTests
         {
-            [DisplayFact("Items", nameof(ArgumentNullException))]
+            [DisplayFact(nameof(ArgumentNullException))]
             public async Task ItemsIsNull_ThrowsArgumentNullException()
             {
                 // Arrange
@@ -98,32 +99,29 @@ namespace toofz.Data.Tests.Leaderboards
                 });
             }
 
-            public class IntegrationTests : LeaderboardsIntegrationTestsBase
+            public class IntegrationTests : IntegrationTestsBase
             {
                 [DisplayFact]
                 public async Task BulkInsertsItems()
                 {
                     // Arrange
-                    using (var storeClient = new LeaderboardsStoreClient(connectionString))
+                    var items = new[]
                     {
-                        var items = new[]
-                        {
-                            new Entry(),
-                        };
+                        new Entry(),
+                    };
 
-                        // Act
-                        var rowsAffected = await storeClient.BulkInsertAsync(items, default);
+                    // Act
+                    var rowsAffected = await storeClient.BulkInsertAsync(items, default);
 
-                        // Assert
-                        Assert.Equal(items.Length, rowsAffected);
-                    }
+                    // Assert
+                    Assert.Equal(items.Count(), rowsAffected);
                 }
             }
         }
 
         public class UpsertAsyncMethod : LeaderboardsStoreClientTests
         {
-            [DisplayFact("Items", nameof(ArgumentNullException))]
+            [DisplayFact(nameof(ArgumentNullException))]
             public async Task ItemsIsNull_ThrowsArgumentNullException()
             {
                 // Arrange
@@ -136,7 +134,7 @@ namespace toofz.Data.Tests.Leaderboards
                 });
             }
 
-            [DisplayFact("Items")]
+            [DisplayFact]
             public async Task ItemsIsEmpty_ShortCircuits()
             {
                 // Arrange
@@ -149,25 +147,22 @@ namespace toofz.Data.Tests.Leaderboards
                 Assert.Equal(0, rowsAffected);
             }
 
-            public class IntegrationTests : LeaderboardsIntegrationTestsBase
+            public class IntegrationTests : IntegrationTestsBase
             {
                 [DisplayFact]
                 public async Task UpsertsItems()
                 {
                     // Arrange
-                    using (var storeClient = new LeaderboardsStoreClient(connectionString))
+                    var items = new[]
                     {
-                        var items = new[]
-                        {
-                            new Player(),
-                        };
+                        new Player(),
+                    };
 
-                        // Act
-                        var rowsAffected = await storeClient.BulkUpsertAsync(items, null, default);
+                    // Act
+                    var rowsAffected = await storeClient.BulkUpsertAsync(items, null, default);
 
-                        // Assert
-                        Assert.Equal(1, rowsAffected);
-                    }
+                    // Assert
+                    Assert.Equal(items.Count(), rowsAffected);
                 }
             }
         }

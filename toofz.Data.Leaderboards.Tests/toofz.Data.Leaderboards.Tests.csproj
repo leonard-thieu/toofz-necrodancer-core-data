@@ -1,86 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2D7D2823-2358-4424-9B07-91212C844B7C}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>toofz.Data.Tests</RootNamespace>
-    <AssemblyName>toofz.Data.Leaderboards.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>toofz.Data.Tests</RootNamespace>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Data" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.0.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
+    <PackageReference Include="Moq" Version="4.7.145" />
+    <PackageReference Include="toofz.Xunit" Version="1.0.9" />
+    <PackageReference Include="xunit.assert" Version="2.3.1" />
+    <PackageReference Include="xunit.core" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
   </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="toofz.Xunit">
-      <Version>1.0.9</Version>
-    </PackageReference>
-    <PackageReference Include="xunit.assert">
-      <Version>2.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="xunit.core">
-      <Version>2.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="xunit.runner.visualstudio">
-      <Version>2.3.1</Version>
-    </PackageReference>
+    <ProjectReference Include="..\toofz.Data.Leaderboards\toofz.Data.Leaderboards.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\toofz.Data.Leaderboards\toofz.Data.Leaderboards.csproj">
-      <Project>{7ffc370a-269e-4b95-bb94-c33ada758ee9}</Project>
-      <Name>toofz.Data.Leaderboards</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="CharacterTests.cs" />
-    <Compile Include="DailyEntryTests.cs" />
-    <Compile Include="DailyLeaderboardTests.cs" />
-    <Compile Include="EntityFrameworkExtensionsTests.cs" />
-    <Compile Include="EntryTests.cs" />
-    <Compile Include="ILeaderboardsStoreClientExtensionsTests.cs" />
-    <Compile Include="LeaderboardsContextInitializerTests.cs" />
-    <Compile Include="LeaderboardsContextTests.cs" />
-    <Compile Include="LeaderboardsIntegrationTestsBase.cs" />
-    <Compile Include="LeaderboardsStoreClientTests.cs" />
-    <Compile Include="LeaderboardTests.cs" />
-    <Compile Include="ModeTests.cs" />
-    <Compile Include="PlayerTests.cs" />
-    <Compile Include="ProductTests.cs" />
-    <Compile Include="ReplayTests.cs" />
-    <Compile Include="RunTests.cs" />
-    <Compile Include="SqlClientUtilTests.cs" />
-    <Compile Include="SqlCommandAdapterTests.cs" />
-    <Compile Include="SqlCommandExceptionTests.cs" />
-    <Compile Include="SqlConnectionExtensionsTests.cs" />
-    <Compile Include="StorageHelper.cs" />
-    <Compile Include="TypedDataReaderTests.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

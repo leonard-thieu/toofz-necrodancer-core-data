@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Mapping;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace toofz.Data
 {
@@ -55,32 +56,32 @@ namespace toofz.Data
 
             await connection.OpenIfClosedAsync(cancellationToken).ConfigureAwait(false);
 
-            MappingFragment mappingFragment;
-            using (var db = new LeaderboardsContext(connection))
-            {
-                mappingFragment = db.GetMappingFragment<TEntity>();
-            }
+            var entityType = GetEntityType<TEntity>();
 
-            var schemaName = mappingFragment.GetSchemaName();
-            var tableName = mappingFragment.GetTableName();
+            var schemaName = entityType.SqlServer().Schema ??
+                entityType.Model.SqlServer().DefaultSchema ??
+                "dbo";
+            var tableName = entityType.SqlServer().TableName;
             var viewName = tableName;
 
             var activeTableName = await connection.GetReferencedTableNameAsync(schemaName, viewName, cancellationToken).ConfigureAwait(false);
             var stagingTableName = activeTableName.EndsWith("_A") ?
-                $"{viewName}_B" :
-                $"{viewName}_A";
+                $"{tableName}_B" :
+                $"{tableName}_A";
+
+            var columnMappings = entityType.GetProperties().ToDictionary(p => p.Name, p => p.SqlServer().ColumnName);
 
             await connection.DisableNonclusteredIndexesAsync(stagingTableName, cancellationToken).ConfigureAwait(false);
             // Cannot assume that the staging table is empty even though it's truncated afterwards.
             // This can happen when initially working with a database that was modified by legacy code. Legacy code 
             // truncated at the beginning instead of after.
             await connection.TruncateTableAsync(stagingTableName, cancellationToken).ConfigureAwait(false);
-            await BulkCopyAsync(items, stagingTableName, mappingFragment, true, cancellationToken).ConfigureAwait(false);
+            await BulkCopyAsync(items, stagingTableName, columnMappings, true, cancellationToken).ConfigureAwait(false);
             await connection.RebuildNonclusteredIndexesAsync(stagingTableName, cancellationToken).ConfigureAwait(false);
             await connection.SwitchTableAsync(
                 viewName,
                 stagingTableName,
-                mappingFragment.GetColumnNames(),
+                entityType.GetProperties().Select(p => p.Name),
                 cancellationToken)
                 .ConfigureAwait(false);
             // Active table is now the new staging table
@@ -105,33 +106,44 @@ namespace toofz.Data
 
             await connection.OpenIfClosedAsync(cancellationToken).ConfigureAwait(false);
 
-            MappingFragment mappingFragment;
+            var entityType = GetEntityType<TEntity>();
 
-            using (var db = new LeaderboardsContext(connection))
-            {
-                mappingFragment = db.GetMappingFragment<TEntity>();
-            }
-
-            var tableName = mappingFragment.GetTableName();
+            var tableName = entityType.SqlServer().TableName;
             var tempTableName = $"#{tableName}";
 
+            var entityProperties = entityType.GetProperties();
+            var columnMappings = entityProperties.ToDictionary(p => p.Name, p => p.SqlServer().ColumnName);
+
             await connection.SelectIntoTemporaryTableAsync(tableName, tempTableName, cancellationToken).ConfigureAwait(false);
-            await BulkCopyAsync(items, tempTableName, mappingFragment, false, cancellationToken).ConfigureAwait(false);
+            await BulkCopyAsync(items, tempTableName, columnMappings, false, cancellationToken).ConfigureAwait(false);
 
             return await connection.MergeAsync(
                 tableName,
                 tempTableName,
-                mappingFragment.GetColumnNames(),
-                mappingFragment.GetPrimaryKeyColumnNames(),
+                entityProperties.Select(p => p.SqlServer().ColumnName),
+                entityType.FindPrimaryKey().Properties.Select(p => p.SqlServer().ColumnName),
                 options.UpdateWhenMatched,
                 cancellationToken)
                 .ConfigureAwait(false);
         }
 
+        private IEntityType GetEntityType<TEntity>()
+            where TEntity : class
+        {
+            var options = new DbContextOptionsBuilder<LeaderboardsContext>()
+                .UseSqlServer(connection)
+                .Options;
+
+            using (var db = new LeaderboardsContext(options))
+            {
+                return db.Model.GetEntityTypes().FirstOrDefault(t => t.ClrType == typeof(TEntity));
+            }
+        }
+
         private async Task BulkCopyAsync<TEntity>(
             IEnumerable<TEntity> items,
             string destinationTableName,
-            MappingFragment mappingFragment,
+            IDictionary<string, string> columnMappings,
             bool useTableLock,
             CancellationToken cancellationToken)
             where TEntity : class
@@ -144,12 +156,12 @@ namespace toofz.Data
                 sqlBulkCopy.BulkCopyTimeout = 0;
                 sqlBulkCopy.DestinationTableName = destinationTableName;
 
-                foreach (var columnName in mappingFragment.GetColumnNames())
+                foreach (var columnMapping in columnMappings)
                 {
-                    sqlBulkCopy.ColumnMappings.Add(columnName, columnName);
+                    sqlBulkCopy.ColumnMappings.Add(columnMapping.Key, columnMapping.Value);
                 }
 
-                using (var reader = new TypedDataReader<TEntity>(mappingFragment.GetScalarPropertyMappings(), items))
+                using (var reader = new TypedDataReader<TEntity>(columnMappings, items))
                 {
                     await sqlBulkCopy.WriteToServerAsync(reader, cancellationToken).ConfigureAwait(false);
                 }

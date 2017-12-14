@@ -1,22 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.ModelConfiguration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace toofz.Data
 {
-    internal sealed class DailyLeaderboardConfiguration : EntityTypeConfiguration<DailyLeaderboard>
+    internal sealed class DailyLeaderboardConfiguration : IEntityTypeConfiguration<DailyLeaderboard>
     {
-        public DailyLeaderboardConfiguration()
+        public void Configure(EntityTypeBuilder<DailyLeaderboard> builder)
         {
-            this.HasKey(c => c.LeaderboardId);
-            this.Property(c => c.LeaderboardId)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-            this.Property(c => c.DisplayName)
+            builder.HasKey(c => c.LeaderboardId);
+            builder.Property(c => c.LeaderboardId)
+                   .ValueGeneratedNever();
+            builder.Property(c => c.DisplayName)
                 .IsRequired();
-            this.Property(c => c.Name)
+            builder.Property(c => c.Name)
                 .IsRequired();
-            this.Property(c => c.Date)
+            builder.Property(c => c.Date)
                 .HasColumnType("date");
-            this.HasIndex(c => new
+            builder.HasIndex(c => new
             {
                 c.Date,
                 c.ProductId,

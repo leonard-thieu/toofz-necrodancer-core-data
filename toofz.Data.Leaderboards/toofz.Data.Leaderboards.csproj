@@ -1,155 +1,38 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7FFC370A-269E-4B95-BB94-C33ADA758EE9}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>toofz.Data</RootNamespace>
-    <AssemblyName>toofz.Data.Leaderboards</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\toofz.Data.Leaderboards.xml</DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\toofz.Data.Leaderboards.xml</DocumentationFile>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="EntityFramework">
-      <Version>6.2.0</Version>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>10.0.3</Version>
-    </PackageReference>
+    <Compile Include="..\GlobalAssemblyInfo.cs" Link="Properties\GlobalAssemblyInfo.cs" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="..\GlobalAssemblyInfo.cs">
-      <Link>Properties\GlobalAssemblyInfo.cs</Link>
-    </Compile>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Resources\Characters.json" />
-    <None Include="Resources\DailyLeaderboards.json" />
-    <None Include="Resources\Leaderboards.json" />
-    <None Include="Resources\Modes.json" />
-    <None Include="Resources\Products.json" />
-    <None Include="Resources\Runs.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Migrations\201710131410491_InitialCreate.cs" />
-    <Compile Include="Migrations\201710131410491_InitialCreate.Designer.cs">
-      <DependentUpon>201710131410491_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Migrations\201710131410491_InitialCreate.resx">
-      <DependentUpon>201710131410491_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="Migrations\201710171713545_BlackNickelBorderCollie.cs" />
-    <Compile Include="Migrations\201710171713545_BlackNickelBorderCollie.Designer.cs">
-      <DependentUpon>201710171713545_BlackNickelBorderCollie.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Migrations\201710171713545_BlackNickelBorderCollie.resx">
-      <DependentUpon>201710171713545_BlackNickelBorderCollie.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="Migrations\201710211500252_TealBrassLabrador.cs" />
-    <Compile Include="Migrations\201710211500252_TealBrassLabrador.Designer.cs">
-      <DependentUpon>201710211500252_TealBrassLabrador.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Migrations\201710211500252_TealBrassLabrador.resx">
-      <DependentUpon>201710211500252_TealBrassLabrador.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="Migrations\201710221313149_WhiteBrassPointer.cs" />
-    <Compile Include="Migrations\201710221313149_WhiteBrassPointer.Designer.cs">
-      <DependentUpon>201710221313149_WhiteBrassPointer.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Migrations\201710221313149_WhiteBrassPointer.resx">
-      <DependentUpon>201710221313149_WhiteBrassPointer.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="Migrations\201710271604233_RedAluminiumPitBullTerrier.cs" />
-    <Compile Include="Migrations\201710271604233_RedAluminiumPitBullTerrier.Designer.cs">
-      <DependentUpon>201710271604233_RedAluminiumPitBullTerrier.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Migrations\201710271604233_RedAluminiumPitBullTerrier.resx">
-      <DependentUpon>201710271604233_RedAluminiumPitBullTerrier.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="Migrations\201710282008052_OliveSteelSpitz.cs" />
-    <Compile Include="Migrations\201710282008052_OliveSteelSpitz.Designer.cs">
-      <DependentUpon>201710282008052_OliveSteelSpitz.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Migrations\201710282008052_OliveSteelSpitz.resx">
-      <DependentUpon>201710282008052_OliveSteelSpitz.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="Migrations\Configuration.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="BulkUpsertOptions.cs" />
-    <Compile Include="Character.cs" />
-    <Compile Include="CharacterConfiguration.cs" />
-    <Compile Include="DailyEntry.cs" />
-    <Compile Include="DailyEntryConfiguration.cs" />
-    <Compile Include="DailyLeaderboard.cs" />
-    <Compile Include="DailyLeaderboardConfiguration.cs" />
-    <Compile Include="EntityFrameworkExtensions.cs" />
-    <Compile Include="Entry.cs" />
-    <Compile Include="EntryConfiguration.cs" />
-    <Compile Include="ILeaderboardsContext.cs" />
-    <Compile Include="ILeaderboardsStoreClient.cs" />
-    <Compile Include="ILeaderboardsStoreClientExtensions.cs" />
-    <Compile Include="Leaderboard.cs" />
-    <Compile Include="LeaderboardConfiguration.cs" />
-    <Compile Include="LeaderboardsContext.cs" />
-    <Compile Include="LeaderboardsContext.Views.cs" />
-    <Compile Include="LeaderboardsContextInitializer.cs" />
-    <Compile Include="LeaderboardsStoreClient.cs" />
-    <Compile Include="Mode.cs" />
-    <Compile Include="ModeConfiguration.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="PlayerConfiguration.cs" />
-    <Compile Include="Product.cs" />
-    <Compile Include="ProductConfiguration.cs" />
-    <Compile Include="Replay.cs" />
-    <Compile Include="ReplayConfiguration.cs" />
-    <Compile Include="Run.cs" />
-    <Compile Include="RunConfiguration.cs" />
-    <Compile Include="SqlClientUtil.cs" />
-    <Compile Include="SqlCommandAdapter.cs" />
-    <Compile Include="SqlCommandException.cs" />
-    <Compile Include="SqlConnectionExtensions.cs" />
-    <Compile Include="TypedDataReader.cs" />
-    <Compile Include="Util.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>
