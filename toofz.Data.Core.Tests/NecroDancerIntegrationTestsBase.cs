@@ -5,13 +5,14 @@ using Xunit;
 namespace toofz.Data.Tests
 {
     [Trait("Category", "Uses SQL Server")]
-    [Collection("Uses SQL Server (" + StorageHelper.ProjectName + nameof(NecroDancerContext) + ")")]
+    [Collection("Uses SQL Server (" + Constants.NecroDancerContextName + ")")]
     public abstract class NecroDancerIntegrationTestsBase : IDisposable
     {
         public NecroDancerIntegrationTestsBase(bool createDatabase = true)
         {
+            var connectionString = StorageHelper.GetDatabaseConnectionString(Constants.NecroDancerContextName);
             var options = new DbContextOptionsBuilder<NecroDancerContext>()
-                .UseSqlServer(StorageHelper.GetDatabaseConnectionString(nameof(NecroDancerContext)))
+                .UseSqlServer(connectionString)
                 .Options;
             db = new NecroDancerContext(options);
 

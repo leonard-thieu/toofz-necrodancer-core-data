@@ -1,23 +1,9 @@
-﻿using System.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace toofz.Data
 {
     public class LeaderboardsContext : DbContext, ILeaderboardsContext
     {
-        internal static string GetLocalDbConnectionString(string initialCatalog)
-        {
-            var builder = new SqlConnectionStringBuilder
-            {
-                DataSource = @"(LocalDB)\MSSQLLocalDB",
-                InitialCatalog = initialCatalog,
-                IntegratedSecurity = true,
-                MultipleActiveResultSets = true,
-            };
-
-            return builder.ToString();
-        }
-
         public LeaderboardsContext() { }
 
         public LeaderboardsContext(DbContextOptions<LeaderboardsContext> options) : base(options) { }
@@ -37,7 +23,7 @@ namespace toofz.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(GetLocalDbConnectionString("NecroDancer"));
+                optionsBuilder.UseSqlServer(StorageHelper.GetLocalDbConnectionString("NecroDancer"));
             }
         }
 

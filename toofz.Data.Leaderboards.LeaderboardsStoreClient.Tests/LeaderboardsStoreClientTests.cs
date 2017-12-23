@@ -11,7 +11,7 @@ namespace toofz.Data.Tests
     {
         public LeaderboardsStoreClientTests()
         {
-            var connectionString = StorageHelper.GetDatabaseConnectionString(nameof(LeaderboardsContext));
+            var connectionString = StorageHelper.GetDatabaseConnectionString(Constants.LeaderboardsStoreClientName);
             storeClient = new LeaderboardsStoreClient(connectionString);
         }
 

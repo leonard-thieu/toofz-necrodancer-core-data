@@ -5,12 +5,12 @@ using Xunit;
 namespace toofz.Data.Tests
 {
     [Trait("Category", "Uses SQL Server")]
-    [Collection("Uses SQL Server (" + StorageHelper.ProjectName + nameof(LeaderboardsContext) + ")")]
+    [Collection("Uses SQL Server (" + Constants.LeaderboardsContextName + ")")]
     public abstract class LeaderboardsIntegrationTestsBase : IDisposable
     {
         public LeaderboardsIntegrationTestsBase()
         {
-            var connectionString = StorageHelper.GetDatabaseConnectionString(nameof(LeaderboardsContext));
+            var connectionString = StorageHelper.GetDatabaseConnectionString(Constants.LeaderboardsContextName);
             var options = new DbContextOptionsBuilder<LeaderboardsContext>()
                 .UseSqlServer(connectionString)
                 .Options;

@@ -19,7 +19,7 @@ namespace toofz.Data.Tests
         public LeaderboardsContextTests()
         {
             var options = new DbContextOptionsBuilder<LeaderboardsContext>()
-                .UseInMemoryDatabase(StorageHelper.GetStorageBaseName(nameof(LeaderboardsContext)))
+                .UseInMemoryDatabase(databaseName: Constants.LeaderboardsContextName)
                 .Options;
             db = new LeaderboardsContext(options);
         }
@@ -46,7 +46,7 @@ namespace toofz.Data.Tests
             {
                 // Arrange
                 var options = new DbContextOptionsBuilder<LeaderboardsContext>()
-                    .UseInMemoryDatabase(StorageHelper.GetStorageBaseName(nameof(LeaderboardsContext)))
+                .UseInMemoryDatabase(databaseName: Constants.LeaderboardsContextName)
                     .Options;
 
                 // Act
