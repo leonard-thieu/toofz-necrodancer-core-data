@@ -20,7 +20,7 @@ namespace toofz.Data.Tests
         public NecroDancerContextTests()
         {
             var options = new DbContextOptionsBuilder<NecroDancerContext>()
-                .UseInMemoryDatabase(StorageHelper.GetStorageBaseName(nameof(NecroDancerContext)))
+                .UseInMemoryDatabase(databaseName: Constants.NecroDancerContextName)
                 .Options;
             db = new NecroDancerContext(options);
         }
@@ -34,7 +34,7 @@ namespace toofz.Data.Tests
             {
                 // Arrange
                 var options = new DbContextOptionsBuilder<NecroDancerContext>()
-                    .UseInMemoryDatabase(StorageHelper.GetStorageBaseName(nameof(NecroDancerContext)))
+                .UseInMemoryDatabase(databaseName: Constants.NecroDancerContextName)
                     .Options;
 
                 // Act
