@@ -8,10 +8,8 @@ namespace toofz.Data
     {
         public static string GetDatabaseConnectionString(string name)
         {
-            var connectionString = GetConnectionString(name);
-            if (connectionString != null) { return connectionString; }
-
-            return GetLocalDbConnectionString(name);
+            return GetConnectionString(name) ??
+                   GetLocalDbConnectionString(name);
         }
 
         public static string GetLocalDbConnectionString(string initialCatalog)
@@ -25,7 +23,7 @@ namespace toofz.Data
             return builder.ToString();
         }
 
-        private static string GetConnectionString(string name)
+        public static string GetConnectionString(string name)
         {
             return Environment.GetEnvironmentVariable($"{name}ConnectionString", EnvironmentVariableTarget.Machine) ??
                    ConfigurationManager.ConnectionStrings[name]?.ConnectionString;
