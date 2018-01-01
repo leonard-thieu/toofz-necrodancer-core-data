@@ -1,44 +1,41 @@
-version: $(VERSION).{build}
+version: $(VersionPrefix).{build}
 image: Visual Studio 2017
 
+skip_branch_with_pr: true
+skip_commits:
+  files:
+    - LICENSE
+    - README.md
 configuration:
   - Release
 environment:
-  PROJECT: toofz.Data
-  VERSION: 0.0.0
-  VERSION_SUFFIX: dev
-  MYGET_API_KEY:
+  VersionPrefix: 0.0.0
+  VersionSuffix: dev
+  FileVersion: '%APPVEYOR_BUILD_VERSION%'
+  PackageServerApiKey:
     secure: XZmbJDCK5oiqhbLt1y7UXM6aCYPpF2tm/bJMUJzBsCe1fd2TuwXyaz99RN+bDpHw
 notifications:
   - provider: Slack
     incoming_webhook:
       secure: c7l1UmXHWpIDLL1awU4r0QYVPToYM/XjV8trFyD1oHArKxs/vBTYiKYScr1EhCUgmEX6sAFBTvkUHF/k5B+cGjzqRBR2XkAO+lzk8cHQ1FI=
-assembly_info:
-  patch: true
-  file: \GlobalAssemblyInfo.cs
-  assembly_version: $(VERSION)
-  assembly_file_version: $(VERSION).{build}
-  assembly_informational_version: $(PACKAGEVERSION)
 
-init:
-  - git config --global core.autocrlf input
 install:
-  - ps: $env:PACKAGEVERSION = $env:VERSION + @{ $true = "-$env:VERSION_SUFFIX"; $false = '' }[(Test-Path Env:\VERSION_SUFFIX)]
   - nuget update -Self
-  - git clone https://github.com/leonard-thieu/toofz-build.git Scripts
   
 before_build:
   - appveyor-retry nuget restore -Verbosity quiet
 build:
-  project: $(PROJECT).sln
+  project: toofz.Data.sln
   verbosity: minimal
 
 test_script:
-  - ps: .\Scripts\Test-Project.ps1 -Project 'toofz.Data.Core'
-  - ps: .\Scripts\Test-Project.ps1 -Project 'toofz.Data.Leaderboards.LeaderboardsStoreClient'
-after_test:
-  - ps: .\Scripts\Submit-CodeCoverageResults.ps1 -Project 'toofz.Data.Core'
-  - ps: .\Scripts\Submit-CodeCoverageResults.ps1 -Project 'toofz.Data.Leaderboards.LeaderboardsStoreClient'
+  - ps: |
+      $projectPath = Resolve-Path .\test\toofz.Data.Core.Tests\toofz.Data.Core.Tests.csproj
+      msbuild $projectPath /nologo /verbosity:minimal /target:Test
+      $projectPath = Resolve-Path .\test\toofz.Data.Leaderboards.LeaderboardsStoreClient.Tests\toofz.Data.Leaderboards.LeaderboardsStoreClient.Tests.csproj
+      msbuild $projectPath /nologo /verbosity:minimal /target:Test
 
 deploy_script:
-  - ps: .\Scripts\Deploy-NuGetPackage.ps1
+  - ps: |
+      $projectPath = Resolve-Path .\src\toofz.Data\toofz.Data.csproj
+      msbuild $projectPath /nologo /verbosity:minimal /target:Pack /property:PublishPackage=$env:APPVEYOR_REPO_TAG

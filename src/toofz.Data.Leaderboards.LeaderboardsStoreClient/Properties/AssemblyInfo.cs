@@ -1,6 +1,3 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-
-[assembly: AssemblyTitle("toofz Data (LeaderboardsStoreClient)")]
+﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("toofz.Data.Leaderboards.LeaderboardsStoreClient.Tests")]
