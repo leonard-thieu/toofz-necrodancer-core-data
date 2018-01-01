@@ -48,11 +48,11 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\toofz.Data.Core\toofz.Data.Core.csproj">
-      <Project>{1f5b079d-d458-4b4e-a3ab-f4965f78d1e5}</Project>
+    <ProjectReference Include="..\..\src\toofz.Data.Core\toofz.Data.Core.csproj">
+      <Project>{a20d120d-cbd9-4c22-8a19-d5ba6275b57f}</Project>
       <Name>toofz.Data.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\toofz.Data.Leaderboards.LeaderboardsStoreClient\toofz.Data.Leaderboards.LeaderboardsStoreClient.csproj">
+    <ProjectReference Include="..\..\src\toofz.Data.Leaderboards.LeaderboardsStoreClient\toofz.Data.Leaderboards.LeaderboardsStoreClient.csproj">
       <Project>{9707c87a-9fe4-4523-a75d-e7617719433d}</Project>
       <Name>toofz.Data.Leaderboards.LeaderboardsStoreClient</Name>
     </ProjectReference>

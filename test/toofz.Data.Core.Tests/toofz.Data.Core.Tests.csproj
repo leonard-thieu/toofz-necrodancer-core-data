@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\toofz.Data.Core\toofz.Data.Core.csproj" />
+    <ProjectReference Include="..\..\src\toofz.Data.Core\toofz.Data.Core.csproj" />
   </ItemGroup>
 
 </Project>
