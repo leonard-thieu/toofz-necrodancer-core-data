@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <!-- https://github.com/dotnet/cli/issues/3959 -->
     <TargetsForTfmSpecificBuildOutput>
       $(TargetsForTfmSpecificBuildOutput);
@@ -11,11 +10,6 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>
-      $(AllowedOutputExtensionsInPackageBuildOutputFolder);
-      .pdb
-    </AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <PackageVersion Condition=" '$(PackageVersion)' == '' ">0.0.0-dev</PackageVersion>
     <Authors>Leonard Thieu</Authors>
     <Title>toofz Data</Title>
     <Description>Data access layer for toofz.</Description>
@@ -32,6 +26,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.1" />
+    <PackageReference Include="toofz.Build" Version="2.0.0">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="toofz.NecroDancer" Version="5.0.5" />
   </ItemGroup>
 
@@ -42,10 +39,6 @@
     <ProjectReference Include="..\toofz.Data.Leaderboards.LeaderboardsStoreClient\toofz.Data.Leaderboards.LeaderboardsStoreClient.csproj">
       <PrivateAssets>all</PrivateAssets>
     </ProjectReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="..\GlobalAssemblyInfo.cs" Link="Properties\GlobalAssemblyInfo.cs" />
   </ItemGroup>
 
   <Target Name="IncludeP2PAssets">
