@@ -1,11 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
-    <!-- https://github.com/dotnet/cli/issues/3959 -->
-    <TargetsForTfmSpecificBuildOutput>
-      $(TargetsForTfmSpecificBuildOutput);
-      IncludeP2PAssets
-    </TargetsForTfmSpecificBuildOutput>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -18,6 +13,12 @@
     <PackageIconUrl>https://user-images.githubusercontent.com/5265970/29717713-27e1a95c-897e-11e7-9d28-dae64be705b5.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/leonard-thieu/toofz-data.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+
+    <!-- 
+      Don't include build output from this project. This project is a C# project but its purpose is 
+      only to build the NuGet package.
+    -->
+    <IncludeThisBuildOutput>false</IncludeThisBuildOutput>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,18 +33,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\toofz.Data.Core\toofz.Data.Core.csproj">
-      <PrivateAssets>all</PrivateAssets>
-    </ProjectReference>
-    <ProjectReference Include="..\toofz.Data.Leaderboards.LeaderboardsStoreClient\toofz.Data.Leaderboards.LeaderboardsStoreClient.csproj">
-      <PrivateAssets>all</PrivateAssets>
-    </ProjectReference>
+    <ProjectReference Include="..\toofz.Data.Core\toofz.Data.Core.csproj" />
+    <ProjectReference Include="..\toofz.Data.Leaderboards.LeaderboardsStoreClient\toofz.Data.Leaderboards.LeaderboardsStoreClient.csproj" />
   </ItemGroup>
 
-  <Target Name="IncludeP2PAssets">
-    <ItemGroup>
-      <BuildOutputInPackage Include="$(OutputPath)toofz.Data.Core.*" />
-      <BuildOutputInPackage Include="$(OutputPath)toofz.Data.Leaderboards.LeaderboardsStoreClient.*" />
-    </ItemGroup>
-  </Target>
+  <Import Project="WalkEachTargetPerProject.targets" />
 </Project>

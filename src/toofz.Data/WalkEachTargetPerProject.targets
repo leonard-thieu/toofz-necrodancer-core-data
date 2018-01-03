@@ -1,0 +1,46 @@
+<!-- https://github.com/dotnet/cli/issues/3959 -->
+<Project>
+  <ItemDefinitionGroup>
+    <ProjectReference>
+      <!-- Don't include project references as dependencies. -->
+      <PrivateAssets>All</PrivateAssets>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+
+  <!-- HACK: Uses internal NuGet targets. -->
+  <Target Name="_ExcludeThisBuildOutput" BeforeTargets="_WalkEachTargetPerFramework">
+    <PropertyGroup>
+      <IncludeBuildOutput Condition="'$(IncludeThisBuildOutput)' == 'false'">false</IncludeBuildOutput>
+    </PropertyGroup>
+  </Target>
+
+  <!-- HACK: Uses internal NuGet targets. -->
+  <Target Name="_WalkEachTargetPerProject" AfterTargets="_WalkEachTargetPerFramework">
+    <PropertyGroup>
+      <!-- Include the following outputs in the package. -->
+      <IncludeBuildOutput Condition="'$(IncludeThisBuildOutput)' == 'false'">true</IncludeBuildOutput>
+    </PropertyGroup>
+
+    <!-- Includes the output assembly, satellite assemblies, documentation file, and Pri file. -->
+    <MSBuild Projects="@(ProjectReference)" Targets="_GetBuildOutputFilesWithTfm">
+      <Output TaskParameter="TargetOutputs" ItemName="_BuildOutputInPackage" />
+    </MSBuild>
+
+    <!-- Include content files. -->
+    <MSBuild Projects="@(ProjectReference)" Targets="_GetTfmSpecificContentForPackage">
+      <Output TaskParameter="TargetOutputs" ItemName="_PackageFiles" />
+    </MSBuild>
+
+    <!-- Includes debug symbols. -->
+    <MSBuild Projects="@(ProjectReference)" Targets="_GetDebugSymbolsWithTfm">
+      <Output TaskParameter="TargetOutputs" ItemName="_TargetPathsToSymbols" />
+    </MSBuild>
+
+    <!-- Include source files. -->
+    <MSBuild Projects="@(ProjectReference)" Targets="SourceFilesProjectOutputGroup"
+             Properties="BuildProjectReferences=false"
+             Condition="'$(IncludeSource)' == 'true'">
+      <Output TaskParameter="TargetOutputs" ItemName="_SourceFiles" />
+    </MSBuild>
+  </Target>
+</Project>
