@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="toofz.Build" Version="2.0.0" />
+    <PackageReference Include="toofz.Build" Version="2.1.1" />
     <PackageReference Include="toofz.Xunit" Version="1.0.9" />
     <PackageReference Include="xunit.assert" Version="2.3.1" />
     <PackageReference Include="xunit.core" Version="2.3.1" />
