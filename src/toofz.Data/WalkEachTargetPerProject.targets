@@ -35,6 +35,7 @@
   </Target>
 
   <Target Name="_WalkEachProjectPerFramework"
+          DependsOnTargets="Restore"
           AfterTargets="_WalkEachTargetPerFramework">
     <PropertyGroup>
       <!-- Include the following outputs in the package. -->
