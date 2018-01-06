@@ -29,7 +29,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.1" />
-    <PackageReference Include="toofz.Build" Version="2.1.1">
+    <PackageReference Include="toofz.Build" Version="2.2.0">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="toofz.NecroDancer" Version="5.0.5" />
