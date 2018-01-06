@@ -1,6 +1,72 @@
 <!-- https://github.com/dotnet/cli/issues/3959 -->
 <!-- HACK: Uses internal NuGet targets. -->
 <Project>
+  <UsingTask TaskName="_NormalizePackageReferences"
+             TaskFactory="CodeTaskFactory"
+             AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <PackageReferences ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" Output="true" />
+    </ParameterGroup>
+
+    <Task>
+      <Reference Include="$(MicrosoftNETBuildTasksDirectory)NuGet.LibraryModel.dll" />
+      <Using Namespace="NuGet.LibraryModel" />
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+// Group packages by package ID
+foreach (var prGroup in PackageReferences.GroupBy(pr => new { Id = pr.ItemSpec, Version = pr.GetMetadata("Version") }))
+{
+    var group = prGroup.ToList();
+
+    // Get private assets that appear in ALL instances of the package reference.
+    // This makes it so that a package with PrivateAssets set to All in one project and to its 
+    // default value in another project is still included as a dependency.
+    var _minFlags = group
+        .SelectMany(pr =>
+        {
+            var flags = LibraryIncludeFlagUtils.GetFlags(pr.GetMetadata("PrivateAssets").Replace(';', ','), LibraryIncludeFlagUtils.DefaultSuppressParent);
+
+            return Enum.GetValues(typeof(LibraryIncludeFlags))
+                .Cast<LibraryIncludeFlags>()
+                .Where(f => flags.HasFlag(f))
+                .ToList();
+        })
+        .GroupBy(f => f)
+        .Where(fg => fg.Count() == group.Count)
+        .Select(fg => fg.Key);
+
+    var minFlags = LibraryIncludeFlags.None;
+    foreach (var flag in _minFlags)
+    {
+        minFlags |= flag;
+    }
+
+    string assets = null;
+    switch (minFlags)
+    {
+        case LibraryIncludeFlags.None:
+        case LibraryIncludeFlags.All:
+            assets = minFlags.ToString();
+            break;
+
+        default:
+            if (minFlags != LibraryIncludeFlagUtils.DefaultSuppressParent)
+            {
+                assets = string.Join(";", _minFlags.Where(f => f != LibraryIncludeFlags.None));
+            }
+            break;
+    }
+
+    foreach (var pr in group)
+    {
+        pr.SetMetadata("PrivateAssets", assets);
+    }
+}
+        ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+
   <!-- Remove project references from appearing as dependencies. -->
   <Target Name="_RemoveProjectReferences"
           AfterTargets="_GenerateRestoreGraph">
@@ -23,8 +89,18 @@
     <!-- NOTE: This doesn't collect package references from projects with PrivateAssets set to All. -->
     <MSBuild Projects="@(ProjectReference)"
              Targets="CollectPackageReferences">
-      <Output TaskParameter="TargetOutputs" ItemName="PackageReference" />
+      <Output TaskParameter="TargetOutputs" ItemName="_PackageReference" />
     </MSBuild>
+
+    <ItemGroup>
+      <!-- Include the packaging project's package references for normalization. -->
+      <_PackageReference Include="@(PackageReference)" />
+      <PackageReference Remove="@(PackageReference)" />
+    </ItemGroup>
+
+    <_NormalizePackageReferences PackageReferences="@(_PackageReference)">
+      <Output TaskParameter="PackageReferences" ItemName="PackageReference" />
+    </_NormalizePackageReferences>
   </Target>
 
   <Target Name="_ExcludeThisBuildOutput"
