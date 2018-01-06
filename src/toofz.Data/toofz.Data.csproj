@@ -29,7 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\toofz.Data.Core\toofz.Data.Core.csproj" />
-    <ProjectReference Include="..\toofz.Data.Leaderboards.LeaderboardsStoreClient\toofz.Data.Leaderboards.LeaderboardsStoreClient.csproj" />
+    <ProjectReference Include="..\toofz.Data.LeaderboardsStoreClient\toofz.Data.LeaderboardsStoreClient.csproj" />
   </ItemGroup>
 
   <Import Project="WalkEachTargetPerProject.targets" />

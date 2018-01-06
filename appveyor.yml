@@ -29,7 +29,7 @@ test_script:
   - ps: |
       $projectPath = Resolve-Path .\test\toofz.Data.Core.Tests\toofz.Data.Core.Tests.csproj
       msbuild $projectPath /nologo /verbosity:minimal /target:Test
-      $projectPath = Resolve-Path .\test\toofz.Data.Leaderboards.LeaderboardsStoreClient.Tests\toofz.Data.Leaderboards.LeaderboardsStoreClient.Tests.csproj
+      $projectPath = Resolve-Path .\test\toofz.Data.LeaderboardsStoreClient.Tests\toofz.Data.LeaderboardsStoreClient.Tests.csproj
       msbuild $projectPath /nologo /verbosity:minimal /target:Test
 
 deploy_script:

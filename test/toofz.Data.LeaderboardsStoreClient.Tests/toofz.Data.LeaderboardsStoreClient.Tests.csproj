@@ -15,6 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\toofz.Data.Leaderboards.LeaderboardsStoreClient\toofz.Data.Leaderboards.LeaderboardsStoreClient.csproj" />
+    <ProjectReference Include="..\..\src\toofz.Data.LeaderboardsStoreClient\toofz.Data.LeaderboardsStoreClient.csproj" />
   </ItemGroup>
 </Project>
