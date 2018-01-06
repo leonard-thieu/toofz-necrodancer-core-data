@@ -7,11 +7,11 @@ using toofz.Data.Properties;
 namespace toofz.Data
 {
     /// <summary>
-    /// Contains extension methods for <see cref="LeaderboardsContext"/>.
+    /// Contains extension methods for <see cref="NecroDancerContext"/>.
     /// </summary>
-    public static class LeaderboardsContextExtensions
+    public static class NecroDancerContextExtensions
     {
-        public static void EnsureSeedData(this LeaderboardsContext context)
+        public static void EnsureSeedData(this NecroDancerContext context)
         {
             if (!context.Database.GetPendingMigrations().Any())
             {

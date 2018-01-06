@@ -74,7 +74,7 @@ namespace toofz.Data.Tests
             public void ReturnsLeaderboardsStoreClient()
             {
                 // Arrange
-                var connectionString = StorageHelper.GetDatabaseConnectionString(nameof(LeaderboardsContext));
+                var connectionString = StorageHelper.GetDatabaseConnectionString(nameof(NecroDancerContext));
 
                 // Act
                 var storeClient = new LeaderboardsStoreClient(connectionString);

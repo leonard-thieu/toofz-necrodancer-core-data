@@ -71,10 +71,138 @@ namespace toofz.Data.Tests
             }
         }
 
+        public class LeaderboardsProperty : NecroDancerContextTests
+        {
+            [DisplayFact(nameof(DbSet<Leaderboard>))]
+            public void ReturnsDbSet()
+            {
+                // Arrange -> Act
+                var leaderboards = db.Leaderboards;
+
+                // Assert
+                Assert.IsAssignableFrom<DbSet<Leaderboard>>(leaderboards);
+            }
+        }
+
+        public class EntriesProperty : NecroDancerContextTests
+        {
+            [DisplayFact(nameof(DbSet<Entry>))]
+            public void ReturnsDbSet()
+            {
+                // Arrange -> Act
+                var entries = db.Entries;
+
+                // Assert
+                Assert.IsAssignableFrom<DbSet<Entry>>(entries);
+            }
+        }
+
+        public class DailyLeaderboardsProperty : NecroDancerContextTests
+        {
+            [DisplayFact(nameof(DbSet<DailyLeaderboard>))]
+            public void ReturnsDbSet()
+            {
+                // Arrange -> Act
+                var leaderboards = db.DailyLeaderboards;
+
+                // Assert
+                Assert.IsAssignableFrom<DbSet<DailyLeaderboard>>(leaderboards);
+            }
+        }
+
+        public class DailyEntriesProperty : NecroDancerContextTests
+        {
+            [DisplayFact(nameof(DbSet<DailyEntry>))]
+            public void ReturnsDbSet()
+            {
+                // Arrange -> Act
+                var entries = db.DailyEntries;
+
+                // Assert
+                Assert.IsAssignableFrom<DbSet<DailyEntry>>(entries);
+            }
+        }
+
+        public class PlayersProperty : NecroDancerContextTests
+        {
+            [DisplayFact(nameof(DbSet<Player>))]
+            public void ReturnsDbSet()
+            {
+                // Arrange -> Act
+                var players = db.Players;
+
+                // Assert
+                Assert.IsAssignableFrom<DbSet<Player>>(players);
+            }
+        }
+
+        public class ReplaysProperty : NecroDancerContextTests
+        {
+            [DisplayFact(nameof(DbSet<Replay>))]
+            public void ReturnsDbSet()
+            {
+                // Arrange -> Act
+                var replays = db.Replays;
+
+                // Assert
+                Assert.IsAssignableFrom<DbSet<Replay>>(replays);
+            }
+        }
+
+        public class ProductsProperty : NecroDancerContextTests
+        {
+            [DisplayFact(nameof(DbSet<Product>))]
+            public void ReturnsDbSet()
+            {
+                // Arrange -> Act
+                var products = db.Products;
+
+                // Assert
+                Assert.IsAssignableFrom<DbSet<Product>>(products);
+            }
+        }
+
+        public class ModesProperty : NecroDancerContextTests
+        {
+            [DisplayFact(nameof(DbSet<Mode>))]
+            public void ReturnsDbSet()
+            {
+                // Arrange -> Act
+                var modes = db.Modes;
+
+                // Assert
+                Assert.IsAssignableFrom<DbSet<Mode>>(modes);
+            }
+        }
+
+        public class RunsProperty : NecroDancerContextTests
+        {
+            [DisplayFact(nameof(DbSet<Run>))]
+            public void ReturnsDbSet()
+            {
+                // Arrange -> Act
+                var runs = db.Runs;
+
+                // Assert
+                Assert.IsAssignableFrom<DbSet<Run>>(runs);
+            }
+        }
+
+        public class CharactersProperty : NecroDancerContextTests
+        {
+            [DisplayFact(nameof(DbSet<Character>))]
+            public void ReturnsDbSet()
+            {
+                // Arrange -> Act
+                var characters = db.Characters;
+
+                // Assert
+                Assert.IsAssignableFrom<DbSet<Character>>(characters);
+            }
+        }
+
         public class IntegrationTests : NecroDancerIntegrationTestsBase
         {
-            public IntegrationTests() : base(createDatabase: false) { }
-
             // Ported to EF Core from https://stackoverflow.com/a/42643788/414137
             [DisplayFact]
             public void CanMigrateUpAndDown()

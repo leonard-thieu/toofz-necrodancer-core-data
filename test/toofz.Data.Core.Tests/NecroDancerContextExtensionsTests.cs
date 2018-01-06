@@ -4,9 +4,9 @@ using Xunit;
 
 namespace toofz.Data.Tests
 {
-    public class LeaderboardsContextExtensionsTests
+    public class NecroDancerContextExtensionsTests
     {
-        public class IntegrationTests : LeaderboardsIntegrationTestsBase
+        public class IntegrationTests : NecroDancerIntegrationTestsBase
         {
             [DisplayFact]
             public void SeedsData()

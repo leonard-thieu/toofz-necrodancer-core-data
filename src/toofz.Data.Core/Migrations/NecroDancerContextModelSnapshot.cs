@@ -3,13 +3,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 using toofz.Data;
 
-namespace toofz.Data.Leaderboards.Migrations
+namespace toofz.Data.Migrations
 {
-    [DbContext(typeof(LeaderboardsContext))]
-    partial class LeaderboardsContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(NecroDancerContext))]
+    partial class NecroDancerContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -254,6 +256,147 @@ namespace toofz.Data.Leaderboards.Migrations
                     b.ToTable("Runs");
                 });
 
+            modelBuilder.Entity("toofz.NecroDancer.Data.Enemy", b =>
+                {
+                    b.Property<string>("Name");
+
+                    b.Property<int>("Type");
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired();
+
+                    b.Property<string>("FriendlyName");
+
+                    b.Property<int?>("Id");
+
+                    b.HasKey("Name", "Type");
+
+                    b.ToTable("Enemies");
+                });
+
+            modelBuilder.Entity("toofz.NecroDancer.Data.Item", b =>
+                {
+                    b.Property<string>("Name")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("Bouncer");
+
+                    b.Property<int?>("CoinCost");
+
+                    b.Property<bool>("Consumable");
+
+                    b.Property<int?>("Cooldown");
+
+                    b.Property<int?>("Data");
+
+                    b.Property<int?>("DiamondCost");
+
+                    b.Property<int?>("DiamondDealable");
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired();
+
+                    b.Property<bool?>("FromTransmute");
+
+                    b.Property<int>("ImageHeight");
+
+                    b.Property<string>("ImagePath");
+
+                    b.Property<int>("ImageWidth");
+
+                    b.Property<bool>("IsArmor");
+
+                    b.Property<bool>("IsAxe");
+
+                    b.Property<bool>("IsBlood");
+
+                    b.Property<bool>("IsBlunderbuss");
+
+                    b.Property<bool>("IsBow");
+
+                    b.Property<bool>("IsBroadsword");
+
+                    b.Property<bool>("IsCat");
+
+                    b.Property<bool>("IsCoin");
+
+                    b.Property<bool>("IsCrossbow");
+
+                    b.Property<bool>("IsCutlass");
+
+                    b.Property<bool>("IsDagger");
+
+                    b.Property<bool>("IsDiamond");
+
+                    b.Property<bool>("IsFamiliar");
+
+                    b.Property<bool>("IsFlail");
+
+                    b.Property<bool>("IsFood");
+
+                    b.Property<bool>("IsFrost");
+
+                    b.Property<bool>("IsGlass");
+
+                    b.Property<bool>("IsGold");
+
+                    b.Property<bool>("IsHarp");
+
+                    b.Property<bool>("IsLongsword");
+
+                    b.Property<bool>("IsMagicFood");
+
+                    b.Property<bool>("IsObsidian");
+
+                    b.Property<bool>("IsPhasing");
+
+                    b.Property<bool>("IsPiercing");
+
+                    b.Property<bool>("IsRapier");
+
+                    b.Property<bool>("IsRifle");
+
+                    b.Property<bool>("IsScroll");
+
+                    b.Property<bool>("IsShovel");
+
+                    b.Property<bool>("IsSpear");
+
+                    b.Property<bool>("IsSpell");
+
+                    b.Property<bool>("IsStackable");
+
+                    b.Property<bool>("IsStaff");
+
+                    b.Property<bool>("IsTemp");
+
+                    b.Property<bool>("IsTitanium");
+
+                    b.Property<bool>("IsTorch");
+
+                    b.Property<bool>("IsWarhammer");
+
+                    b.Property<bool>("IsWeapon");
+
+                    b.Property<bool>("IsWhip");
+
+                    b.Property<bool>("PlayerKnockback");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<string>("Set");
+
+                    b.Property<string>("Slot");
+
+                    b.Property<bool>("TemporaryMapSight");
+
+                    b.Property<bool?>("UseGreater");
+
+                    b.HasKey("Name");
+
+                    b.ToTable("Items");
+                });
+
             modelBuilder.Entity("toofz.Data.DailyEntry", b =>
                 {
                     b.HasOne("toofz.Data.DailyLeaderboard", "Leaderboard")
@@ -317,6 +460,63 @@ namespace toofz.Data.Leaderboards.Migrations
                         .WithMany()
                         .HasForeignKey("RunId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("toofz.NecroDancer.Data.Enemy", b =>
+                {
+                    b.OwnsOne("toofz.NecroDancer.Data.OptionalStats", "OptionalStats", b1 =>
+                        {
+                            b1.Property<string>("EnemyName");
+
+                            b1.Property<int>("EnemyType");
+
+                            b1.Property<bool>("Boss");
+
+                            b1.Property<bool>("BounceOnMovementFail");
+
+                            b1.Property<bool>("Floating");
+
+                            b1.Property<bool>("IgnoreLiquids");
+
+                            b1.Property<bool>("IgnoreWalls");
+
+                            b1.Property<bool>("IsMonkeyLike");
+
+                            b1.Property<bool>("Massive");
+
+                            b1.Property<bool>("Miniboss");
+
+                            b1.ToTable("Enemies");
+
+                            b1.HasOne("toofz.NecroDancer.Data.Enemy")
+                                .WithOne("OptionalStats")
+                                .HasForeignKey("toofz.NecroDancer.Data.OptionalStats", "EnemyName", "EnemyType")
+                                .OnDelete(DeleteBehavior.Cascade);
+                        });
+
+                    b.OwnsOne("toofz.NecroDancer.Data.Stats", "Stats", b1 =>
+                        {
+                            b1.Property<string>("EnemyName");
+
+                            b1.Property<int>("EnemyType");
+
+                            b1.Property<int>("BeatsPerMove");
+
+                            b1.Property<int>("CoinsToDrop");
+
+                            b1.Property<int>("DamagePerHit");
+
+                            b1.Property<int>("Health");
+
+                            b1.Property<string>("Movement");
+
+                            b1.ToTable("Enemies");
+
+                            b1.HasOne("toofz.NecroDancer.Data.Enemy")
+                                .WithOne("Stats")
+                                .HasForeignKey("toofz.NecroDancer.Data.Stats", "EnemyName", "EnemyType")
+                                .OnDelete(DeleteBehavior.Cascade);
+                        });
                 });
 #pragma warning restore 612, 618
         }
