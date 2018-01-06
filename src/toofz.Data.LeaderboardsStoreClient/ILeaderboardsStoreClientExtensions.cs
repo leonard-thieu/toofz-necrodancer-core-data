@@ -10,6 +10,14 @@ namespace toofz.Data
     /// </summary>
     public static class ILeaderboardsStoreClientExtensions
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="storeClient"></param>
+        /// <param name="items"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public static Task<int> BulkUpsertAsync<TEntity>(
             this ILeaderboardsStoreClient storeClient,
             IEnumerable<TEntity> items,

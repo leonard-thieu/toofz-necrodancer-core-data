@@ -4,6 +4,9 @@ using System.Reflection;
 
 namespace toofz.Data
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class SqlClientUtil
     {
         #region http://blog.gauffin.org/2014/08/how-to-create-a-sqlexception/

@@ -9,6 +9,9 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace toofz.Data
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public sealed class LeaderboardsStoreClient : ILeaderboardsStoreClient
     {
         /// <summary>
@@ -44,6 +47,13 @@ namespace toofz.Data
 
         private readonly SqlConnection connection;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task<int> BulkInsertAsync<TEntity>(
             IEnumerable<TEntity> items,
             CancellationToken cancellationToken)
@@ -90,6 +100,14 @@ namespace toofz.Data
             return items.Count();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="options"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task<int> BulkUpsertAsync<TEntity>(
             IEnumerable<TEntity> items,
             BulkUpsertOptions options,

@@ -11,6 +11,10 @@ namespace toofz.Data
     /// </summary>
     public static class NecroDancerContextExtensions
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public static void EnsureSeedData(this NecroDancerContext context)
         {
             if (!context.Database.GetPendingMigrations().Any())

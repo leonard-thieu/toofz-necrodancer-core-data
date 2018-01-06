@@ -4,6 +4,9 @@ using System.Text;
 
 namespace toofz.Data
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public sealed class SqlCommandException : Exception
     {
         /// <summary>

@@ -14,6 +14,10 @@ namespace toofz.Data.Migrations
     [Migration("20180106130103_InitialCreate")]
     partial class InitialCreate
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
