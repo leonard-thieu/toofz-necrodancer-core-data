@@ -130,11 +130,11 @@ namespace toofz.Data
         private IEntityType GetEntityType<TEntity>()
             where TEntity : class
         {
-            var options = new DbContextOptionsBuilder<LeaderboardsContext>()
+            var options = new DbContextOptionsBuilder<NecroDancerContext>()
                 .UseSqlServer(connection)
                 .Options;
 
-            using (var db = new LeaderboardsContext(options))
+            using (var db = new NecroDancerContext(options))
             {
                 return db.Model.GetEntityTypes().FirstOrDefault(t => t.ClrType == typeof(TEntity));
             }

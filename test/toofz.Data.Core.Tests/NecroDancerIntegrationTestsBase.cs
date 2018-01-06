@@ -8,7 +8,7 @@ namespace toofz.Data.Tests
     [Collection("Uses SQL Server (" + Constants.NecroDancerContextName + ")")]
     public abstract class NecroDancerIntegrationTestsBase : IDisposable
     {
-        public NecroDancerIntegrationTestsBase(bool createDatabase = true)
+        public NecroDancerIntegrationTestsBase()
         {
             var connectionString = StorageHelper.GetDatabaseConnectionString(Constants.NecroDancerContextName);
             var options = new DbContextOptionsBuilder<NecroDancerContext>()
@@ -17,10 +17,7 @@ namespace toofz.Data.Tests
             db = new NecroDancerContext(options);
 
             db.Database.EnsureDeleted();
-            if (createDatabase)
-            {
-                db.Database.EnsureCreated();
-            }
+            db.Database.Migrate();
         }
 
         protected readonly NecroDancerContext db;

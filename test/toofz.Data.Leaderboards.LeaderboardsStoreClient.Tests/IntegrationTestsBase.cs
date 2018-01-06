@@ -11,10 +11,10 @@ namespace toofz.Data.Tests
         public IntegrationTestsBase()
         {
             var connectionString = StorageHelper.GetDatabaseConnectionString(Constants.LeaderboardsStoreClientName);
-            var options = new DbContextOptionsBuilder<LeaderboardsContext>()
+            var options = new DbContextOptionsBuilder<NecroDancerContext>()
                 .UseSqlServer(connectionString)
                 .Options;
-            db = new LeaderboardsContext(options);
+            db = new NecroDancerContext(options);
 
             db.Database.EnsureDeleted();
             db.Database.Migrate();
@@ -23,7 +23,7 @@ namespace toofz.Data.Tests
             storeClient = new LeaderboardsStoreClient(connectionString);
         }
 
-        private readonly LeaderboardsContext db;
+        private readonly NecroDancerContext db;
         protected readonly LeaderboardsStoreClient storeClient;
 
         #region IDisposable Implementation

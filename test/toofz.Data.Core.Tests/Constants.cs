@@ -4,6 +4,5 @@
     {
         public const string ProjectName = "TestData";
         public const string NecroDancerContextName = ProjectName + nameof(NecroDancerContext);
-        public const string LeaderboardsContextName = ProjectName + nameof(LeaderboardsContext);
     }
 }
