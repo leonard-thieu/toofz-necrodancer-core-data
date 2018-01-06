@@ -22,7 +22,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="toofz.Build" Version="2.2.0">
+    <PackageReference Include="toofz.Build" Version="2.3.0">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
