@@ -16,15 +16,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "toofz.Data", "src\toofz.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "toofz.Data.Core", "src\toofz.Data.Core\toofz.Data.Core.csproj", "{A20D120D-CBD9-4C22-8A19-D5BA6275B57F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "toofz.Data.Core.Design", "src\toofz.Data.Core.Design\toofz.Data.Core.Design.csproj", "{01A8625D-8CB9-4E25-87F3-C9125D273149}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "toofz.Data.Leaderboards.LeaderboardsStoreClient", "src\toofz.Data.Leaderboards.LeaderboardsStoreClient\toofz.Data.Leaderboards.LeaderboardsStoreClient.csproj", "{9707C87A-9FE4-4523-A75D-E7617719433D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "toofz.Data.Leaderboards.LeaderboardsStoreClient", "src\toofz.Data.Leaderboards.LeaderboardsStoreClient\toofz.Data.Leaderboards.LeaderboardsStoreClient.csproj", "{9707C87A-9FE4-4523-A75D-E7617719433D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{92C47DD6-85B9-462D-BB99-9483A114CD8E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "toofz.Data.Core.Tests", "test\toofz.Data.Core.Tests\toofz.Data.Core.Tests.csproj", "{144AA854-8417-41A7-A2B5-657316168419}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "toofz.Data.Leaderboards.LeaderboardsStoreClient.Tests", "test\toofz.Data.Leaderboards.LeaderboardsStoreClient.Tests\toofz.Data.Leaderboards.LeaderboardsStoreClient.Tests.csproj", "{3E750B09-F12C-45CA-AED6-BCA86DAEABF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "toofz.Data.Leaderboards.LeaderboardsStoreClient.Tests", "test\toofz.Data.Leaderboards.LeaderboardsStoreClient.Tests\toofz.Data.Leaderboards.LeaderboardsStoreClient.Tests.csproj", "{3E750B09-F12C-45CA-AED6-BCA86DAEABF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,10 +38,6 @@ Global
 		{A20D120D-CBD9-4C22-8A19-D5BA6275B57F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A20D120D-CBD9-4C22-8A19-D5BA6275B57F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A20D120D-CBD9-4C22-8A19-D5BA6275B57F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01A8625D-8CB9-4E25-87F3-C9125D273149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01A8625D-8CB9-4E25-87F3-C9125D273149}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01A8625D-8CB9-4E25-87F3-C9125D273149}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01A8625D-8CB9-4E25-87F3-C9125D273149}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9707C87A-9FE4-4523-A75D-E7617719433D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9707C87A-9FE4-4523-A75D-E7617719433D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9707C87A-9FE4-4523-A75D-E7617719433D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,7 +57,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{9CA92A99-330E-4DA1-9BF2-8B937C4182B4} = {6B3E9E84-B050-4D8C-85FB-FBB26EDEC54C}
 		{A20D120D-CBD9-4C22-8A19-D5BA6275B57F} = {6B3E9E84-B050-4D8C-85FB-FBB26EDEC54C}
-		{01A8625D-8CB9-4E25-87F3-C9125D273149} = {6B3E9E84-B050-4D8C-85FB-FBB26EDEC54C}
 		{9707C87A-9FE4-4523-A75D-E7617719433D} = {6B3E9E84-B050-4D8C-85FB-FBB26EDEC54C}
 		{144AA854-8417-41A7-A2B5-657316168419} = {92C47DD6-85B9-462D-BB99-9483A114CD8E}
 		{3E750B09-F12C-45CA-AED6-BCA86DAEABF0} = {92C47DD6-85B9-462D-BB99-9483A114CD8E}
