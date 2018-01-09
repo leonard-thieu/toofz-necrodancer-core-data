@@ -235,7 +235,7 @@ namespace toofz.Data.Tests
             [DisplayFact]
             public void ModelChangesAreNotPending()
             {
-                var servicesBuilder = new DesignTimeServicesBuilder(Assembly.GetEntryAssembly(), Mock.Of<IOperationReporter>());
+                var servicesBuilder = new DesignTimeServicesBuilder(Assembly.GetExecutingAssembly(), Mock.Of<IOperationReporter>());
                 var services = servicesBuilder.Build(db);
                 var dependencies = services.GetService<MigrationsScaffolderDependencies>();
 

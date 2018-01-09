@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -13,24 +14,32 @@
     <PackageIconUrl>https://user-images.githubusercontent.com/5265970/29717713-27e1a95c-897e-11e7-9d28-dae64be705b5.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/leonard-thieu/toofz-data.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-
-    <!-- 
-      Don't include build output from this project. This project is a C# project but its purpose is 
-      only to build the NuGet package.
-    -->
-    <IncludeThisBuildOutput>false</IncludeThisBuildOutput>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.1" />
     <PackageReference Include="toofz.Build" Version="2.3.1">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="toofz.NecroDancer" Version="5.0.7" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\toofz.Data.Core\toofz.Data.Core.csproj" />
-    <ProjectReference Include="..\toofz.Data.LeaderboardsStoreClient\toofz.Data.LeaderboardsStoreClient.csproj" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
   </ItemGroup>
 
-  <Import Project="WalkEachTargetPerProject.targets" />
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>
