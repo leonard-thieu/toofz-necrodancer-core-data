@@ -27,14 +27,7 @@ build:
 
 test_script:
   - ps: |
-      $projectPath = Resolve-Path .\test\toofz.Data.Core.Tests\toofz.Data.Core.Tests.csproj
-      msbuild $projectPath /nologo /verbosity:minimal `
-          /target:Rebuild `
-          /target:Test `
-          /property:Configuration=Coverage `
-          /property:DebugType=full `
-          /property:DebugSymbols=true
-      $projectPath = Resolve-Path .\test\toofz.Data.LeaderboardsStoreClient.Tests\toofz.Data.LeaderboardsStoreClient.Tests.csproj
+      $projectPath = Resolve-Path .\test\toofz.Data.Tests\toofz.Data.Tests.csproj
       msbuild $projectPath /nologo /verbosity:minimal `
           /target:Rebuild `
           /target:Test `
