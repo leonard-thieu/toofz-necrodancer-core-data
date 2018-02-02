@@ -28,7 +28,7 @@ Add a NuGet.Config to your solution directory with the following content:
 ```
 
 ```powershell
-Install-Package toofz.Data
+Install-Package 'toofz.Data'
 ```
 
 ### Dependents
