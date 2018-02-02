@@ -38,11 +38,11 @@ Install-Package toofz.Data
 * [toofz Daily Leaderboards Service](https://github.com/leonard-thieu/daily-leaderboards-service)
 * [toofz Players Service](https://github.com/leonard-thieu/players-service)
 * [toofz Replays Service](https://github.com/leonard-thieu/replays-service)
-* [toofz Build](https://github.com/leonard-thieu/toofz-build)
 
 ### Dependencies
 
 * [toofz NecroDancer Core](https://github.com/leonard-thieu/toofz-necrodancer-core)
+* [toofz Build](https://github.com/leonard-thieu/toofz-build)
 
 ## Requirements
 
